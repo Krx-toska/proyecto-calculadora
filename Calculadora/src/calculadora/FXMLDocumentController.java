@@ -28,6 +28,14 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private javafx.scene.canvas.Canvas texthere;
     static GraphicsContext gc;
+    @FXML
+    private Button bttn_8;
+    @FXML
+    private Button bttn_9;
+    @FXML
+    private Button bbtn_clear;
+    @FXML
+    private Button bbtn_dividir;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -35,18 +43,21 @@ public class FXMLDocumentController implements Initializable {
     }    
     
     
+    @FXML
     public void accion_mas(ActionEvent event) {//listo
       gc = texthere.getGraphicsContext2D();
       gc.strokeLine(mx + 22.5,37.5,mx +22.5,62.5);        //Altura maxima = 25, Altura Minima, 75
       gc.strokeLine(mx +10,50,mx +35,50);        //Ancho maximo = 30, parte desde x = 10
       mx = mx + 35;
     }
+    @FXML
     public void accion_menos(ActionEvent event) {//listo
       gc = texthere.getGraphicsContext2D();
       gc.strokeLine(mx +10,50,mx +35,50);
       mx = mx + 35;
     }
     
+    @FXML
     public void accion0(ActionEvent event) {//listo
       gc = texthere.getGraphicsContext2D();
       gc.strokeLine(mx +10,25,mx +35,25);   //arriba
@@ -56,13 +67,15 @@ public class FXMLDocumentController implements Initializable {
       mx = mx + 35;
     }
     
+    @FXML
     public void accion1(ActionEvent event) {//listo
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx + 20,25,mx + 20,75);
-      gc.strokeLine(mx + 20,25,mx + 10,35);
+      gc.strokeLine(mx + 20,20,mx + 20,50);
+      gc.strokeLine(mx + 20,20,mx + 15,30);
       mx = mx + 20;
     }
     
+    @FXML
     public void accion2(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.strokeLine(mx +10,25,mx +35,25);
@@ -73,6 +86,7 @@ public class FXMLDocumentController implements Initializable {
       mx = mx + 35;
     }
     
+    @FXML
     public void accion3(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.strokeLine(mx +10,25,mx +35,25);
@@ -82,6 +96,7 @@ public class FXMLDocumentController implements Initializable {
       mx = mx + 35;
     }
     
+    @FXML
     public void accion4(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.strokeLine(mx +35,25,mx +35,75);
@@ -90,6 +105,7 @@ public class FXMLDocumentController implements Initializable {
       mx = mx + 35; 
     }
     
+    @FXML
     public void accion5(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.strokeLine(mx +10,25,mx +35,25);
@@ -100,6 +116,7 @@ public class FXMLDocumentController implements Initializable {
       mx = mx + 35;
     }
     
+    @FXML
     public void accion6(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.strokeLine(mx +10,25,mx +35,25);   //arriba
@@ -110,6 +127,7 @@ public class FXMLDocumentController implements Initializable {
       mx = mx + 35;
     }
     
+    @FXML
     public void accion7(ActionEvent event) {//listo
       gc = texthere.getGraphicsContext2D();
       gc.strokeLine(mx +10,25,mx +35,25);   //arriba
@@ -118,6 +136,7 @@ public class FXMLDocumentController implements Initializable {
       mx = mx + 35;
     }
     
+    @FXML
     public void accion8(ActionEvent event) {//listo
       gc = texthere.getGraphicsContext2D();
       gc.strokeLine(mx +10,25,mx +35,25);   //arriba
@@ -128,6 +147,7 @@ public class FXMLDocumentController implements Initializable {
       mx = mx + 35;
     }
     
+    @FXML
     public void accion9(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.strokeLine(mx +10,25,mx +35,25);   //arriba
@@ -138,26 +158,49 @@ public class FXMLDocumentController implements Initializable {
       mx = mx + 35;
     }
     
+    @FXML
     public void accion_x(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.strokeLine(mx +10,35,mx + 22.5,65); 
       gc.strokeLine(mx +10,65,mx + 22.5,35);
       mx = mx + 25;
     }
+    @FXML
     public void accion_parentesisIzquierdo(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.strokeArc(mx +20,25,10,50,90,180,ArcType.OPEN); 
       mx = mx + 25;
     }
+    @FXML
     public void accion_parentesisDerecho(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.strokeArc(mx +10,25,10,50,90,-180,ArcType.OPEN); 
       mx = mx + 25;
     }
-
+@FXML
+    private void accion_limpiar(ActionEvent event) {
+        
+        gc = texthere.getGraphicsContext2D();
+        gc.clearRect(0, 0, 1000, 1000);
+    }
+    //nuevo
+     @FXML
+    private void accion_dividir(ActionEvent event) {
+         gc = texthere.getGraphicsContext2D();
+         gc.strokeLine( 0,60, 40,60);
+         
+         
+         gc.strokeLine( 20,70, 20,100);
+         gc.strokeLine( 20,70, 15,80);
+    }
+    
     @FXML
     private void panel(MouseEvent event) {
         
     }
+
+   
+
+    
     
 }
