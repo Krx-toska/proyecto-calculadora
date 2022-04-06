@@ -182,6 +182,7 @@ public class FXMLDocumentController implements Initializable {
         
         gc = texthere.getGraphicsContext2D();
         gc.clearRect(0, 0, 1000, 1000);
+        mx = 0;
     }
     //nuevo
      @FXML
