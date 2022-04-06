@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="381.0" prefWidth="369.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculadora.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="381.0" prefWidth="434.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculadora.FXMLDocumentController">
    <children>
       <Button fx:id="bttn_8" layoutX="114.0" layoutY="253.0" mnemonicParsing="false" onAction="#accion8" prefHeight="46.0" prefWidth="65.0" text="8">
          <font>
@@ -72,18 +72,23 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="269.0" layoutY="200.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="65.0" text="/">
+      <Button fx:id="bbtn_dividir" layoutX="269.0" layoutY="200.0" mnemonicParsing="false" onAction="#accion_dividir" prefHeight="46.0" prefWidth="65.0" text="/">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Canvas fx:id="texthere" height="116.0" layoutX="27.0" layoutY="14.0" onDragDetected="#panel" width="315.0" />
+      <Canvas fx:id="texthere" height="116.0" layoutX="27.0" layoutY="14.0" onDragDetected="#panel" width="388.0" />
       <Button fx:id="bttn_parentesisIzquierdo" layoutX="269.0" layoutY="253.0" mnemonicParsing="false" onAction="#accion_parentesisIzquierdo" prefHeight="46.0" prefWidth="65.0" text="(">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
       <Button fx:id="bttn_parentesisDerecho" layoutX="269.0" layoutY="309.0" mnemonicParsing="false" onAction="#accion_parentesisDerecho" prefHeight="46.0" prefWidth="65.0" text=")">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="bbtn_clear" layoutX="350.0" layoutY="309.0" mnemonicParsing="false" onAction="#accion_limpiar" prefHeight="46.0" prefWidth="65.0" text="c">
          <font>
             <Font size="20.0" />
          </font>
