@@ -194,6 +194,21 @@ public class FXMLDocumentController implements Initializable {
          gc.strokeLine( 20,70, 20,100);
          gc.strokeLine( 20,70, 15,80);
     }
+
+    public void accion_cordenadas(ActionEvent event){
+        int aux,aux2;
+        aux = mx;
+        aux2 = i;
+        while(aux2>0){
+            TFCordenadas.setText("numero: " + aux2);
+            TFCordenadas.setText("eje x:" + aux);
+            System.out.println("numero: " + aux2);
+            System.out.println(aux);
+            aux2 = aux2 - 1;
+            aux = aux - 35;
+            
+        }
+    }
     
     @FXML
     private void panel(MouseEvent event) {
