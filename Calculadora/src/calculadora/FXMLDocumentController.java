@@ -35,7 +35,7 @@ public class FXMLDocumentController implements Initializable {
     }    
     
     
-    public void accion_mas(ActionEvent event) {//listo
+    public void accion_mas(ActionEvent event){
       gc = texthere.getGraphicsContext2D();
       gc.strokeLine(mx + 22.5,37.5,mx +22.5,62.5);        //Altura maxima = 25, Altura Minima, 75
       gc.strokeLine(mx +10,50,mx +35,50);        //Ancho maximo = 30, parte desde x = 10
