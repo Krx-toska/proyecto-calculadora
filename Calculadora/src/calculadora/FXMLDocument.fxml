@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="444.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculadora.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="444.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculadora.FXMLDocumentController">
    <children>
       <Button fx:id="bttn_8" layoutX="115.0" layoutY="314.0" mnemonicParsing="false" onAction="#accion8" prefHeight="46.0" prefWidth="65.0" text="8">
          <font>
@@ -94,6 +94,11 @@
          </font>
       </Button>
       <Button fx:id="bbtn_clear" layoutX="348.0" layoutY="206.0" mnemonicParsing="false" onAction="#accion_limpiar" prefHeight="46.0" prefWidth="65.0" text="C">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="bbtn_cor" layoutX="348.0" layoutY="261.0" mnemonicParsing="false" onAction="#accion_cordenadas" prefHeight="46.0" prefWidth="65.0" text="cor">
          <font>
             <Font size="20.0" />
          </font>

@@ -38,6 +38,9 @@ public class FXMLDocumentController implements Initializable {
     private Button bbtn_clear;
     @FXML
     private Button bbtn_dividir;
+    @FXML
+    private Button bbtn_cor;
+    
     
     int posicion =0;
         
@@ -76,6 +79,7 @@ public class FXMLDocumentController implements Initializable {
       gc.strokeLine(mx +10,75,mx +35,75);   //abajo
       gc.strokeLine(mx +10,25,mx +10,75);   //izquierda
       gc.strokeLine(mx +35,25,mx +35,75);   //derecha
+      operacion.add("0");
       mx = mx + 35;
     }
     
@@ -87,7 +91,7 @@ public class FXMLDocumentController implements Initializable {
            gc.setStroke(Color.BLUE);
            gc.strokeLine(mx + 20,25,mx + 20,75);
            gc.strokeLine(mx + 20,25,mx + 10,35);
-           mx = mx + 25;
+           mx = mx + 35;
            operacion.add("1");
            posicion = posicion + 1;
            }
@@ -98,7 +102,7 @@ public class FXMLDocumentController implements Initializable {
            gc.setStroke(Color.BLUE);
            gc.strokeLine(mx + 20,25,mx + 20,75);
            gc.strokeLine(mx + 20,25,mx + 10,35);
-           mx = mx + 25;
+           mx = mx + 35;
            operacion.add("1");
            posicion = posicion + 1;
            }
@@ -108,7 +112,7 @@ public class FXMLDocumentController implements Initializable {
            gc.setStroke(Color.BLUE);
            gc.strokeLine(mx + 20,85,mx + 20,135);
            gc.strokeLine(mx + 20,85,mx + 10,95);
-           mx = mx + 25;
+           mx = mx + 35;
            operacion.add("1");
            posicion = posicion + 1;
       
@@ -464,14 +468,14 @@ public class FXMLDocumentController implements Initializable {
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(Color.RED);
       gc.strokeArc(mx +20,25,10,50,90,180,ArcType.OPEN); 
-      mx = mx + 25;
+      mx = mx + 35;
     }
     @FXML
     public void accion_parentesisDerecho(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(Color.RED);
       gc.strokeArc(mx +10,25,10,50,90,-180,ArcType.OPEN); 
-      mx = mx + 25;
+      mx = mx + 35;
     }
 @FXML
     private void accion_limpiar(ActionEvent event) {
@@ -479,7 +483,11 @@ public class FXMLDocumentController implements Initializable {
         gc = texthere.getGraphicsContext2D();
         gc.clearRect(0, 0, 1000, 1000);
         mx=0;
+        posicion = 0;   //limpia la poscion
+        operacion.clear();// vacia lisra "operacion"
     }
+    /*private void accion_limpiarUnidad(ActionEvent event) {
+    } */
     //nuevo
      @FXML
     private void accion_dividir(ActionEvent event) {
@@ -500,6 +508,107 @@ public class FXMLDocumentController implements Initializable {
          mx = mx - 35;}
         
         
+    }
+    public void accion_cordenadas(ActionEvent event){
+        int Amx = 0;
+        gc = texthere.getGraphicsContext2D();
+        gc.setLineWidth(4);
+        gc.setStroke(Color.BLUEVIOLET);
+        for(int i = 0; i< operacion.size();i++){
+            if(operacion.get(i) == "0"){
+               gc.strokeLine(Amx +10,25,Amx +10,25);   
+               gc.strokeLine(Amx +10,75,Amx +10,75);   
+               gc.strokeLine(Amx +35,75,Amx +35,75);   
+               gc.strokeLine(Amx +35,25,Amx +35,25);
+              
+               Amx = Amx + 35;
+            }   
+           if(operacion.get(i) == "1"){
+               gc.strokeLine(Amx + 20,25,Amx + 20,25);
+               gc.strokeLine(Amx + 10,35,Amx + 10,35);
+               gc.strokeLine(Amx + 20,75,Amx + 20,75);
+               Amx = Amx + 35;
+           }
+           if(operacion.get(i) == "2"){
+               gc.strokeLine(Amx +10,25,Amx +10,25);
+               gc.strokeLine(Amx +35,25,Amx +35,25);
+               gc.strokeLine(Amx +10,50,Amx +10,50); //horizontal media
+               gc.strokeLine(Amx +10,75,Amx +10,75);
+               gc.strokeLine(Amx +35,75,Amx +35,75);             
+               gc.strokeLine(Amx +35,50,Amx +35,50);
+               Amx = Amx + 35;
+           }
+           if(operacion.get(i) == "3"){
+               gc.strokeLine(Amx +10,25,Amx +10,25);
+               gc.strokeLine(Amx +35,25,Amx +35,25);
+               gc.strokeLine(Amx +10,50,Amx +10,50);
+               gc.strokeLine(Amx +35,75,Amx +35,75);
+               gc.strokeLine(Amx +35,25,Amx +35,25);
+               gc.strokeLine(Amx +35,50,Amx +35,50);  
+               gc.strokeLine(Amx +10,75,Amx +10,75);
+               Amx = Amx + 35;
+           }
+           if(operacion.get(i) == "4"){
+               gc.strokeLine(Amx +35,25,Amx +35,25);
+               gc.strokeLine(Amx +10,50,Amx +10,50);
+               gc.strokeLine(Amx +10,25,Amx +10,25);
+               gc.strokeLine(Amx +35,75,Amx +35,75);
+               gc.strokeLine(Amx +35,50,Amx +35,50);
+               
+               Amx = Amx + 35;
+           }
+           if(operacion.get(i) == "5"){
+               gc.strokeLine(Amx +10,25,Amx +10,25);
+               gc.strokeLine(Amx +35,50,Amx +35,50);
+               gc.strokeLine(Amx +10,50,Amx +10,50);
+               gc.strokeLine(Amx +10,50,Amx +10,50);
+               gc.strokeLine(Amx +10,75,Amx +10,75);
+               gc.strokeLine(Amx +35,25,Amx +35,25);
+               gc.strokeLine(Amx +35,75,Amx +35,75);
+               Amx = Amx + 35;
+           }
+           if(operacion.get(i) == "6"){
+               gc.strokeLine(Amx +10,25,Amx +10,25);  
+               gc.strokeLine(Amx +10,75,Amx +10,75);  
+               gc.strokeLine(Amx +10,50,Amx +10,50);   
+               gc.strokeLine(Amx +35,50,Amx +35,50);   
+               gc.strokeLine(Amx +35,75,Amx +35,75);
+               gc.strokeLine(Amx +35,25,Amx +35,25);
+               Amx = Amx + 35;
+           }
+           if(operacion.get(i) == "7"){
+               gc.strokeLine(Amx +10,25,Amx +10,25);    
+               gc.strokeLine(Amx +10,50,Amx +10,50);     
+               gc.strokeLine(Amx +35,75,Amx +35,75);
+               gc.strokeLine(Amx +35,25,Amx +35,25);
+               Amx = Amx + 35;
+           }
+           
+           if(operacion.get(i) == "8"){
+               gc.strokeLine(Amx +10,25,Amx +10,25);  
+               gc.strokeLine(Amx +10,75,Amx +10,75);  
+               gc.strokeLine(Amx +10,50,Amx +10,50);   
+               gc.strokeLine(Amx +35,50,Amx +35,50);   
+               gc.strokeLine(Amx +35,75,Amx +35,75);
+               gc.strokeLine(Amx +35,25,Amx +35,25);
+               Amx = Amx + 35;
+           }
+           if(operacion.get(i) == "9"){
+               gc.strokeLine(Amx +10,25,Amx +10,25);  
+               gc.strokeLine(Amx +10,75,Amx +10,75);  
+               gc.strokeLine(Amx +10,50,Amx +10,50);   
+               gc.strokeLine(Amx +35,50,Amx +35,50);   
+               gc.strokeLine(Amx +35,75,Amx +35,75);
+               gc.strokeLine(Amx +35,25,Amx +35,25);
+               Amx = Amx + 35;
+           }
+           
+           
+           
+           
+        }
+        gc.setLineWidth(1);
+    
     }
     
     @FXML
