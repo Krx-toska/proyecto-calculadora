@@ -61,6 +61,7 @@ public class FXMLDocumentController implements Initializable {
       gc.strokeLine(mx + 22.5,37.5,mx +22.5,62.5);        //Altura maxima = 25, Altura Minima, 75
       gc.strokeLine(mx +10,50,mx +35,50);        //Ancho maximo = 30, parte desde x = 10
       mx = mx + 35;
+      operacion.add("+");
       
     }
     @FXML
@@ -69,6 +70,7 @@ public class FXMLDocumentController implements Initializable {
       gc.setStroke(Color.RED);
       gc.strokeLine(mx +10,50,mx +35,50);
       mx = mx + 35;
+      operacion.add("-");
     }
     
     @FXML
@@ -461,6 +463,7 @@ public class FXMLDocumentController implements Initializable {
       gc.setStroke(Color.RED);
       gc.strokeLine(mx +20,35,mx + 32.5,65); 
       gc.strokeLine(mx +20,65,mx + 32.5,35);
+      operacion.add("x");
       mx = mx + 35;
     }
     @FXML
@@ -469,6 +472,7 @@ public class FXMLDocumentController implements Initializable {
       gc.setStroke(Color.RED);
       gc.strokeArc(mx +20,25,10,50,90,180,ArcType.OPEN); 
       mx = mx + 35;
+      operacion.add("(");
     }
     @FXML
     public void accion_parentesisDerecho(ActionEvent event) {
@@ -476,6 +480,8 @@ public class FXMLDocumentController implements Initializable {
       gc.setStroke(Color.RED);
       gc.strokeArc(mx +10,25,10,50,90,-180,ArcType.OPEN); 
       mx = mx + 35;
+      operacion.add(")");
+      
     }
 @FXML
     private void accion_limpiar(ActionEvent event) {
@@ -601,6 +607,51 @@ public class FXMLDocumentController implements Initializable {
                gc.strokeLine(Amx +35,75,Amx +35,75);
                gc.strokeLine(Amx +35,25,Amx +35,25);
                Amx = Amx + 35;
+           }
+           if(operacion.get(i) == "x"){
+               gc.strokeLine(Amx +20,35,Amx +20,35);   
+               gc.strokeLine(Amx +32.5,65,Amx +32.5,65);   
+               gc.strokeLine(Amx +20,65,Amx +20,65);
+               gc.strokeLine(Amx +32.5,35,Amx +32.5,35);
+               Amx = Amx + 35;
+               
+           }
+           if(operacion.get(i) == "/"){
+              gc.strokeLine(Amx +10,80,Amx +10,80);
+              gc.strokeLine(Amx -30,80,Amx -30,80);    
+           }
+           
+           if(operacion.get(i) == "+"){
+              gc.strokeLine(Amx +22.5,37.5,Amx +22.5,37.5);
+              gc.strokeLine(Amx +22.5,62.5,Amx +22.5,62.5); 
+              gc.strokeLine(Amx +35,50,Amx +35,50);
+              gc.strokeLine(Amx +10,50,Amx +10,50);
+              Amx = Amx + 35;
+               
+               
+           }
+           if(operacion.get(i) == "-"){
+              gc.strokeLine(Amx +35,50,Amx +35,50);
+              gc.strokeLine(Amx +10,50,Amx +10,50);
+              Amx = Amx + 35;            
+               
+               
+           }
+           if(operacion.get(i) == ")"){
+              gc.strokeLine(Amx + 15,25,Amx + 15,25);
+              gc.strokeLine(Amx + 15,75,Amx + 15,75);
+              
+              Amx = Amx + 35;            
+               
+               
+           }
+           if(operacion.get(i) == "("){
+              gc.strokeLine(Amx + 25,25,Amx + 25,25);
+              gc.strokeLine(Amx + 25,75,Amx + 25,75);
+              
+              Amx = Amx + 35;            
+               
+               
            }
            
            
