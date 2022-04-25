@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package calculadora;
 
 import java.net.URL;
@@ -18,29 +13,25 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
 
-/**
- *
- * @author krox2
- */
 public class FXMLDocumentController implements Initializable {
   @FXML
-  private Button bttn_0, bttn_1, bttn_2, bttn_3, bttn_4, bttn_5, bttn_6, bttn_7, bttn_8, bttn_9;
+  Button bttn0, bttn1, bttn2, bttn3, bttn4, bttn5, bttn6, bttn7, bttn8, bttn9;
   @FXML
-  private Button bttn_mas, bttn_menos,  bttn_x, bbtn_dividir, bttn_parentesisDerecho, bttn_parentesisIzquierdo;
+  Button bttnMas, bttnMenos,  bttnX, bttnDividir, bttnParentesisDerecho, bttnParentesisIzquierdo;
   @FXML
-  private Button bbtn_clear, bbtn_cor;
+  Button bttnClear, bttnCor;
   @FXML
-  private javafx.scene.canvas.Canvas texthere;
+  javafx.scene.canvas.Canvas texthere;
   @FXML
-  private ColorPicker myColorPickerNumbers, myColorPickerOperators;
+  ColorPicker myColorPickerNumbers, myColorPickerOperators;
   
-  static GraphicsContext gc;
-  double mx = 0, Amx = 0;
-  public Color myColorNumbers, myColorOperators;
-  int posicion =0;
+  GraphicsContext gc;
+  double mx = 0, amx = 0;
+  Color myColorNumbers, myColorOperators;
+  int posicion = 0;
       
-  ArrayList<String> operacion = new ArrayList<String>();
-    
+  ArrayList<String> operacion = new ArrayList<>();
+
   @Override
   public void initialize(URL url, ResourceBundle rb) {
     //empty
@@ -60,12 +51,14 @@ public class FXMLDocumentController implements Initializable {
   public void accion0(ActionEvent event) {//listo
     gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorNumbers);
-    gc.strokeLine(mx +10,25,mx +35,25);   //arriba
-    gc.strokeLine(mx +10,75,mx +35,75);   //abajo
-    gc.strokeLine(mx +10,25,mx +10,75);   //izquierda
-    gc.strokeLine(mx +35,25,mx +35,75);   //derecha
-    operacion.add("0");
-    mx = mx + 35;
+    if(!"/".equals(operacion.get(operacion.size()-1))){
+      gc.strokeLine(mx +10,25,mx +35,25);   //arriba
+      gc.strokeLine(mx +10,75,mx +35,75);   //abajo
+      gc.strokeLine(mx +10,25,mx +10,75);   //izquierda
+      gc.strokeLine(mx +35,25,mx +35,75);   //derecha
+      operacion.add("0");
+      mx = mx + 35;
+    }
   }
   
   @FXML
@@ -134,7 +127,6 @@ public class FXMLDocumentController implements Initializable {
       posicion = posicion + 1;
     }
   }
-    
   
   @FXML
   public void accion4(ActionEvent event) {
@@ -327,11 +319,11 @@ public class FXMLDocumentController implements Initializable {
   }
   @FXML
   private void accion_limpiar(ActionEvent event) {
-      gc = texthere.getGraphicsContext2D();
-      gc.clearRect(0, 0, 1000, 1000);
-      mx = 0;
-      posicion = 0;   //limpia la poscion
-      operacion.clear(); // vacia lisra "operacion"
+    gc = texthere.getGraphicsContext2D();
+    gc.clearRect(0, 0, 1000, 1000);
+    mx = 0;
+    posicion = 0;   //limpia la poscion
+    operacion.clear(); // vacia lisra "operacion"
   }
 
   @FXML
@@ -348,89 +340,89 @@ public class FXMLDocumentController implements Initializable {
     gc.setLineWidth(4);
     gc.setStroke(Color.BLUEVIOLET);
     for(int i = 0; i< operacion.size();i++){
-      if(operacion.get(i) == "0"){
-        gc.strokeLine(Amx +10,25,Amx +10,25);   
-        gc.strokeLine(Amx +10,75,Amx +10,75);   
-        gc.strokeLine(Amx +35,75,Amx +35,75);   
-        gc.strokeLine(Amx +35,25,Amx +35,25);
-        Amx = Amx + 35;
+      if("0".equals(operacion.get(i))){
+        gc.strokeLine(amx +10,25,amx +10,25);   
+        gc.strokeLine(amx +10,75,amx +10,75);   
+        gc.strokeLine(amx +35,75,amx +35,75);   
+        gc.strokeLine(amx +35,25,amx +35,25);
+        amx = amx + 35;
       }   
-      if(operacion.get(i) == "1"){
-        gc.strokeLine(Amx + 20,25,Amx + 20,25);
-        gc.strokeLine(Amx + 10,35,Amx + 10,35);
-        gc.strokeLine(Amx + 20,75,Amx + 20,75);
-        Amx = Amx + 35;
+      if("1".equals(operacion.get(i))){
+        gc.strokeLine(amx + 20,25,amx + 20,25);
+        gc.strokeLine(amx + 10,35,amx + 10,35);
+        gc.strokeLine(amx + 20,75,amx + 20,75);
+        amx = amx + 35;
       }
-      if(operacion.get(i) == "2"){
-        gc.strokeLine(Amx +10,25,Amx +10,25);
-        gc.strokeLine(Amx +35,25,Amx +35,25);
-        gc.strokeLine(Amx +10,50,Amx +10,50); //horizontal media
-        gc.strokeLine(Amx +10,75,Amx +10,75);
-        gc.strokeLine(Amx +35,75,Amx +35,75);             
-        gc.strokeLine(Amx +35,50,Amx +35,50);
-        Amx = Amx + 35;
+      if("2".equals(operacion.get(i))){
+        gc.strokeLine(amx +10,25,amx +10,25);
+        gc.strokeLine(amx +35,25,amx +35,25);
+        gc.strokeLine(amx +10,50,amx +10,50); //horizontal media
+        gc.strokeLine(amx +10,75,amx +10,75);
+        gc.strokeLine(amx +35,75,amx +35,75);             
+        gc.strokeLine(amx +35,50,amx +35,50);
+        amx = amx + 35;
       }
-      if(operacion.get(i) == "3"){
-        gc.strokeLine(Amx +10,25,Amx +10,25);
-        gc.strokeLine(Amx +35,25,Amx +35,25);
-        gc.strokeLine(Amx +10,50,Amx +10,50);
-        gc.strokeLine(Amx +35,75,Amx +35,75);
-        gc.strokeLine(Amx +35,25,Amx +35,25);
-        gc.strokeLine(Amx +35,50,Amx +35,50);  
-        gc.strokeLine(Amx +10,75,Amx +10,75);
-        Amx = Amx + 35;
+      if("3".equals(operacion.get(i))){
+        gc.strokeLine(amx +10,25,amx +10,25);
+        gc.strokeLine(amx +35,25,amx +35,25);
+        gc.strokeLine(amx +10,50,amx +10,50);
+        gc.strokeLine(amx +35,75,amx +35,75);
+        gc.strokeLine(amx +35,25,amx +35,25);
+        gc.strokeLine(amx +35,50,amx +35,50);  
+        gc.strokeLine(amx +10,75,amx +10,75);
+        amx = amx + 35;
       }
-      if(operacion.get(i) == "4"){
-        gc.strokeLine(Amx +35,25,Amx +35,25);
-        gc.strokeLine(Amx +10,50,Amx +10,50);
-        gc.strokeLine(Amx +10,25,Amx +10,25);
-        gc.strokeLine(Amx +35,75,Amx +35,75);
-        gc.strokeLine(Amx +35,50,Amx +35,50);
-        Amx = Amx + 35;
+      if("4".equals(operacion.get(i))){
+        gc.strokeLine(amx +35,25,amx +35,25);
+        gc.strokeLine(amx +10,50,amx +10,50);
+        gc.strokeLine(amx +10,25,amx +10,25);
+        gc.strokeLine(amx +35,75,amx +35,75);
+        gc.strokeLine(amx +35,50,amx +35,50);
+        amx = amx + 35;
       }
-      if(operacion.get(i) == "5"){
-        gc.strokeLine(Amx +10,25,Amx +10,25);
-        gc.strokeLine(Amx +35,50,Amx +35,50);
-        gc.strokeLine(Amx +10,50,Amx +10,50);
-        gc.strokeLine(Amx +10,50,Amx +10,50);
-        gc.strokeLine(Amx +10,75,Amx +10,75);
-        gc.strokeLine(Amx +35,25,Amx +35,25);
-        gc.strokeLine(Amx +35,75,Amx +35,75);
-        Amx = Amx + 35;
+      if("5".equals(operacion.get(i))){
+        gc.strokeLine(amx +10,25,amx +10,25);
+        gc.strokeLine(amx +35,50,amx +35,50);
+        gc.strokeLine(amx +10,50,amx +10,50);
+        gc.strokeLine(amx +10,50,amx +10,50);
+        gc.strokeLine(amx +10,75,amx +10,75);
+        gc.strokeLine(amx +35,25,amx +35,25);
+        gc.strokeLine(amx +35,75,amx +35,75);
+        amx = amx + 35;
       }
-      if(operacion.get(i) == "6"){
-        gc.strokeLine(Amx +10,25,Amx +10,25);  
-        gc.strokeLine(Amx +10,75,Amx +10,75);  
-        gc.strokeLine(Amx +10,50,Amx +10,50);   
-        gc.strokeLine(Amx +35,50,Amx +35,50);   
-        gc.strokeLine(Amx +35,75,Amx +35,75);
-        gc.strokeLine(Amx +35,25,Amx +35,25);
-        Amx = Amx + 35;
+      if("6".equals(operacion.get(i))){
+        gc.strokeLine(amx +10,25,amx +10,25);  
+        gc.strokeLine(amx +10,75,amx +10,75);  
+        gc.strokeLine(amx +10,50,amx +10,50);   
+        gc.strokeLine(amx +35,50,amx +35,50);   
+        gc.strokeLine(amx +35,75,amx +35,75);
+        gc.strokeLine(amx +35,25,amx +35,25);
+        amx = amx + 35;
       }
-      if(operacion.get(i) == "7"){
-        gc.strokeLine(Amx +10,25,Amx +10,25);    
-        gc.strokeLine(Amx +10,50,Amx +10,50);     
-        gc.strokeLine(Amx +35,75,Amx +35,75);
-        gc.strokeLine(Amx +35,25,Amx +35,25);
-        Amx = Amx + 35;
+      if("7".equals(operacion.get(i))){
+        gc.strokeLine(amx +10,25,amx +10,25);    
+        gc.strokeLine(amx +10,50,amx +10,50);     
+        gc.strokeLine(amx +35,75,amx +35,75);
+        gc.strokeLine(amx +35,25,amx +35,25);
+        amx = amx + 35;
       }
       if("8".equals(operacion.get(i))){
-        gc.strokeLine(Amx +10,25,Amx +10,25);  
-        gc.strokeLine(Amx +10,75,Amx +10,75);  
-        gc.strokeLine(Amx +10,50,Amx +10,50);   
-        gc.strokeLine(Amx +35,50,Amx +35,50);   
-        gc.strokeLine(Amx +35,75,Amx +35,75);
-        gc.strokeLine(Amx +35,25,Amx +35,25);
-        Amx = Amx + 35;
+        gc.strokeLine(amx +10,25,amx +10,25);  
+        gc.strokeLine(amx +10,75,amx +10,75);  
+        gc.strokeLine(amx +10,50,amx +10,50);   
+        gc.strokeLine(amx +35,50,amx +35,50);   
+        gc.strokeLine(amx +35,75,amx +35,75);
+        gc.strokeLine(amx +35,25,amx +35,25);
+        amx = amx + 35;
       }
       if("9".equals(operacion.get(i))){
-        gc.strokeLine(Amx +10,25,Amx +10,25);  
-        gc.strokeLine(Amx +10,75,Amx +10,75);  
-        gc.strokeLine(Amx +10,50,Amx +10,50);   
-        gc.strokeLine(Amx +35,50,Amx +35,50);   
-        gc.strokeLine(Amx +35,75,Amx +35,75);
-        gc.strokeLine(Amx +35,25,Amx +35,25);
-        Amx = Amx + 35;
+        gc.strokeLine(amx +10,25,amx +10,25);  
+        gc.strokeLine(amx +10,75,amx +10,75);  
+        gc.strokeLine(amx +10,50,amx +10,50);   
+        gc.strokeLine(amx +35,50,amx +35,50);   
+        gc.strokeLine(amx +35,75,amx +35,75);
+        gc.strokeLine(amx +35,25,amx +35,25);
+        amx = amx + 35;
       }
     }
     gc.setLineWidth(1);
