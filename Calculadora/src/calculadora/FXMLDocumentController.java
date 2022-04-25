@@ -308,6 +308,7 @@ public class FXMLDocumentController implements Initializable {
     mx = 0;
     posicion = 0;   //limpia la poscion
     operacion.clear(); // vacia lisra "operacion"
+    amx = 0;
   }
 
   @FXML
