@@ -34,7 +34,7 @@ public class FXMLDocumentController implements Initializable {
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    //empty
+    gc = texthere.getGraphicsContext2D();
   }   
   
   @FXML
@@ -49,7 +49,6 @@ public class FXMLDocumentController implements Initializable {
     
   @FXML
   public void accion0(ActionEvent event) {//listo
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorNumbers);
     if(!"/".equals(operacion.get(operacion.size()-1))){
       gc.strokeLine(mx +10,25,mx +35,25);   //arriba
@@ -63,7 +62,6 @@ public class FXMLDocumentController implements Initializable {
   
   @FXML
   public void accion1(ActionEvent event) {//listo
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorNumbers);
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       gc.strokeLine(mx + 20,25,mx + 20,75);
@@ -82,7 +80,6 @@ public class FXMLDocumentController implements Initializable {
   
   @FXML
   public void accion2(ActionEvent event) {
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorNumbers);
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       gc.strokeLine(mx + 10,25,mx + 35,25);
@@ -107,7 +104,6 @@ public class FXMLDocumentController implements Initializable {
   
   @FXML
   public void accion3(ActionEvent event) {
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorNumbers);
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       gc.strokeLine(mx +10,25,mx +35,25);
@@ -130,7 +126,6 @@ public class FXMLDocumentController implements Initializable {
   
   @FXML
   public void accion4(ActionEvent event) {
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorNumbers);
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       gc.strokeLine(mx +35,25,mx +35,75);
@@ -151,7 +146,6 @@ public class FXMLDocumentController implements Initializable {
   
   @FXML
   public void accion5(ActionEvent event) {
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorNumbers);
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){ 
       gc.strokeLine(mx +10,25,mx +35,25);
@@ -176,7 +170,6 @@ public class FXMLDocumentController implements Initializable {
   
   @FXML
   public void accion6(ActionEvent event) {
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorNumbers);
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       gc.strokeLine(mx +10,25,mx +35,25);   //arriba
@@ -201,7 +194,6 @@ public class FXMLDocumentController implements Initializable {
   
   @FXML
   public void accion7(ActionEvent event) {
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorNumbers);
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       gc.strokeLine(mx +10,25,mx +35,25);   //arriba
@@ -222,7 +214,6 @@ public class FXMLDocumentController implements Initializable {
   
   @FXML
   public void accion8(ActionEvent event) {
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorNumbers);
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       gc.strokeLine(mx +10,25,mx +35,25);   //arriba
@@ -247,7 +238,6 @@ public class FXMLDocumentController implements Initializable {
   
   @FXML
   public void accion9(ActionEvent event){
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorNumbers);
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       gc.strokeLine(mx +10,25,mx +35,25);   //arriba
@@ -272,7 +262,6 @@ public class FXMLDocumentController implements Initializable {
 
   @FXML
   public void accion_mas(ActionEvent event) {//listo
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorOperators);
     gc.strokeLine(mx + 22.5,37.5,mx +22.5,62.5);        //Altura maxima = 25, Altura Minima, 75
     gc.strokeLine(mx + 10,50,mx + 35,50);        //Ancho maximo = 30, parte desde x = 10
@@ -282,7 +271,6 @@ public class FXMLDocumentController implements Initializable {
 
   @FXML
   public void accion_menos(ActionEvent event) {//listo
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorOperators);
     gc.strokeLine(mx +10,50,mx +35,50);
     mx = mx + 35;
@@ -292,7 +280,6 @@ public class FXMLDocumentController implements Initializable {
   
   @FXML
   public void accion_x(ActionEvent event) {
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorOperators);
     gc.strokeLine(mx +20,35,mx + 32.5,65); 
     gc.strokeLine(mx +20,65,mx + 32.5,35);
@@ -302,7 +289,6 @@ public class FXMLDocumentController implements Initializable {
 
   @FXML
   public void accion_parentesisIzquierdo(ActionEvent event) {
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorOperators);
     gc.strokeArc(mx +20,25,10,50,90,180,ArcType.OPEN); 
     mx = mx + 35;
@@ -311,7 +297,6 @@ public class FXMLDocumentController implements Initializable {
 
   @FXML
   public void accion_parentesisDerecho(ActionEvent event) {
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorOperators);
     gc.strokeArc(mx +10,25,10,50,90,-180,ArcType.OPEN); 
     mx = mx + 35;
@@ -319,7 +304,6 @@ public class FXMLDocumentController implements Initializable {
   }
   @FXML
   private void accion_limpiar(ActionEvent event) {
-    gc = texthere.getGraphicsContext2D();
     gc.clearRect(0, 0, 1000, 1000);
     mx = 0;
     posicion = 0;   //limpia la poscion
@@ -328,7 +312,6 @@ public class FXMLDocumentController implements Initializable {
 
   @FXML
   private void accion_dividir(ActionEvent event) {
-    gc = texthere.getGraphicsContext2D();
     gc.setStroke(myColorOperators);
     gc.strokeLine(mx -30,80,mx + 10,80);
     operacion.add("/");
@@ -336,7 +319,6 @@ public class FXMLDocumentController implements Initializable {
     mx = mx - 35;
   }
   public void accion_cordenadas(ActionEvent event){
-    gc = texthere.getGraphicsContext2D();
     gc.setLineWidth(4);
     gc.setStroke(Color.BLUEVIOLET);
     for(int i = 0; i< operacion.size();i++){
