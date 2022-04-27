@@ -38,11 +38,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button bbtn_dividir;
     
+    Dibuja dibuja = new Dibuja();
 
     
 
     
-    int posicion =0;
         
     ArrayList<String> operacion = new ArrayList<String>();
     
@@ -63,9 +63,7 @@ public class FXMLDocumentController implements Initializable {
    
      else{
      gc = texthere.getGraphicsContext2D();
-     gc.strokeLine(mx + 22.5,37.5,mx +22.5,62.5);        //Altura maxima = 25, Altura Minima, 75
-     gc.strokeLine(mx +10,50,mx +35,50);        //Ancho maximo = 30, parte desde x = 10
-     mx = mx + 35;
+     dibuja.dibuja_mas(gc);
      operacion.add("+");}
       
     }
@@ -74,50 +72,33 @@ public class FXMLDocumentController implements Initializable {
       if(operacion.isEmpty()){
           
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,50,mx +35,50);
-      mx = mx + 35;
+      dibuja.dibuja_menos(gc);
       operacion.add("-");
-      posicion = posicion + 1;
       }
       
-      else if(operacion.get(operacion.size()-1) == "-"){
-    }
-      
+      else if(operacion.get(operacion.size()-1) == "-"|| operacion.get(operacion.size()-1) == "+"){}
       
       else{
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,50,mx +35,50);
-      mx = mx + 35;}
+      dibuja.dibuja_menos(gc);
       operacion.add("-");
-      posicion = posicion + 1;
     }
+  }
     
     @FXML
     public void accion0(ActionEvent event) {//listo
       if(operacion.isEmpty()){
-      gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);   //arriba
-      gc.strokeLine(mx +10,75,mx +35,75);   //abajo
-      gc.strokeLine(mx +10,25,mx +10,75);   //izquierda
-      gc.strokeLine(mx +35,25,mx +35,75);   //derecha
-      mx = mx + 35;
-      operacion.add("0");
-      posicion = posicion + 1;}  
-        
-      
-      if(operacion.get(operacion.size()-1) == "/"){
           
-     System.out.println("NO EXISTE DIVIDIR ALGO CON 0"); 
-      
-      }  
+      gc = texthere.getGraphicsContext2D();
+      dibuja.dibuja_cero(gc);
+      operacion.add("0");}  
+    
         
       else{
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);   //arriba
-      gc.strokeLine(mx +10,75,mx +35,75);   //abajo
-      gc.strokeLine(mx +10,25,mx +10,75);   //izquierda
-      gc.strokeLine(mx +35,25,mx +35,75);   //derecha
-      mx = mx + 35;}
+      dibuja.dibuja_cero(gc);
+      operacion.add("0");}
     }
     
     @FXML
@@ -125,30 +106,25 @@ public class FXMLDocumentController implements Initializable {
       
       if(operacion.isEmpty()){  
            gc = texthere.getGraphicsContext2D();
-           gc.strokeLine(mx + 20,25,mx + 20,75);
-           gc.strokeLine(mx + 20,25,mx + 10,35);
-           mx = mx + 25;
-           operacion.add("1");
-           posicion = posicion + 1;
+           dibuja.dibuja_uno(gc);
+           
+           
            }
       
       
-      else if(operacion.get(operacion.size()-1) != "/"){  
+      else if(!"/".equals(operacion.get(operacion.size()-1))){  
+          
            gc = texthere.getGraphicsContext2D();
-           gc.strokeLine(mx + 20,25,mx + 20,75);
-           gc.strokeLine(mx + 20,25,mx + 10,35);
-           mx = mx + 25;
+           dibuja.dibuja_uno(gc);
            operacion.add("1");
-           posicion = posicion + 1;
            }
       
-      else if(operacion.get(operacion.size()-1) == "/"){  
+      else if("/".equals(operacion.get(operacion.size()-1))){ 
+          
            gc = texthere.getGraphicsContext2D();
-           gc.strokeLine(mx + 20,85,mx + 20,135);
-           gc.strokeLine(mx + 20,85,mx + 10,95);
-           mx = mx + 25;
+           dibuja.dibuja_uno(gc);
            operacion.add("1");
-           posicion = posicion + 1;
+    
       
       }}
     
@@ -156,79 +132,47 @@ public class FXMLDocumentController implements Initializable {
     public void accion2(ActionEvent event) {
     if(operacion.isEmpty()){     
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);
-      gc.strokeLine(mx +35,25,mx +35,50);
-      gc.strokeLine(mx +10,50,mx +35,50); //horizontal media
-      gc.strokeLine(mx +10,50,mx +10,75);
-      gc.strokeLine(mx +10,75,mx +35,75);
-      mx = mx + 35;
-      operacion.add("2");
-      posicion = posicion + 1;}
+      dibuja.dibuja_dos(gc);
+      operacion.add("2");}
     
     else if(operacion.get(operacion.size()-1) != "/"){  
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);
-      gc.strokeLine(mx +35,25,mx +35,50);
-      gc.strokeLine(mx +10,50,mx +35,50); //horizontal media
-      gc.strokeLine(mx +10,50,mx +10,75);
-      gc.strokeLine(mx +10,75,mx +35,75);
-      mx = mx + 35;
+      dibuja.dibuja_dos(gc);
       operacion.add("2");
-      posicion = posicion + 1;
     
     }
     
     else if(operacion.get(operacion.size()-1) == "/"){
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,85,mx +35,85);
-      gc.strokeLine(mx +35,85,mx +35,110);
-      gc.strokeLine(mx +10,110,mx +35,110); //horizontal media
-      gc.strokeLine(mx +10,110,mx +10,135);
-      gc.strokeLine(mx +10,135,mx +35,135);
-      mx = mx + 35;
+      dibuja.dibuja_dos(gc);
       operacion.add("2");
-      posicion = posicion + 1;
+  
     }
    
     }
-    
-    
-    
-    
-    
+       
     @FXML
     public void accion3(ActionEvent event) {
         
       if(operacion.isEmpty()){  
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);
-      gc.strokeLine(mx +35,25,mx +35,75);
-      gc.strokeLine(mx +10,50,mx +35,50);
-      gc.strokeLine(mx +10,75,mx +35,75);
-      mx = mx + 35;
+      dibuja.dibuja_tres(gc);
       operacion.add("3");
-      posicion = posicion + 1;
       }
       
       else if(operacion.get(operacion.size()-1) != "/"){ 
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);
-      gc.strokeLine(mx +35,25,mx +35,75);
-      gc.strokeLine(mx +10,50,mx +35,50);
-      gc.strokeLine(mx +10,75,mx +35,75);
-      mx = mx + 35;
+      dibuja.dibuja_tres(gc);
       operacion.add("3");
-      posicion = posicion + 1;
+
       }
       else if(operacion.get(operacion.size()-1) == "/"){
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,85,mx +35,85);
-      gc.strokeLine(mx +35,85,mx +35,135);
-      gc.strokeLine(mx +10,110,mx +35,110);
-      gc.strokeLine(mx +10,135,mx +35,135);
-      mx = mx + 35;
+      dibuja.dibuja_tres(gc);
       operacion.add("3");
-      posicion = posicion + 1;
       }
       
       
@@ -238,34 +182,25 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void accion4(ActionEvent event) {
         
-      if(operacion.isEmpty()){    
+      if(operacion.isEmpty()){ 
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +35,25,mx +35,75);
-      gc.strokeLine(mx +10,50,mx +35,50);
-      gc.strokeLine(mx +10,25,mx +10,50);
-      mx = mx + 35;
-      operacion.add("4");
-      posicion = posicion + 1;}
+      dibuja.dibuja_cuatro(gc);
+      operacion.add("4");}
+            
       
       else if(operacion.get(operacion.size()-1) != "/"){ 
       
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +35,25,mx +35,75);
-      gc.strokeLine(mx +10,50,mx +35,50);
-      gc.strokeLine(mx +10,25,mx +10,50);
-      mx = mx + 35;
-      operacion.add("4");
-      posicion = posicion + 1;}
+      dibuja.dibuja_cuatro(gc);
+      operacion.add("4");}
       
       
       else if(operacion.get(operacion.size()-1) == "/"){
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +35,85,mx +35,135);
-      gc.strokeLine(mx +10,110,mx +35,110);
-      gc.strokeLine(mx +10,85,mx +10,110);
-      mx = mx + 35;
-      operacion.add("4");
-      posicion = posicion + 1;}
+      dibuja.dibuja_cuatro(gc);
+      operacion.add("4");}
 
     }
     
@@ -275,79 +210,44 @@ public class FXMLDocumentController implements Initializable {
         
       if(operacion.isEmpty()){      
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);
-      gc.strokeLine(mx +35,50,mx +35,75);
-      gc.strokeLine(mx +10,50,mx +35,50);
-      gc.strokeLine(mx +10,25,mx +10,50);
-      gc.strokeLine(mx +10,75,mx +35,75);
-      mx = mx + 35;
-      operacion.add("5");
-      posicion = posicion + 1;}
+      dibuja.dibuja_cinco(gc);
+      operacion.add("5");}
       
       else if(operacion.get(operacion.size()-1) != "/"){ 
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);
-      gc.strokeLine(mx +35,50,mx +35,75);
-      gc.strokeLine(mx +10,50,mx +35,50);
-      gc.strokeLine(mx +10,25,mx +10,50);
-      gc.strokeLine(mx +10,75,mx +35,75);
-      mx = mx + 35;
-      operacion.add("5");
-      posicion = posicion + 1;}
+      dibuja.dibuja_cinco(gc);
+      operacion.add("5");}
       
       else if(operacion.get(operacion.size()-1) == "/"){
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,85,mx +35,85);
-      gc.strokeLine(mx +35,110,mx +35,135);
-      gc.strokeLine(mx +10,110,mx +35,110);
-      gc.strokeLine(mx +10,85,mx +10,110);
-      gc.strokeLine(mx +10,135,mx +35,135);
-      mx = mx + 35;
+      dibuja.dibuja_cinco(gc);
       operacion.add("5");
-      posicion = posicion + 1;
       
       }
-      
-      
-      
+         
     }
     
     @FXML
     public void accion6(ActionEvent event) {
       if(operacion.isEmpty()){  
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);   //arriba
-      gc.strokeLine(mx +10,75,mx +35,75);   //abajo
-      gc.strokeLine(mx +10,25,mx +10,75);   //izquierda
-      gc.strokeLine(mx +35,50,mx +35,75);   //derecha abajo
-      gc.strokeLine(mx +10,50,mx +35,50);
-      mx = mx + 35;
-      operacion.add("6");
-      posicion = posicion + 1;}
+      dibuja.dibuja_seis(gc);
+      operacion.add("6");}
       
       else if(operacion.get(operacion.size()-1) != "/"){ 
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);   //arriba
-      gc.strokeLine(mx +10,75,mx +35,75);   //abajo
-      gc.strokeLine(mx +10,25,mx +10,75);   //izquierda
-      gc.strokeLine(mx +35,50,mx +35,75);   //derecha abajo
-      gc.strokeLine(mx +10,50,mx +35,50);
-      mx = mx + 35;
+      dibuja.dibuja_seis(gc);
       operacion.add("6");
-      posicion = posicion + 1;
       }
       
       else if(operacion.get(operacion.size()-1) == "/"){
       
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,85,mx +35,85);   //arriba
-      gc.strokeLine(mx +10,135,mx +35,135);   //abajo
-      gc.strokeLine(mx +10,85,mx +10,135);   //izquierda
-      gc.strokeLine(mx +35,110,mx +35,135);   //derecha abajo
-      gc.strokeLine(mx +10,110,mx +35,110);
-      mx = mx + 35;
+      dibuja.dibuja_seis(gc);
       operacion.add("6");
-      posicion = posicion + 1;
       
       }
       
@@ -358,31 +258,22 @@ public class FXMLDocumentController implements Initializable {
     public void accion7(ActionEvent event) {
       
       if(operacion.isEmpty()){
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);   //arriba
-      gc.strokeLine(mx +10,25,mx +10,50);   //izquierda arriba
-      gc.strokeLine(mx +35,25,mx +35,75);   //derecha
-      mx = mx + 35;
-      operacion.add("7");
-      posicion = posicion + 1;}
+      dibuja.dibuja_siete(gc);
+      operacion.add("7");}
       
       else if(operacion.get(operacion.size()-1) != "/"){
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);   //arriba
-      gc.strokeLine(mx +10,25,mx +10,50);   //izquierda arriba
-      gc.strokeLine(mx +35,25,mx +35,75);   //derecha
-      mx = mx + 35;
+      dibuja.dibuja_siete(gc);
       operacion.add("7");
-      posicion = posicion + 1;
       }
       else if(operacion.get(operacion.size()-1) == "/"){
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,85,mx +35,85);   //arriba
-      gc.strokeLine(mx +10,85,mx +10,110);   //izquierda arriba
-      gc.strokeLine(mx +35,85,mx +35,135);   //derecha
-      mx = mx + 35;
+      dibuja.dibuja_siete(gc);
       operacion.add("7");
-      posicion = posicion + 1;
       
       }
       
@@ -391,37 +282,22 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void accion8(ActionEvent event) {
       if(operacion.isEmpty()){
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);   //arriba
-      gc.strokeLine(mx +10,75,mx +35,75);   //abajo
-      gc.strokeLine(mx +10,25,mx +10,75);   //izquierda
-      gc.strokeLine(mx +35,25,mx +35,75);   //derecha
-      gc.strokeLine(mx +10,50,mx +35,50);   //horizontal media
-      mx = mx + 35;
-      operacion.add("8");
-      posicion = posicion + 1;}
+      dibuja.dibuja_ocho(gc);
+      operacion.add("8");}
       
       else if(operacion.get(operacion.size()-1) != "/"){
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);   //arriba
-      gc.strokeLine(mx +10,75,mx +35,75);   //abajo
-      gc.strokeLine(mx +10,25,mx +10,75);   //izquierda
-      gc.strokeLine(mx +35,25,mx +35,75);   //derecha
-      gc.strokeLine(mx +10,50,mx +35,50);   //horizontal media
-      mx = mx + 35;
+      dibuja.dibuja_ocho(gc);
       operacion.add("8");
-      posicion = posicion + 1;
       }
     else if(operacion.get(operacion.size()-1) == "/"){
+        
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,85,mx +35,85);   //arriba
-      gc.strokeLine(mx +10,135,mx +35,135);   //abajo
-      gc.strokeLine(mx +10,85,mx +10,135);   //izquierda
-      gc.strokeLine(mx +35,85,mx +35,135);   //derecha
-      gc.strokeLine(mx +10,110,mx +35,110);   //horizontal media
-      mx = mx + 35;
+      dibuja.dibuja_ocho(gc);
       operacion.add("8");
-      posicion = posicion + 1;
     
     
     }  
@@ -430,37 +306,22 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void accion9(ActionEvent event) {
       if(operacion.isEmpty()){  
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);   //arriba
-      gc.strokeLine(mx +10,75,mx +35,75);   //abajo
-      gc.strokeLine(mx +10,25,mx +10,50);   //izquierda arriba
-      gc.strokeLine(mx +35,25,mx +35,75);   //derecha
-      gc.strokeLine(mx +10,50,mx +35,50);   //horizontal media
-      mx = mx + 35;
-      operacion.add("9");
-      posicion = posicion + 1;}
+      dibuja.dibuja_nueve(gc);
+      operacion.add("9");}
       
-      else if(operacion.get(operacion.size()-1) != "/"){
+      else if(!"/".equals(operacion.get(operacion.size()-1))){
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,25,mx +35,25);   //arriba
-      gc.strokeLine(mx +10,75,mx +35,75);   //abajo
-      gc.strokeLine(mx +10,25,mx +10,50);   //izquierda arriba
-      gc.strokeLine(mx +35,25,mx +35,75);   //derecha
-      gc.strokeLine(mx +10,50,mx +35,50);   //horizontal media
-      mx = mx + 35;
-      operacion.add("9");
-      posicion = posicion + 1;}
+      dibuja.dibuja_nueve(gc);
+      operacion.add("9");}
       
-      else if(operacion.get(operacion.size()-1) == "/"){
+      else if("/".equals(operacion.get(operacion.size()-1))){
+          
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +10,85,mx +35,85);   //arriba
-      gc.strokeLine(mx +10,135,mx +35,135);   //abajo
-      gc.strokeLine(mx +10,85,mx +10,110);   //izquierda arriba
-      gc.strokeLine(mx +35,85,mx +35,135);   //derecha
-      gc.strokeLine(mx +10,110,mx +35,110);   //horizontal media
-      mx = mx + 35;
+      dibuja.dibuja_nueve(gc);
       operacion.add("9");
-      posicion = posicion + 1;
       }
       
     }
@@ -473,24 +334,20 @@ public class FXMLDocumentController implements Initializable {
       
       else{
       gc = texthere.getGraphicsContext2D();
-      gc.strokeLine(mx +20,35,mx + 32.5,65); 
-      gc.strokeLine(mx +20,65,mx + 32.5,35);
-      mx = mx + 35;
+      dibuja.dibuja_x(gc);
       operacion.add("x");
       }
     }
     @FXML
     public void accion_parentesisIzquierdo(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
-      gc.strokeArc(mx +20,25,10,50,90,180,ArcType.OPEN); 
-      mx = mx + 25;
+      dibuja.dibuja_parentesisI(gc);
       operacion.add("(");
     }
     @FXML
     public void accion_parentesisDerecho(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
-      gc.strokeArc(mx +10,25,10,50,90,-180,ArcType.OPEN); 
-      mx = mx + 25;
+      dibuja.dibuja_parentesisD(gc);
       operacion.add(")");
     }
 @FXML
@@ -508,18 +365,17 @@ public class FXMLDocumentController implements Initializable {
         
         else{
         
-        if(operacion.get(operacion.size()-1) != "1"){
+        if(!"1".equals(operacion.get(operacion.size()-1))){
+            
          gc = texthere.getGraphicsContext2D();
-         gc.strokeLine(mx -30,80,mx + 10,80);
+         dibuja.dibuja_dividir(gc);
          operacion.add("/");
-         posicion = posicion + 1;
-         mx = mx - 35;}
-        if(operacion.get(operacion.size()-1) == "1"){
+   }
+        if("1".equals(operacion.get(operacion.size()-1))){
          gc = texthere.getGraphicsContext2D();
-         gc.strokeLine(mx -30,80,mx + 10,80);
-         operacion.add("/");
-         posicion = posicion + 1;
-         mx = mx - 25;}}
+         dibuja.dibuja_dividir(gc);
+         operacion.add("/");}
+        }
         
         
     }
