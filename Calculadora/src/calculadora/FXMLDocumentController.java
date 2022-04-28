@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package calculadora;
 
 import java.net.URL;
@@ -14,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.ArcType;
 
 /**
  *
@@ -24,7 +18,6 @@ public class FXMLDocumentController implements Initializable {
         
     @FXML
     private Button bttn_mas, bttn_menos, bttn_0, bttn_1, bttn_2, bttn_3, bttn_4, bttn_5, bttn_6, bttn_7, bttn_x, bttn_parentesisDerecho,bttn_parentesisIzquierdo ;
-    int mx = 0;
     
     @FXML
     private javafx.scene.canvas.Canvas texthere;
@@ -70,7 +63,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void accion_menos(ActionEvent event) {//listo
       if(operacion.isEmpty()){
-          
+      
+      
       gc = texthere.getGraphicsContext2D();
       dibuja.dibuja_menos(gc);
       operacion.add("-");
@@ -105,24 +99,28 @@ public class FXMLDocumentController implements Initializable {
     public void accion1(ActionEvent event) {//listo
       
       if(operacion.isEmpty()){  
+          
+           int aux = 0;
            gc = texthere.getGraphicsContext2D();
-           dibuja.dibuja_uno(gc);
-           
+           dibuja.dibuja_uno(gc,aux);
+           operacion.add("1");
            
            }
       
       
-      else if(!"/".equals(operacion.get(operacion.size()-1))){  
+      else if(!"/".equals(operacion.get(operacion.size()-1))){ 
           
+           int aux = 0;
            gc = texthere.getGraphicsContext2D();
-           dibuja.dibuja_uno(gc);
+           dibuja.dibuja_uno(gc, aux);
            operacion.add("1");
            }
       
-      else if("/".equals(operacion.get(operacion.size()-1))){ 
+      else if("/".equals(operacion.get(operacion.size()-1))){
           
+           int aux = 60;
            gc = texthere.getGraphicsContext2D();
-           dibuja.dibuja_uno(gc);
+           dibuja.dibuja_uno(gc, aux);
            operacion.add("1");
     
       
@@ -130,21 +128,27 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     public void accion2(ActionEvent event) {
-    if(operacion.isEmpty()){     
+    if(operacion.isEmpty()){ 
+        
+      int aux = 0;
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_dos(gc);
+      dibuja.dibuja_dos(gc,aux);
       operacion.add("2");}
     
-    else if(operacion.get(operacion.size()-1) != "/"){  
+    else if(!"/".equals(operacion.get(operacion.size()-1))){ 
+        
+      int aux = 0;
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_dos(gc);
+      dibuja.dibuja_dos(gc,aux);
       operacion.add("2");
     
     }
     
-    else if(operacion.get(operacion.size()-1) == "/"){
+    else if("/".equals(operacion.get(operacion.size()-1))){
+        
+      int aux = 60; 
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_dos(gc);
+      dibuja.dibuja_dos(gc,aux);
       operacion.add("2");
   
     }
@@ -157,21 +161,24 @@ public class FXMLDocumentController implements Initializable {
       if(operacion.isEmpty()){  
           
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_tres(gc);
+      int aux = 0;
+      dibuja.dibuja_tres(gc,aux);
       operacion.add("3");
       }
       
-      else if(operacion.get(operacion.size()-1) != "/"){ 
+      else if(!"/".equals(operacion.get(operacion.size()-1))){
           
+      int aux = 0;   
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_tres(gc);
+      dibuja.dibuja_tres(gc,aux);
       operacion.add("3");
 
       }
-      else if(operacion.get(operacion.size()-1) == "/"){
+      else if("/".equals(operacion.get(operacion.size()-1))){
           
+      int aux = 60;  
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_tres(gc);
+      dibuja.dibuja_tres(gc,aux);
       operacion.add("3");
       }
       
@@ -184,22 +191,25 @@ public class FXMLDocumentController implements Initializable {
         
       if(operacion.isEmpty()){ 
           
+      int aux = 0;   
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_cuatro(gc);
+      dibuja.dibuja_cuatro(gc,aux);
       operacion.add("4");}
             
       
-      else if(operacion.get(operacion.size()-1) != "/"){ 
-      
+      else if(!"/".equals(operacion.get(operacion.size()-1))){ 
+          
+      int aux = 0;
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_cuatro(gc);
+      dibuja.dibuja_cuatro(gc,aux);
       operacion.add("4");}
       
       
-      else if(operacion.get(operacion.size()-1) == "/"){
+      else if("/".equals(operacion.get(operacion.size()-1))){
           
+      int aux = 60;    
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_cuatro(gc);
+      dibuja.dibuja_cuatro(gc,aux);
       operacion.add("4");}
 
     }
@@ -208,20 +218,25 @@ public class FXMLDocumentController implements Initializable {
     public void accion5(ActionEvent event) {
         
         
-      if(operacion.isEmpty()){      
-      gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_cinco(gc);
-      operacion.add("5");}
-      
-      else if(operacion.get(operacion.size()-1) != "/"){ 
-      gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_cinco(gc);
-      operacion.add("5");}
-      
-      else if(operacion.get(operacion.size()-1) == "/"){
+      if(operacion.isEmpty()){ 
           
+       int aux = 0;
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_cinco(gc);
+      dibuja.dibuja_cinco(gc,aux);
+      operacion.add("5");}
+      
+      else if(!"/".equals(operacion.get(operacion.size()-1))){ 
+          
+      int aux = 0;
+      gc = texthere.getGraphicsContext2D();
+      dibuja.dibuja_cinco(gc,aux);
+      operacion.add("5");}
+      
+      else if("/".equals(operacion.get(operacion.size()-1))){
+      
+      int aux = 60;    
+      gc = texthere.getGraphicsContext2D();
+      dibuja.dibuja_cinco(gc,aux);
       operacion.add("5");
       
       }
@@ -232,21 +247,24 @@ public class FXMLDocumentController implements Initializable {
     public void accion6(ActionEvent event) {
       if(operacion.isEmpty()){  
           
+      int aux = 0;
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_seis(gc);
+      dibuja.dibuja_seis(gc,aux);
       operacion.add("6");}
       
-      else if(operacion.get(operacion.size()-1) != "/"){ 
+      else if(!"/".equals(operacion.get(operacion.size()-1))){ 
           
+       int aux = 0;   
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_seis(gc);
+      dibuja.dibuja_seis(gc,aux);
       operacion.add("6");
       }
       
       else if(operacion.get(operacion.size()-1) == "/"){
-      
+          
+       int aux = 60;
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_seis(gc);
+      dibuja.dibuja_seis(gc,aux);
       operacion.add("6");
       
       }
@@ -259,20 +277,23 @@ public class FXMLDocumentController implements Initializable {
       
       if(operacion.isEmpty()){
           
+      int aux = 0;    
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_siete(gc);
+      dibuja.dibuja_siete(gc,aux);
       operacion.add("7");}
       
-      else if(operacion.get(operacion.size()-1) != "/"){
+      else if(!"/".equals(operacion.get(operacion.size()-1))){
           
+       int aux = 0;    
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_siete(gc);
+      dibuja.dibuja_siete(gc,aux);
       operacion.add("7");
       }
-      else if(operacion.get(operacion.size()-1) == "/"){
-          
+      else if("/".equals(operacion.get(operacion.size()-1))){
+      
+      int aux = 60;    
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_siete(gc);
+      dibuja.dibuja_siete(gc,aux);
       operacion.add("7");
       
       }
@@ -283,20 +304,23 @@ public class FXMLDocumentController implements Initializable {
     public void accion8(ActionEvent event) {
       if(operacion.isEmpty()){
           
+       int aux = 0;    
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_ocho(gc);
+      dibuja.dibuja_ocho(gc,aux);
       operacion.add("8");}
       
-      else if(operacion.get(operacion.size()-1) != "/"){
-          
+      else if(!"/".equals(operacion.get(operacion.size()-1))){
+      
+      int aux = 0;    
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_ocho(gc);
+      dibuja.dibuja_ocho(gc,aux);
       operacion.add("8");
       }
-    else if(operacion.get(operacion.size()-1) == "/"){
-        
+    else if("/".equals(operacion.get(operacion.size()-1))){
+      
+       int aux = 60;  
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_ocho(gc);
+      dibuja.dibuja_ocho(gc,aux);
       operacion.add("8");
     
     
@@ -305,22 +329,25 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     public void accion9(ActionEvent event) {
-      if(operacion.isEmpty()){  
+      if(operacion.isEmpty()){ 
           
+      int aux = 0;    
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_nueve(gc);
+      dibuja.dibuja_nueve(gc,aux);
       operacion.add("9");}
       
       else if(!"/".equals(operacion.get(operacion.size()-1))){
-          
+      
+       int aux = 0;    
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_nueve(gc);
+      dibuja.dibuja_nueve(gc,aux);
       operacion.add("9");}
       
       else if("/".equals(operacion.get(operacion.size()-1))){
-          
+      
+       int aux = 60;    
       gc = texthere.getGraphicsContext2D();
-      dibuja.dibuja_nueve(gc);
+      dibuja.dibuja_nueve(gc,aux);
       operacion.add("9");
       }
       
@@ -355,13 +382,13 @@ public class FXMLDocumentController implements Initializable {
         
         gc = texthere.getGraphicsContext2D();
         gc.clearRect(0, 0, 1000, 1000);
-        mx=0;
+        dibuja.limpiar();
         operacion.clear();
     }
     //nuevo
      @FXML
     private void accion_dividir(ActionEvent event) {
-        if(operacion.isEmpty()){}
+        if(operacion.isEmpty() || "/".equals(operacion.get(operacion.size()-1))){}
         
         else{
         
@@ -373,7 +400,7 @@ public class FXMLDocumentController implements Initializable {
    }
         if("1".equals(operacion.get(operacion.size()-1))){
          gc = texthere.getGraphicsContext2D();
-         dibuja.dibuja_dividir(gc);
+         dibuja.dibuja_dividir1(gc);
          operacion.add("/");}
         }
         
