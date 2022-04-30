@@ -6,7 +6,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <AnchorPane id="AnchorPane" prefHeight="444.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculadora.FXMLDocumentController">
+=======
+<AnchorPane id="AnchorPane" prefHeight="381.0" prefWidth="721.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculadora.FXMLDocumentController">
+>>>>>>> joaquin-wylie
    <children>
       <Button fx:id="bttn_8" layoutX="115.0" layoutY="314.0" mnemonicParsing="false" onAction="#accion8" prefHeight="46.0" prefWidth="65.0" text="8">
          <font>
@@ -73,17 +77,30 @@
             <Font size="20.0" />
          </font>
       </Button>
+<<<<<<< HEAD
       <Button fx:id="bbtn_dividir" layoutX="270.0" layoutY="261.0" mnemonicParsing="false" onAction="#accion_dividir" prefHeight="46.0" prefWidth="65.0" text="/">
+=======
+      <Button fx:id="bbtn_dividir" layoutX="269.0" layoutY="200.0" mnemonicParsing="false" onAction="#accion_dividir" prefHeight="46.0" prefWidth="65.0" text="/">
+>>>>>>> joaquin-wylie
          <font>
             <Font size="20.0" />
          </font>
       </Button>
+<<<<<<< HEAD
       <BorderPane layoutX="28.0" layoutY="14.0" AnchorPane.bottomAnchor="251.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="14.0">
          <center>
             <Canvas fx:id="texthere" height="175.0" onDragDetected="#panel" width="672.0" />
          </center>
       </BorderPane>
       <Button fx:id="bttn_parentesisIzquierdo" layoutX="270.0" layoutY="314.0" mnemonicParsing="false" onAction="#accion_parentesisIzquierdo" prefHeight="46.0" prefWidth="65.0" text="(">
+=======
+      <BorderPane layoutX="27.0" layoutY="14.0" AnchorPane.bottomAnchor="251.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="14.0">
+         <center>
+            <Canvas fx:id="texthere" height="116.0" onDragDetected="#panel" width="672.0" />
+         </center>
+      </BorderPane>
+      <Button fx:id="bttn_parentesisIzquierdo" layoutX="269.0" layoutY="253.0" mnemonicParsing="false" onAction="#accion_parentesisIzquierdo" prefHeight="46.0" prefWidth="65.0" text="(">
+>>>>>>> joaquin-wylie
          <font>
             <Font size="20.0" />
          </font>
@@ -99,6 +116,11 @@
          </font>
       </Button>
       <Button fx:id="bbtn_cor" layoutX="348.0" layoutY="261.0" mnemonicParsing="false" onAction="#accion_cordenadas" prefHeight="46.0" prefWidth="65.0" text="cor">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="bbtn_clear" layoutX="347.0" layoutY="145.0" mnemonicParsing="false" onAction="#accion_limpiar" prefHeight="46.0" prefWidth="65.0" text="C">
          <font>
             <Font size="20.0" />
          </font>
