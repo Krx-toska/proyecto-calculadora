@@ -22,7 +22,6 @@ public class Redibujar {
      dibuja.limpiar();
     
      for(int i =0;i<operacion.size() ;i++){
-    System.out.println(operacion.get(i));
     if ("1".equals(operacion.get(i)) ){
      dibuja.dibuja_uno(gc, operacion);}
     if ("2".equals(operacion.get(i)) ){
@@ -55,9 +54,7 @@ public class Redibujar {
      dibuja.dibuja_parentesisD(gc, operacion);}
     if ("/".equals(operacion.get(i)) ){
      dibuja.dibuja_dividir(gc, operacion);}
-    
      
-    
  }
     
     

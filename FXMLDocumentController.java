@@ -96,7 +96,7 @@ public class FXMLDocumentController implements Initializable {
       operacion.add("-");
       }
       
-      else if(operacion.get(operacion.size()-1) == "-"|| operacion.get(operacion.size()-1) == "+"){}
+      else if(operacion.get(operacion.size()-1) == "-"|| operacion.get(operacion.size()-1) == "+"|| operacion.get(operacion.size()-1) == "x"){}
       
       else{
       gc = texthere.getGraphicsContext2D();
