@@ -1,35 +1,34 @@
 package calculadora;
 
-
-
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
-
 
 /**
  *
  * @author waki
  */
+
 public class Dibuja {
 
     int mx=0;
     
     
-    public void dibuja_uno(GraphicsContext gc,int aux){
-
-          gc.strokeLine(mx + 20,25 + aux,mx + 20,75 + aux);
-          gc.strokeLine(mx + 20,25 + aux,mx + 10,35 + aux);
-          mx = mx + 25;
+    public void dibuja_uno(GraphicsContext gc,int aux, Color myColorNumbers){
+        gc.setStroke(myColorNumbers);
+        gc.strokeLine(mx + 20,25 + aux,mx + 20,75 + aux);
+        gc.strokeLine(mx + 20,25 + aux,mx + 10,35 + aux);
+        mx = mx + 25;
     }
     
     public void dibuja_dos(GraphicsContext gc, int aux){
 
-          gc.strokeLine(mx +10,25+ aux,mx +35,25+ aux);
-          gc.strokeLine(mx +35,25+ aux,mx +35,50+ aux);
-          gc.strokeLine(mx +10,50+ aux,mx +35,50+ aux); //horizontal media
-          gc.strokeLine(mx +10,50+ aux,mx +10,75+ aux);
-          gc.strokeLine(mx +10,75+ aux,mx +35,75+ aux);
-          mx = mx + 35;
+        gc.strokeLine(mx +10,25+ aux,mx +35,25+ aux);
+        gc.strokeLine(mx +35,25+ aux,mx +35,50+ aux);
+        gc.strokeLine(mx +10,50+ aux,mx +35,50+ aux); //horizontal media
+        gc.strokeLine(mx +10,50+ aux,mx +10,75+ aux);
+        gc.strokeLine(mx +10,75+ aux,mx +35,75+ aux);
+        mx = mx + 35;
     }
     
         public void dibuja_tres(GraphicsContext gc, int aux){
