@@ -17,12 +17,14 @@ import javafx.scene.control.ColorPicker;
  * @author krox2
  */
 public class FXMLDocumentController implements Initializable {
-  @FXML
+        
+    @FXML
   Button bttn0, bttn1, bttn2, bttn3, bttn4, bttn5, bttn6, bttn7, bttn8, bttn9;
   @FXML
   Button bttnMas, bttnMenos,  bttnX, bttnDividir, bttnParentesisDerecho, bttnParentesisIzquierdo;
   @FXML
   Button bttnClear, bttnCor;
+  private Button bbtn_f, bttn_sin,bttn_cos,bttn_tan;
   @FXML
   javafx.scene.canvas.Canvas texthere;
   @FXML
@@ -36,10 +38,10 @@ public class FXMLDocumentController implements Initializable {
   ArrayList<String> operacion = new ArrayList<>();
   Dibuja dibuja = new Dibuja();
   Cordenadas cordenadas = new Cordenadas();
-  
-  
-  
-  @Override
+    
+    
+    
+    @Override
   public void initialize(URL url, ResourceBundle rb) {
     gc = texthere.getGraphicsContext2D();
   }
@@ -294,8 +296,38 @@ public class FXMLDocumentController implements Initializable {
       gc.setLineWidth(1);
       cordenadas.limpiar();
   }
-  @FXML
-  private void panel(MouseEvent event) {
-    //empty
-  }
+    @FXML
+    
+    public void accion_factorial(ActionEvent event){
+      gc = texthere.getGraphicsContext2D();
+      gc.setStroke(myColorOperators);
+      dibuja.dibuja_factorial(gc, myColorOperators);
+      operacion.add("!");
+    }
+    @FXML
+    public void accion_seno(ActionEvent event){
+      gc = texthere.getGraphicsContext2D();
+      gc.setStroke(myColorOperators);
+      dibuja.dibuja_seno(gc, myColorOperators);
+      operacion.add("sin");
+    }
+    @FXML
+    public void accion_coseno(ActionEvent event){
+      gc = texthere.getGraphicsContext2D();
+      gc.setStroke(myColorOperators);
+      dibuja.dibuja_coseno(gc, myColorOperators);
+      operacion.add("cos");
+    }
+    @FXML
+    public void accion_tangente(ActionEvent event){
+      gc = texthere.getGraphicsContext2D();
+      gc.setStroke(myColorOperators);
+      dibuja.dibuja_tangente(gc, myColorOperators);
+      operacion.add("tan");
+    }
+    @FXML
+    private void panel(MouseEvent event) {
+        
+    }
+      
 }

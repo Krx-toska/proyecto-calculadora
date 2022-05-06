@@ -149,5 +149,86 @@ public class Dibuja {
     public void limpiar(){
         mx = 0;
     }
+    
+    public void dibuja_factorial(GraphicsContext gc, Color myColorOperators){
+            gc.setStroke(myColorOperators);
+            gc.setLineWidth(3);   
+            gc.strokeLine(mx + 20,25 ,mx + 20,60 );
+            gc.strokeLine(mx + 20,70 ,mx + 20,70 );
+            gc.setLineWidth(1);
+       
+             //Altura maxima = 25, Altura Minima, 75
+       
+       mx = mx + 35;
+    }
+        
+    public void dibuja_seno(GraphicsContext gc, Color myColorOperators){
+            gc.setStroke(myColorOperators);
+            gc.setLineWidth(2);
+            dibuja_s(gc);
+            dibuja_i(gc);
+            dibuja_n(gc);
+            gc.setLineWidth(1);
+       mx = mx + 35;
+       
+    }
+        
+    public void dibuja_coseno(GraphicsContext gc, Color myColorOperators){
+        dibuja_c(gc);
+        dibuja_o(gc);
+        dibuja_s(gc);
+  
+       mx = mx + 35;
+    }
+        
+   public void dibuja_tangente(GraphicsContext gc, Color myColorOperators){
+       gc.strokeLine(mx + 20,60,mx +25,70);
+       gc.strokeLine(mx + 25,55,mx +20,70);
+              
+       
+       mx = mx + 35;
+    }
+   
+   public void dibuja_s(GraphicsContext gc){
+       
+            gc.strokeLine(mx + 20,70,mx +25,70);//abajo s
+            gc.strokeLine(mx + 25,70,mx +25,65);//abajo derecha s
+            gc.strokeLine(mx + 20,65,mx +25,65);//medio s
+            gc.strokeLine(mx + 20,60,mx +20,65);//arriba izquierda s
+            gc.strokeLine(mx + 20,60,mx +25,60);//arriba s
+            
+            mx= mx + 10;
+   }
+   
+   public void dibuja_o(GraphicsContext gc){
+       
+            gc.strokeLine(mx + 20,70,mx +25,70);//abajo o
+            gc.strokeLine(mx + 20,70,mx +20,60);//izquierda o
+            gc.strokeLine(mx + 20,60,mx +25,60);//arriba o
+            gc.strokeLine(mx + 25,70,mx +25,60);//derecha o
+            
+            mx= mx + 10;
+   }
+   
+   public void dibuja_i(GraphicsContext gc){
+       gc.strokeLine(mx + 22.5,70,mx +22.5,65);
+       gc.strokeLine(mx + 22.5,60,mx +22.5,60);
+       mx= mx + 10;
+   }
+   
+   public void dibuja_n(GraphicsContext gc){
+       gc.strokeLine(mx + 20,70,mx +20,60);
+       gc.strokeLine(mx + 25,70,mx +25,60);
+       gc.strokeLine(mx + 20,60,mx +25,70);
+       mx= mx + 10;
+   }
+   
+   public void dibuja_c(GraphicsContext gc){
+       gc.strokeLine(mx + 20,70,mx +25,70);//abajo o
+       gc.strokeLine(mx + 20,70,mx +20,60);//izquierda o
+       gc.strokeLine(mx + 20,60,mx +25,60);//arriba o
+       mx= mx + 10;
+   }
+   
      
 }
