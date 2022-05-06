@@ -24,7 +24,11 @@ public class Dibuja {
           gc.strokeLine(mx + 20,25 ,mx + 20,75);
           gc.strokeLine(mx + 20,25 ,mx + 10,35);
           mx = mx + 25;}
-     
+     else if("^".equals(operacion.get(operacion.size()-1))){
+          gc.strokeLine(mx +20,10,mx +20,30);
+          gc.strokeLine(mx +20,10,mx +15,15);
+          mx = mx + 15;
+       }
       else if(!"/".equals(operacion.get(operacion.size()-1))){
           gc.strokeLine(mx + 20,25 ,mx + 20,75 );
           gc.strokeLine(mx + 20,25 ,mx + 10,35 );
@@ -47,7 +51,6 @@ public class Dibuja {
           gc.strokeLine(mx +10,75,mx +35,75);
           mx = mx + 35;}
        else if("^".equals(operacion.get(operacion.size()-1))){
-          System.out.println("hola");
           gc.strokeLine(mx +10,10,mx +20,10);
           gc.strokeLine(mx +20,10,mx +20,20);
           gc.strokeLine(mx +20,20,mx +10,20);
@@ -81,6 +84,14 @@ public class Dibuja {
           gc.strokeLine(mx +10,50,mx +35,50);
           gc.strokeLine(mx +10,75,mx +35,75);
           mx = mx + 35;}
+         else if("^".equals(operacion.get(operacion.size()-1))){
+          gc.strokeLine(mx +10,10,mx +20,10);
+          gc.strokeLine(mx +20,10,mx +20,20);
+          gc.strokeLine(mx +20,20,mx +10,20);
+          gc.strokeLine(mx +20,20,mx +20,30);
+          gc.strokeLine(mx +20,30,mx +10,30);
+          mx = mx + 15;
+       }       
         else if(!"/".equals(operacion.get(operacion.size()-1))){
           gc.strokeLine(mx +10,25,mx +35,25);
           gc.strokeLine(mx +35,25,mx +35,75);
@@ -103,6 +114,12 @@ public class Dibuja {
          gc.strokeLine(mx +10,50,mx +35,50);
          gc.strokeLine(mx +10,25,mx +10,50);
          mx = mx + 35;}
+        else if("^".equals(operacion.get(operacion.size()-1))){
+          gc.strokeLine(mx +20,10,mx +20,30);
+          gc.strokeLine(mx +20,20,mx +10,20);
+          gc.strokeLine(mx +10,20,mx +10,10);
+          
+          mx = mx + 15;}
         else if(!"/".equals(operacion.get(operacion.size()-1))){
          gc.strokeLine(mx +35,25,mx +35,75);
          gc.strokeLine(mx +10,50,mx +35,50);
@@ -125,6 +142,13 @@ public class Dibuja {
          gc.strokeLine(mx +10,25,mx +10,50);
          gc.strokeLine(mx +10,75,mx +35,75);
          mx = mx + 35;}
+        else if("^".equals(operacion.get(operacion.size()-1))){
+          gc.strokeLine(mx +10,30,mx +20,30);
+          gc.strokeLine(mx +20,30,mx +20,20);
+          gc.strokeLine(mx +20,20,mx +10,20);
+          gc.strokeLine(mx +10,20,mx +10,10);
+          gc.strokeLine(mx +10,10,mx +20,10);
+          mx = mx + 15;}
         else if(!"/".equals(operacion.get(operacion.size()-1))){
          gc.strokeLine(mx +10,25,mx +35,25);
          gc.strokeLine(mx +35,50,mx +35,75);
@@ -151,6 +175,15 @@ public class Dibuja {
         gc.strokeLine(mx +35,50,mx +35,75);   //derecha abajo
         gc.strokeLine(mx +10,50,mx +35,50);
         mx = mx + 35;}
+        else if("^".equals(operacion.get(operacion.size()-1))){
+          gc.strokeLine(mx +10,30,mx +20,30);
+          gc.strokeLine(mx +20,30,mx +20,20);
+          gc.strokeLine(mx +10,30,mx +10,20);
+          gc.strokeLine(mx +10,20,mx +20,20);
+          gc.strokeLine(mx +10,20,mx +10,10);
+          gc.strokeLine(mx +10,10,mx +20,10);
+          
+          mx = mx + 15;}
        else if(!"/".equals(operacion.get(operacion.size()-1))){
         gc.strokeLine(mx +10,25,mx +35,25);   //arriba
         gc.strokeLine(mx +10,75,mx +35,75);   //abajo
@@ -175,6 +208,11 @@ public class Dibuja {
        gc.strokeLine(mx +10,25,mx +10,50);   //izquierda arriba
        gc.strokeLine(mx +35,25,mx +35,75);   //derecha
        mx = mx + 35;}
+      else if("^".equals(operacion.get(operacion.size()-1))){
+      gc.strokeLine(mx +20,30,mx +20,10);
+      gc.strokeLine(mx +20,10,mx +10,10);
+      gc.strokeLine(mx +10,10,mx +10,20);
+      mx = mx + 15;}
       else if(!"/".equals(operacion.get(operacion.size()-1))){
        gc.strokeLine(mx +10,25,mx +35,25);   //arriba
        gc.strokeLine(mx +10,25,mx +10,50);   //izquierda arriba
@@ -196,6 +234,13 @@ public class Dibuja {
        gc.strokeLine(mx +35,25,mx +35,75);   //derecha
        gc.strokeLine(mx +10,50,mx +35,50);   //horizontal media
        mx = mx + 35;}
+      else if("^".equals(operacion.get(operacion.size()-1))){
+      gc.strokeLine(mx +20,30,mx +20,10);
+      gc.strokeLine(mx +20,30,mx +10,30);
+      gc.strokeLine(mx +10,10,mx +20,10);
+      gc.strokeLine(mx +10,10,mx +10,30);
+      gc.strokeLine(mx +10,20,mx +20,20);
+      mx = mx + 15;}
       else if(!"/".equals(operacion.get(operacion.size()-1))){
        gc.strokeLine(mx +10,25,mx +35,25);   //arriba
        gc.strokeLine(mx +10,75,mx +35,75);   //abajo
@@ -222,6 +267,13 @@ public class Dibuja {
        gc.strokeLine(mx +35,25,mx +35,75);   //derecha
        gc.strokeLine(mx +10,50,mx +35,50);   //horizontal media
        mx = mx + 35;}
+      else if("^".equals(operacion.get(operacion.size()-1))){
+      gc.strokeLine(mx +20,30,mx +10,30);   
+      gc.strokeLine(mx +20,30,mx +20,10);
+      gc.strokeLine(mx +20,10,mx +10,10);
+      gc.strokeLine(mx +10,10,mx +10,20);
+      gc.strokeLine(mx +10,20,mx +20,20);
+      mx = mx + 15;}
       else if(!"/".equals(operacion.get(operacion.size()-1))){
        gc.strokeLine(mx +10,25,mx +35,25);   //arriba
        gc.strokeLine(mx +10,75,mx +35,75);   //abajo
@@ -247,6 +299,13 @@ public class Dibuja {
        gc.strokeLine(mx +10,25,mx +10,75);   //izquierda
        gc.strokeLine(mx +35,25,mx +35,75);   //derecha
        mx = mx + 35;}
+      else if("^".equals(operacion.get(operacion.size()-1))){
+      gc.strokeLine(mx +10,30,mx +20,30);   
+      gc.strokeLine(mx +20,30,mx +20,10);
+      gc.strokeLine(mx +20,10,mx +10,10);
+      gc.strokeLine(mx +10,10,mx +10,30);
+      
+      mx = mx + 15;}
       else if(!"/".equals(operacion.get(operacion.size()-1))){
        gc.strokeLine(mx +10,25,mx +35,25);   //arriba
        gc.strokeLine(mx +10,75,mx +35,75);   //abajo

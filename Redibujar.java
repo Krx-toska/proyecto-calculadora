@@ -16,13 +16,18 @@ import javafx.scene.paint.Color;
 public class Redibujar {
     
     Dibuja dibuja = new Dibuja();
-    
+    ArrayList<String> auxlista;
     
     
     public void redibujar(ArrayList<String> operacion,GraphicsContext gc,Color myColorOperators, Color myColorNumbers){
      dibuja.limpiar();
+     
     
      for(int i =0;i<operacion.size() ;i++){
+     
+     System.out.println(operacion.get(i));
+         
+         
     if ("1".equals(operacion.get(i)) ){
      dibuja.dibuja_uno(gc, operacion,myColorNumbers);}
     if ("2".equals(operacion.get(i)) ){

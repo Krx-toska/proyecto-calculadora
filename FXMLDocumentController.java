@@ -89,7 +89,7 @@ public class FXMLDocumentController implements Initializable {
    
      else{
      gc = texthere.getGraphicsContext2D();
-     dibuja.dibuja_mas(gc,operacion,myColorNumbers);
+     dibuja.dibuja_mas(gc,operacion,myColorOperators);
      operacion.add("+");}
       
     }
