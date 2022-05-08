@@ -15,7 +15,7 @@
             "name": "Launch Calculadora",
             "request": "launch",
             "mainClass": "calculadora.Calculadora",
-            "vmArgs": "--module-path \"C:\\Users\\Artur\\Documents\\Java\\javafx-sdk-17.0.2\\lib\" --add-modules javafx.controls,javafx.fxml",
+            //"vmArgs": "--module-path \"C:\\Users\\Artur\\Documents\\Java\\javafx-sdk-17.0.2\\lib\" --add-modules javafx.controls,javafx.fxml",//
             "projectName": "Calculadora_1c189c4a"
         }
     ]
