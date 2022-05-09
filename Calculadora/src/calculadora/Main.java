@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author krox2
  */
-public class Calculadora extends Application {
+public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {

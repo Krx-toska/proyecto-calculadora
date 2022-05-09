@@ -3,14 +3,19 @@ package calculadora;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TouchEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Slider;
+import javafx.scene.text.Text;
 
 /**
  *
@@ -27,11 +32,17 @@ public class FXMLDocumentController implements Initializable {
   javafx.scene.canvas.Canvas texthere;
   @FXML
   ColorPicker myColorPickerNumbers, myColorPickerOperators;
+  @FXML
+  private Slider mySizeOfExpressions;
+  @FXML
+  private Text myText;
+
   
   static GraphicsContext gc;
   double mx = 0, aux = 0;
   Color myColorNumbers, myColorOperators;
   int posicion = 0;
+  String textBoxInfo;
       
   ArrayList<String> operacion = new ArrayList<>();
   Dibuja dibuja = new Dibuja();
@@ -42,6 +53,7 @@ public class FXMLDocumentController implements Initializable {
   @Override
   public void initialize(URL url, ResourceBundle rb) {
     gc = texthere.getGraphicsContext2D();
+    
   }
   
   public void changeColorNumbers(){
@@ -51,13 +63,22 @@ public class FXMLDocumentController implements Initializable {
   public void changeColorOperators(){
     myColorOperators = myColorPickerOperators.getValue();
   }
-
+  @FXML
+  void updateSize(MouseEvent event) {
+    System.out.println(mySizeOfExpressions.getValue());
+  }
+  @FXML
+  void updateText() {
+    textBoxInfo = String.join("", operacion);
+    myText.setText(textBoxInfo);
+  }
   @FXML
   public void accion0(ActionEvent event) {//listo
     if(!"/".equals(operacion.get(operacion.size()-1))){
       dibuja.dibuja_cero(gc,aux,myColorNumbers);
       operacion.add("0");
     }
+    updateText();
   }
   
   @FXML
@@ -71,6 +92,7 @@ public class FXMLDocumentController implements Initializable {
       dibuja.dibuja_uno(gc, aux, myColorNumbers);
       operacion.add("1");
     }
+    updateText();
   }
   
   @FXML
@@ -84,6 +106,7 @@ public class FXMLDocumentController implements Initializable {
       dibuja.dibuja_dos(gc, aux, myColorNumbers);
       operacion.add("2");
     }
+    updateText();
   }
   
   @FXML
@@ -97,6 +120,7 @@ public class FXMLDocumentController implements Initializable {
       dibuja.dibuja_tres(gc, aux, myColorNumbers);
       operacion.add("3");
     }
+    updateText();
   }
   
   @FXML
@@ -110,6 +134,7 @@ public class FXMLDocumentController implements Initializable {
       dibuja.dibuja_cuatro(gc, aux, myColorNumbers);
       operacion.add("4");
     }
+    updateText();
   }
   
   @FXML
@@ -123,6 +148,7 @@ public class FXMLDocumentController implements Initializable {
       dibuja.dibuja_cinco(gc, aux, myColorNumbers);
       operacion.add("5");
     }
+    updateText();
   }
   
   @FXML
@@ -136,6 +162,7 @@ public class FXMLDocumentController implements Initializable {
       dibuja.dibuja_seis(gc, aux, myColorNumbers);
       operacion.add("6");
     }
+    updateText();
   }
   
   @FXML
@@ -149,6 +176,7 @@ public class FXMLDocumentController implements Initializable {
       dibuja.dibuja_siete(gc, aux, myColorNumbers);
       operacion.add("7");;
     }
+    updateText();
   }
   
   @FXML
@@ -162,6 +190,7 @@ public class FXMLDocumentController implements Initializable {
       dibuja.dibuja_ocho(gc, aux, myColorNumbers);
       operacion.add("8");
     }
+    updateText();
   }
   
   @FXML
@@ -175,6 +204,7 @@ public class FXMLDocumentController implements Initializable {
       dibuja.dibuja_nueve(gc, aux, myColorNumbers);
       operacion.add("9");
     }
+    updateText();
   }
 
   @FXML
@@ -182,6 +212,7 @@ public class FXMLDocumentController implements Initializable {
     aux = 0;
     dibuja.dibuja_mas(gc, myColorOperators);
     operacion.add("+");
+    updateText();
   }
 
   @FXML
@@ -189,6 +220,7 @@ public class FXMLDocumentController implements Initializable {
     aux = 0;
     dibuja.dibuja_menos(gc, myColorOperators);
     operacion.add("-");
+    updateText();
   }
   
   @FXML
@@ -196,6 +228,7 @@ public class FXMLDocumentController implements Initializable {
     aux = 0;
     dibuja.dibuja_x(gc, myColorOperators);
     operacion.add("x");
+    updateText();
   }
 
   @FXML
@@ -203,6 +236,7 @@ public class FXMLDocumentController implements Initializable {
     aux = 0;
     dibuja.dibuja_parentesisI(gc, myColorOperators);
     operacion.add("(");
+    updateText();
   }
 
   @FXML
@@ -210,14 +244,15 @@ public class FXMLDocumentController implements Initializable {
     aux = 0;
     dibuja.dibuja_parentesisD(gc, myColorOperators);
     operacion.add(")");
+    updateText();
   }
 @FXML
   private void accion_limpiar(ActionEvent event) {
-      gc.clearRect(0, 0, 1000, 1000);
-      dibuja.limpiar();
-      operacion.clear();
+    gc.clearRect(0, 0, 1000, 1000);
+    dibuja.limpiar();
+    operacion.clear();
+    updateText();
   }
-  //nuevo
     @FXML
   private void accion_dividir(ActionEvent event) {
       if(operacion.isEmpty() || "/".equals(operacion.get(operacion.size()-1))){}
@@ -235,7 +270,7 @@ public class FXMLDocumentController implements Initializable {
         operacion.add("/");}
       }
       
-      
+    updateText();
   }
   
   public void accion_cordenadas(){
@@ -293,6 +328,7 @@ public class FXMLDocumentController implements Initializable {
       }
       gc.setLineWidth(1);
       cordenadas.limpiar();
+    updateText();
   }
   @FXML
   private void panel(MouseEvent event) {
