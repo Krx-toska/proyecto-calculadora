@@ -9,9 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
-import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TouchEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
@@ -39,7 +37,7 @@ public class FXMLDocumentController implements Initializable {
 
   
   static GraphicsContext gc;
-  double mx = 0, aux = 0;
+  double mx = 0, aux = 0, sizeFactor = 1;
   Color myColorNumbers, myColorOperators;
   int posicion = 0;
   String textBoxInfo;
@@ -65,7 +63,7 @@ public class FXMLDocumentController implements Initializable {
   }
   @FXML
   void updateSize(MouseEvent event) {
-    System.out.println(mySizeOfExpressions.getValue());
+    sizeFactor = mySizeOfExpressions.getValue();
   }
   @FXML
   void updateText() {
@@ -75,7 +73,7 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   public void accion0(ActionEvent event) {//listo
     if(!"/".equals(operacion.get(operacion.size()-1))){
-      dibuja.dibuja_cero(gc,aux,myColorNumbers);
+      dibuja.dibuja_cero(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("0");
     }
     updateText();
@@ -85,11 +83,11 @@ public class FXMLDocumentController implements Initializable {
   public void accion1(ActionEvent event) {//listo
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       aux = 0;
-      dibuja.dibuja_uno(gc, aux, myColorNumbers);
+      dibuja.dibuja_uno(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("1");
     }else if("/".equals(operacion.get(operacion.size()-1))){
-      aux = 60;
-      dibuja.dibuja_uno(gc, aux, myColorNumbers);
+      aux = 60*sizeFactor;
+      dibuja.dibuja_uno(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("1");
     }
     updateText();
@@ -99,11 +97,11 @@ public class FXMLDocumentController implements Initializable {
   public void accion2(ActionEvent event) {
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       aux = 0;
-      dibuja.dibuja_dos(gc, aux, myColorNumbers);
+      dibuja.dibuja_dos(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("2");
     }else if("/".equals(operacion.get(operacion.size()-1))){
-      aux = 60;
-      dibuja.dibuja_dos(gc, aux, myColorNumbers);
+      aux = 60*sizeFactor;
+      dibuja.dibuja_dos(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("2");
     }
     updateText();
@@ -113,11 +111,11 @@ public class FXMLDocumentController implements Initializable {
   public void accion3(ActionEvent event) {
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       aux = 0;
-      dibuja.dibuja_tres(gc, aux, myColorNumbers);
+      dibuja.dibuja_tres(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("3");
     }else if("/".equals(operacion.get(operacion.size()-1))){
-      aux = 60;
-      dibuja.dibuja_tres(gc, aux, myColorNumbers);
+      aux = 60*sizeFactor;
+      dibuja.dibuja_tres(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("3");
     }
     updateText();
@@ -127,11 +125,11 @@ public class FXMLDocumentController implements Initializable {
   public void accion4(ActionEvent event) {
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       aux = 0;
-      dibuja.dibuja_cuatro(gc, aux, myColorNumbers);
+      dibuja.dibuja_cuatro(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("4");
     }else if("/".equals(operacion.get(operacion.size()-1))){
-      aux = 60;
-      dibuja.dibuja_cuatro(gc, aux, myColorNumbers);
+      aux = 60*sizeFactor;
+      dibuja.dibuja_cuatro(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("4");
     }
     updateText();
@@ -141,11 +139,11 @@ public class FXMLDocumentController implements Initializable {
   public void accion5(ActionEvent event) {
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){ 
       aux = 0;
-      dibuja.dibuja_cinco(gc, aux, myColorNumbers);
+      dibuja.dibuja_cinco(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("5");
     }else if("/".equals(operacion.get(operacion.size()-1))){
-      aux = 60;
-      dibuja.dibuja_cinco(gc, aux, myColorNumbers);
+      aux = 60*sizeFactor;
+      dibuja.dibuja_cinco(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("5");
     }
     updateText();
@@ -155,11 +153,11 @@ public class FXMLDocumentController implements Initializable {
   public void accion6(ActionEvent event) {
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       aux = 0;
-      dibuja.dibuja_seis(gc, aux, myColorNumbers);
+      dibuja.dibuja_seis(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("6");
     }else if("/".equals(operacion.get(operacion.size()-1))){
-      aux = 60;
-      dibuja.dibuja_seis(gc, aux, myColorNumbers);
+      aux = 60*sizeFactor;
+      dibuja.dibuja_seis(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("6");
     }
     updateText();
@@ -169,11 +167,11 @@ public class FXMLDocumentController implements Initializable {
   public void accion7(ActionEvent event) {
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       aux = 0;
-      dibuja.dibuja_siete(gc, aux, myColorNumbers);
+      dibuja.dibuja_siete(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("7");
     }else if("/".equals(operacion.get(operacion.size()-1))){
-      aux = 60;
-      dibuja.dibuja_siete(gc, aux, myColorNumbers);
+      aux = 60*sizeFactor;
+      dibuja.dibuja_siete(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("7");;
     }
     updateText();
@@ -183,11 +181,11 @@ public class FXMLDocumentController implements Initializable {
   public void accion8(ActionEvent event) {
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       aux = 0;
-      dibuja.dibuja_ocho(gc, aux, myColorNumbers);
+      dibuja.dibuja_ocho(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("8");
     }else if("/".equals(operacion.get(operacion.size()-1))){
-      aux = 60;
-      dibuja.dibuja_ocho(gc, aux, myColorNumbers);
+      aux = 60*sizeFactor;
+      dibuja.dibuja_ocho(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("8");
     }
     updateText();
@@ -197,11 +195,11 @@ public class FXMLDocumentController implements Initializable {
   public void accion9(ActionEvent event){
     if(operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       aux = 0;
-      dibuja.dibuja_nueve(gc, aux, myColorNumbers);
+      dibuja.dibuja_nueve(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("9");
     }else if("/".equals(operacion.get(operacion.size()-1))){
-      aux = 60;
-      dibuja.dibuja_nueve(gc, aux, myColorNumbers);
+      aux = 60*sizeFactor;
+      dibuja.dibuja_nueve(gc, aux, myColorNumbers, sizeFactor);
       operacion.add("9");
     }
     updateText();
@@ -210,7 +208,7 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   public void accion_mas(ActionEvent event) {//listo
     aux = 0;
-    dibuja.dibuja_mas(gc, myColorOperators);
+    dibuja.dibuja_mas(gc, myColorOperators, sizeFactor);
     operacion.add("+");
     updateText();
   }
@@ -218,7 +216,7 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   public void accion_menos(ActionEvent event) {//listo
     aux = 0;
-    dibuja.dibuja_menos(gc, myColorOperators);
+    dibuja.dibuja_menos(gc, myColorOperators, sizeFactor);
     operacion.add("-");
     updateText();
   }
@@ -226,7 +224,7 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   public void accion_x(ActionEvent event) {
     aux = 0;
-    dibuja.dibuja_x(gc, myColorOperators);
+    dibuja.dibuja_x(gc, myColorOperators, sizeFactor);
     operacion.add("x");
     updateText();
   }
@@ -234,7 +232,7 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   public void accion_parentesisIzquierdo(ActionEvent event) {
     aux = 0;
-    dibuja.dibuja_parentesisI(gc, myColorOperators);
+    dibuja.dibuja_parentesisI(gc, myColorOperators, sizeFactor);
     operacion.add("(");
     updateText();
   }
@@ -242,11 +240,11 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   public void accion_parentesisDerecho(ActionEvent event) {
     aux = 0;
-    dibuja.dibuja_parentesisD(gc, myColorOperators);
+    dibuja.dibuja_parentesisD(gc, myColorOperators, sizeFactor);
     operacion.add(")");
     updateText();
   }
-@FXML
+  @FXML
   private void accion_limpiar(ActionEvent event) {
     gc.clearRect(0, 0, 1000, 1000);
     dibuja.limpiar();
@@ -255,27 +253,20 @@ public class FXMLDocumentController implements Initializable {
   }
     @FXML
   private void accion_dividir(ActionEvent event) {
-      if(operacion.isEmpty() || "/".equals(operacion.get(operacion.size()-1))){}
-      
-      else{
-      
+    if(!operacion.isEmpty() || !"/".equals(operacion.get(operacion.size()-1))){
       if(!"1".equals(operacion.get(operacion.size()-1))){
-        gc.setStroke(myColorOperators);
-        dibuja.dibuja_dividir(gc, myColorOperators);
+        dibuja.dibuja_dividir(gc, myColorOperators, sizeFactor);
         operacion.add("/");
-  }
-      if("1".equals(operacion.get(operacion.size()-1))){
-        gc.setStroke(myColorOperators);
-        dibuja.dibuja_dividir1(gc, myColorOperators);
-        operacion.add("/");}
+      }else{
+        dibuja.dibuja_dividir1(gc, myColorOperators, sizeFactor);
+        operacion.add("/");
       }
-      
+    }
     updateText();
   }
   
   public void accion_cordenadas(){
       aux = 0;
-      
       for(int i = 0; i< operacion.size();i++){
           if("0".equals(operacion.get(i))){
             cordenadas.puntos("0");
