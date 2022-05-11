@@ -16,38 +16,37 @@ import javafx.scene.paint.Color;
 public class Redibujar {
     
     Dibuja dibuja = new Dibuja();
-    ArrayList<String> auxlista;
-    
+    ArrayList<String> auxlista = new ArrayList();
+   
     
     public void redibujar(ArrayList<String> operacion,GraphicsContext gc,Color myColorOperators, Color myColorNumbers){
-     dibuja.limpiar();
-     
-    
-     for(int i =0;i<operacion.size() ;i++){
-     
-     System.out.println(operacion.get(i));
-         
-         
+    dibuja.limpiar();
+    auxlista.clear();
+    int cont = 0;
+        
+     for(int i =0;i<operacion.size();i++){
+     auxlista.add(operacion.get(cont));
+     cont++;
     if ("1".equals(operacion.get(i)) ){
-     dibuja.dibuja_uno(gc, operacion,myColorNumbers);}
+     dibuja.dibuja_uno(gc, auxlista,myColorNumbers);}
     if ("2".equals(operacion.get(i)) ){
-     dibuja.dibuja_dos(gc, operacion,myColorNumbers);}
+     dibuja.dibuja_dos(gc, auxlista, myColorNumbers);}
     if ("3".equals(operacion.get(i)) ){
-     dibuja.dibuja_tres(gc, operacion,myColorNumbers);}
+     dibuja.dibuja_tres(gc, auxlista,myColorNumbers);}
     if ("4".equals(operacion.get(i)) ){
-     dibuja.dibuja_cuatro(gc, operacion,myColorNumbers);}
+     dibuja.dibuja_cuatro(gc, auxlista,myColorNumbers);}
     if ("5".equals(operacion.get(i)) ){
-     dibuja.dibuja_cinco(gc, operacion,myColorNumbers);}
+     dibuja.dibuja_cinco(gc, auxlista,myColorNumbers);}
     if ("6".equals(operacion.get(i)) ){
-     dibuja.dibuja_seis(gc, operacion,myColorNumbers);}
+     dibuja.dibuja_seis(gc, auxlista,myColorNumbers);}
     if ("7".equals(operacion.get(i)) ){
-     dibuja.dibuja_siete(gc, operacion,myColorNumbers);}
+     dibuja.dibuja_siete(gc, auxlista,myColorNumbers);}
     if ("8".equals(operacion.get(i)) ){
-     dibuja.dibuja_ocho(gc, operacion,myColorNumbers);}
+     dibuja.dibuja_ocho(gc, auxlista,myColorNumbers);}
     if ("9".equals(operacion.get(i)) ){
-     dibuja.dibuja_nueve(gc, operacion,myColorNumbers);}
+     dibuja.dibuja_nueve(gc, auxlista,myColorNumbers);}
     if ("0".equals(operacion.get(i)) ){
-     dibuja.dibuja_cero(gc, operacion,myColorNumbers);}
+     dibuja.dibuja_cero(gc, auxlista,myColorNumbers);}
     if ("+".equals(operacion.get(i)) ){
      dibuja.dibuja_mas(gc, operacion,myColorOperators);}
     if ("-".equals(operacion.get(i)) ){
@@ -59,7 +58,12 @@ public class Redibujar {
     if (")".equals(operacion.get(i)) ){
      dibuja.dibuja_parentesisD(gc, operacion,myColorOperators);}
     if ("/".equals(operacion.get(i)) ){
-     dibuja.dibuja_dividir(gc, operacion,myColorOperators);}
+     cont--;
+     dibuja.dibuja_dividir(gc, auxlista,myColorOperators);
+     cont=i;}
+    if ("^".equals(operacion.get(i)) ){
+     cont--;
+     cont=i;}
      
  }
     

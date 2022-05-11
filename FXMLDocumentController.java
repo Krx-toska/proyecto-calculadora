@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.control.ColorPicker;
+import static javafx.scene.paint.Color.BLACK;
 import javafx.scene.paint.Paint;
 
 
@@ -49,7 +50,7 @@ public class FXMLDocumentController implements Initializable {
     Dibuja dibuja = new Dibuja();
     Cordenadas cordenadas = new Cordenadas();
     Redibujar hola = new Redibujar();
-    Color myColorNumbers, myColorOperators;
+    Color myColorNumbers=BLACK, myColorOperators=BLACK;
     int cont = 0;
     double mx = 0, aux = 0;
         
@@ -70,11 +71,15 @@ public class FXMLDocumentController implements Initializable {
     @FXML
       public void changeColorNumbers(){
     myColorNumbers = myColorPickerNumbers.getValue();
+    gc.clearRect(0, 0, 1000, 1000);
+    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers);
   }
 
     @FXML
   public void changeColorOperators(){
     myColorOperators = myColorPickerOperators.getValue();
+    gc.clearRect(0, 0, 1000, 1000);
+    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers);
   }
     
     

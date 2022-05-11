@@ -58,6 +58,13 @@ public class Dibuja {
           gc.strokeLine(mx +10,30,mx +20,30);
           mx = mx + 15;
        }
+       else if("/".equals(operacion.get(operacion.size()-1))){
+          gc.strokeLine(mx +10,85,mx +35,85);
+          gc.strokeLine(mx +35,85,mx +35,110);
+          gc.strokeLine(mx +10,110,mx +35,110); //horizontal media
+          gc.strokeLine(mx +10,110,mx +10,135);
+          gc.strokeLine(mx +10,135,mx +35,135);
+          mx = mx + 35;}
       
       else if(!"/".equals(operacion.get(operacion.size()-1))){
           gc.strokeLine(mx +10,25,mx +35,25);
@@ -66,13 +73,7 @@ public class Dibuja {
           gc.strokeLine(mx +10,50,mx +10,75);
           gc.strokeLine(mx +10,75,mx +35,75);
           mx = mx + 35;}
-      else if("/".equals(operacion.get(operacion.size()-1))){
-          gc.strokeLine(mx +10,85,mx +35,85);
-          gc.strokeLine(mx +35,85,mx +35,110);
-          gc.strokeLine(mx +10,110,mx +35,110); //horizontal media
-          gc.strokeLine(mx +10,110,mx +10,135);
-          gc.strokeLine(mx +10,135,mx +35,135);
-          mx = mx + 35;}
+      
     }
     
         public void dibuja_tres(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers){
