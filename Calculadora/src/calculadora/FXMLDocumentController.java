@@ -56,6 +56,7 @@ public class FXMLDocumentController implements Initializable {
     Color myColorNumbers=BLACK, myColorOperators=BLACK;
     int cont = 0;
     double sizeFactor = 1;
+    int contadorParentesis=0;
         
     ArrayList<String> operacion = new ArrayList<String>();
     @FXML
@@ -224,14 +225,17 @@ public class FXMLDocumentController implements Initializable {
       gc.setStroke(myColorOperators);
       dibuja.dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
       operacion.add("(");
+      contadorParentesis++;
     }
     @FXML
     public void accion_parentesisDerecho(ActionEvent event) {
-    
+    if(contadorParentesis!=0){
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorOperators);
       dibuja.dibuja_parentesisD(gc,operacion, myColorOperators,sizeFactor);
       operacion.add(")");
+      contadorParentesis--;
+      }
     }
 @FXML
     private void accion_limpiar(ActionEvent event) {
@@ -363,9 +367,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void updateSize(MouseEvent event) {
+    sizeFactor = mySizeOfExpressions.getValue();    
     gc.clearRect(0, 0, 1000, 1000);
     hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
-    sizeFactor = mySizeOfExpressions.getValue();    
     }
     
     
