@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="444.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculadora.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="444.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculadora.FXMLDocumentController">
    <children>
       <Button fx:id="bttn_8" layoutX="115.0" layoutY="314.0" mnemonicParsing="false" onAction="#accion8" prefHeight="46.0" prefWidth="65.0" text="8">
          <font>
@@ -118,5 +118,10 @@
       <ColorPicker fx:id="myColorPickerNumbers" layoutX="431.0" layoutY="223.0" onAction="#changeColorNumbers" />
       <ColorPicker fx:id="myColorPickerOperators" layoutX="431.0" layoutY="278.0" onAction="#changeColorOperators" />
       <Slider fx:id="mySizeOfExpressions" blockIncrement="0.2" layoutX="13.0" layoutY="34.0" majorTickUnit="1.0" max="2.0" onMouseReleased="#updateSize" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+      <Button fx:id="bbtn_potencia" layoutX="348.0" layoutY="314.0" mnemonicParsing="false" onAction="#accion_potencia" prefHeight="46.0" prefWidth="65.0" text="^">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
