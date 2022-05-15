@@ -102,7 +102,7 @@ public class FXMLDocumentController implements Initializable {
    
      else{
      gc = texthere.getGraphicsContext2D();
-     dibuja.dibuja_mas(gc,operacion,myColorOperators,sizeFactor);
+     dibuja.dibuja_mas(gc,operacion,myColorOperators,sizeFactor,contD);
      operacion.add("+");}
       
     }
@@ -114,7 +114,7 @@ public class FXMLDocumentController implements Initializable {
       
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorOperators);
-      dibuja.dibuja_menos(gc,operacion, myColorOperators,sizeFactor);
+      dibuja.dibuja_menos(gc,operacion, myColorOperators,sizeFactor,contD);
       operacion.add("-");
       }
       
@@ -123,7 +123,7 @@ public class FXMLDocumentController implements Initializable {
       else{
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorOperators);
-      dibuja.dibuja_menos(gc,operacion, myColorOperators,sizeFactor);
+      dibuja.dibuja_menos(gc,operacion, myColorOperators,sizeFactor,contD);
       operacion.add("-");
     }
   }
@@ -214,7 +214,7 @@ public class FXMLDocumentController implements Initializable {
       else{
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorOperators);
-      dibuja.dibuja_x(gc,operacion, myColorOperators,sizeFactor);
+      dibuja.dibuja_x(gc,operacion, myColorOperators,sizeFactor,contD);
       operacion.add("x");
       }
     }

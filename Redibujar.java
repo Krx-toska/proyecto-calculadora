@@ -48,11 +48,11 @@ public class Redibujar {
     if ("0".equals(operacion.get(i)) ){
      dibuja.dibuja_cero(gc, auxlista,myColorNumbers,sizeFactor,contD);}
     if ("+".equals(operacion.get(i)) ){
-     dibuja.dibuja_mas(gc, operacion,myColorOperators,sizeFactor);}
+     dibuja.dibuja_mas(gc, operacion,myColorOperators,sizeFactor,contD);}
     if ("-".equals(operacion.get(i)) ){
-     dibuja.dibuja_menos(gc, operacion,myColorOperators,sizeFactor);}
+     dibuja.dibuja_menos(gc, operacion,myColorOperators,sizeFactor,contD);}
     if ("x".equals(operacion.get(i)) ){
-     dibuja.dibuja_x(gc, operacion,myColorOperators,sizeFactor);}
+     dibuja.dibuja_x(gc, operacion,myColorOperators,sizeFactor,contD);}
     if ("(".equals(operacion.get(i)) ){
      dibuja.dibuja_parentesisI(gc, operacion,myColorOperators,sizeFactor);}
     if (")".equals(operacion.get(i)) ){
