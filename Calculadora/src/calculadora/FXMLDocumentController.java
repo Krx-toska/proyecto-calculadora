@@ -25,6 +25,7 @@ import javafx.scene.text.Text;
 public class FXMLDocumentController implements Initializable {
         
     @FXML
+<<<<<<< HEAD
     private Button bttn_mas, bttn_menos, bttn_0, bttn_1, bttn_2, bttn_3, bttn_4, bttn_5, bttn_6, bttn_7, bttn_x, bttn_parentesisDerecho,bttn_parentesisIzquierdo ;
     
     @FXML
@@ -68,11 +69,36 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button bbtn_potencia;
     
+=======
+  Button bttn0, bttn1, bttn2, bttn3, bttn4, bttn5, bttn6, bttn7, bttn8, bttn9;
+  @FXML
+  Button bttnMas, bttnMenos,  bttnX, bttnDividir, bttnParentesisDerecho, bttnParentesisIzquierdo;
+  @FXML
+  Button bttnClear, bttnCor;
+  private Button bbtn_f, bttn_sin,bttn_cos,bttn_tan;
+  @FXML
+  javafx.scene.canvas.Canvas texthere;
+  @FXML
+  ColorPicker myColorPickerNumbers, myColorPickerOperators;
+  
+  static GraphicsContext gc;
+  double mx = 0, aux = 0;
+  Color myColorNumbers, myColorOperators;
+  int posicion = 0;
+      
+  ArrayList<String> operacion = new ArrayList<>();
+  Dibuja dibuja = new Dibuja();
+  Cordenadas cordenadas = new Cordenadas();
+>>>>>>> 2a664107a53f9ffebd774e9a2cbdb27956c44ae1
     
     
     
     @Override
+<<<<<<< HEAD
     public void initialize(URL url, ResourceBundle rb) {
+=======
+  public void initialize(URL url, ResourceBundle rb) {
+>>>>>>> 2a664107a53f9ffebd774e9a2cbdb27956c44ae1
     gc = texthere.getGraphicsContext2D();
     }
     
@@ -374,4 +400,106 @@ public class FXMLDocumentController implements Initializable {
     
     
       
+<<<<<<< HEAD
+=======
+      for(int i = 0; i< operacion.size();i++){
+          if("0".equals(operacion.get(i))){
+            cordenadas.puntos("0");
+          }   
+          if("1".equals(operacion.get(i))){
+            cordenadas.puntos("1");
+          }
+          if("2".equals(operacion.get(i))){
+            cordenadas.puntos("2");
+          }
+          if("3".equals(operacion.get(i))){
+            cordenadas.puntos("3");
+          }
+          if("4".equals(operacion.get(i))){
+            cordenadas.puntos("4");
+          }
+          if("5".equals(operacion.get(i))){
+            cordenadas.puntos("5");
+          }
+          if("6".equals(operacion.get(i))){
+            cordenadas.puntos("6");
+          }
+          if("7".equals(operacion.get(i))){
+            cordenadas.puntos("7");
+          }
+          if("8".equals(operacion.get(i))){
+            cordenadas.puntos("8");
+          }
+          if("9".equals(operacion.get(i))){
+            cordenadas.puntos("9");
+          }
+          if("x".equals(operacion.get(i))){
+            cordenadas.puntos("x");
+          }
+          if("/".equals(operacion.get(i))){
+            cordenadas.puntos("/");
+          }
+          if("+".equals(operacion.get(i))){
+            cordenadas.puntos("+");
+          }   
+          if("-".equals(operacion.get(i))){
+            cordenadas.puntos("-");
+          }
+          if(")".equals(operacion.get(i))){
+            cordenadas.puntos(")");
+          }
+          if("(".equals(operacion.get(i))){
+            cordenadas.puntos("(");           
+          }
+          if("sin".equals(operacion.get(i))){
+            cordenadas.puntos("sin");           
+          }
+          if("cos".equals(operacion.get(i))){
+            cordenadas.puntos("cos");           
+          }
+          if("tan".equals(operacion.get(i))){
+            cordenadas.puntos("tan");           
+          }
+          if("!".equals(operacion.get(i))){
+            cordenadas.puntos("!");           
+          }
+      }
+      gc.setLineWidth(1);
+      cordenadas.limpiar();
+  }
+    @FXML
+    
+    public void accion_factorial(ActionEvent event){
+      gc = texthere.getGraphicsContext2D();
+      gc.setStroke(myColorOperators);
+      dibuja.dibuja_factorial(gc, myColorOperators);
+      operacion.add("!");
+    }
+    @FXML
+    public void accion_seno(ActionEvent event){
+      gc = texthere.getGraphicsContext2D();
+      gc.setStroke(myColorOperators);
+      dibuja.dibuja_seno(gc, myColorOperators);
+      operacion.add("sin");
+    }
+    @FXML
+    public void accion_coseno(ActionEvent event){
+      gc = texthere.getGraphicsContext2D();
+      gc.setStroke(myColorOperators);
+      dibuja.dibuja_coseno(gc, myColorOperators);
+      operacion.add("cos");
+    }
+    @FXML
+    public void accion_tangente(ActionEvent event){
+      gc = texthere.getGraphicsContext2D();
+      gc.setStroke(myColorOperators);
+      dibuja.dibuja_tangente(gc, myColorOperators);
+      operacion.add("tan");
+    }
+    @FXML
+    private void panel(MouseEvent event) {
+        
+    }
+      
+>>>>>>> 2a664107a53f9ffebd774e9a2cbdb27956c44ae1
 }
