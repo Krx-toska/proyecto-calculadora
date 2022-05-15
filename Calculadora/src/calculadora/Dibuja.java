@@ -152,7 +152,7 @@ public class Dibuja {
     
     public void dibuja_factorial(GraphicsContext gc, Color myColorOperators){
             gc.setStroke(myColorOperators);
-            gc.setLineWidth(3);   
+            gc.setLineWidth(2);   
             gc.strokeLine(mx + 20,25 ,mx + 20,60 );
             gc.strokeLine(mx + 20,70 ,mx + 20,70 );
             gc.setLineWidth(1);
@@ -174,17 +174,22 @@ public class Dibuja {
     }
         
     public void dibuja_coseno(GraphicsContext gc, Color myColorOperators){
+        gc.setStroke(myColorOperators);
+        gc.setLineWidth(2);
         dibuja_c(gc);
         dibuja_o(gc);
         dibuja_s(gc);
-  
+        gc.setLineWidth(1);
        mx = mx + 35;
     }
         
    public void dibuja_tangente(GraphicsContext gc, Color myColorOperators){
-       gc.strokeLine(mx + 20,60,mx +25,70);
-       gc.strokeLine(mx + 25,55,mx +20,70);
-              
+       gc.setStroke(myColorOperators);
+       gc.setLineWidth(2);
+       dibuja_t(gc);
+       dibuja_a(gc);
+       dibuja_n(gc);
+       gc.setLineWidth(1);      
        
        mx = mx + 35;
     }
@@ -227,6 +232,20 @@ public class Dibuja {
        gc.strokeLine(mx + 20,70,mx +25,70);//abajo o
        gc.strokeLine(mx + 20,70,mx +20,60);//izquierda o
        gc.strokeLine(mx + 20,60,mx +25,60);//arriba o
+       mx= mx + 10;
+   }
+   public void dibuja_a(GraphicsContext gc){
+       
+            gc.strokeLine(mx + 20,65,mx +25,65);//abajo o
+            gc.strokeLine(mx + 20,70,mx +20,60);//izquierda o
+            gc.strokeLine(mx + 20,60,mx +25,60);//arriba o
+            gc.strokeLine(mx + 25,70,mx +25,60);//derecha o
+            
+            mx= mx + 10;
+   }
+   public void dibuja_t(GraphicsContext gc){
+       gc.strokeLine(mx + 22.5,70,mx +22.5,60);
+       gc.strokeLine(mx + 20.5,60,mx +24.5,60);
        mx= mx + 10;
    }
    

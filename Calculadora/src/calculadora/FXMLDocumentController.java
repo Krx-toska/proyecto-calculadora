@@ -292,6 +292,18 @@ public class FXMLDocumentController implements Initializable {
           if("(".equals(operacion.get(i))){
             cordenadas.puntos("(");           
           }
+          if("sin".equals(operacion.get(i))){
+            cordenadas.puntos("sin");           
+          }
+          if("cos".equals(operacion.get(i))){
+            cordenadas.puntos("cos");           
+          }
+          if("tan".equals(operacion.get(i))){
+            cordenadas.puntos("tan");           
+          }
+          if("!".equals(operacion.get(i))){
+            cordenadas.puntos("!");           
+          }
       }
       gc.setLineWidth(1);
       cordenadas.limpiar();
