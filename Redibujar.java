@@ -19,7 +19,7 @@ public class Redibujar {
     ArrayList<String> auxlista = new ArrayList();
    
     
-    public void redibujar(ArrayList<String> operacion,GraphicsContext gc,Color myColorOperators, Color myColorNumbers, double sizeFactor){
+    public void redibujar(ArrayList<String> operacion,GraphicsContext gc,Color myColorOperators, Color myColorNumbers, double sizeFactor,int contD){
     dibuja.limpiar();
     auxlista.clear();
     int cont = 0;
@@ -28,25 +28,25 @@ public class Redibujar {
      auxlista.add(operacion.get(cont));
      cont++;
     if ("1".equals(operacion.get(i)) ){
-     dibuja.dibuja_uno(gc, auxlista,myColorNumbers,sizeFactor);}
+     dibuja.dibuja_uno(gc, auxlista,myColorNumbers,sizeFactor,contD);}
     if ("2".equals(operacion.get(i)) ){
-     dibuja.dibuja_dos(gc, auxlista, myColorNumbers,sizeFactor);}
+     dibuja.dibuja_dos(gc, auxlista, myColorNumbers,sizeFactor,contD);}
     if ("3".equals(operacion.get(i)) ){
-     dibuja.dibuja_tres(gc, auxlista,myColorNumbers,sizeFactor);}
+     dibuja.dibuja_tres(gc, auxlista,myColorNumbers,sizeFactor,contD);}
     if ("4".equals(operacion.get(i)) ){
-     dibuja.dibuja_cuatro(gc, auxlista,myColorNumbers,sizeFactor);}
+     dibuja.dibuja_cuatro(gc, auxlista,myColorNumbers,sizeFactor,contD);}
     if ("5".equals(operacion.get(i)) ){
-     dibuja.dibuja_cinco(gc, auxlista,myColorNumbers,sizeFactor);}
+     dibuja.dibuja_cinco(gc, auxlista,myColorNumbers,sizeFactor,contD);}
     if ("6".equals(operacion.get(i)) ){
-     dibuja.dibuja_seis(gc, auxlista,myColorNumbers,sizeFactor);}
+     dibuja.dibuja_seis(gc, auxlista,myColorNumbers,sizeFactor,contD);}
     if ("7".equals(operacion.get(i)) ){
-     dibuja.dibuja_siete(gc, auxlista,myColorNumbers,sizeFactor);}
+     dibuja.dibuja_siete(gc, auxlista,myColorNumbers,sizeFactor,contD);}
     if ("8".equals(operacion.get(i)) ){
-     dibuja.dibuja_ocho(gc, auxlista,myColorNumbers,sizeFactor);}
+     dibuja.dibuja_ocho(gc, auxlista,myColorNumbers,sizeFactor,contD);}
     if ("9".equals(operacion.get(i)) ){
-     dibuja.dibuja_nueve(gc, auxlista,myColorNumbers,sizeFactor);}
+     dibuja.dibuja_nueve(gc, auxlista,myColorNumbers,sizeFactor,contD);}
     if ("0".equals(operacion.get(i)) ){
-     dibuja.dibuja_cero(gc, auxlista,myColorNumbers,sizeFactor);}
+     dibuja.dibuja_cero(gc, auxlista,myColorNumbers,sizeFactor,contD);}
     if ("+".equals(operacion.get(i)) ){
      dibuja.dibuja_mas(gc, operacion,myColorOperators,sizeFactor);}
     if ("-".equals(operacion.get(i)) ){

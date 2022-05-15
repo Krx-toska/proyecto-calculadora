@@ -14,12 +14,14 @@ import javafx.scene.shape.ArcType;
  */
 public class Dibuja {
 
-    int mx=0;
+    private int mx=0;
+    int auxmx=0;
     
     
-    public void dibuja_uno(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+    public void dibuja_uno(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor,int contD){
         
         gc.setStroke(myColorNumbers);
+     if(contD==0){
      if(operacion.isEmpty()){  
           gc.strokeLine(mx + 20*sizeFactor,  25*sizeFactor,mx + 20*sizeFactor, 75*sizeFactor);
           gc.strokeLine(mx + 20*sizeFactor,  25*sizeFactor,mx + 10*sizeFactor, 35*sizeFactor);
@@ -32,17 +34,27 @@ public class Dibuja {
       else if(!"/".equals(operacion.get(operacion.size()-1))){
           gc.strokeLine(mx + 20*sizeFactor,  25*sizeFactor,mx + 20*sizeFactor, 75*sizeFactor);
           gc.strokeLine(mx + 20*sizeFactor,  25*sizeFactor,mx + 10*sizeFactor, 35*sizeFactor);
-          mx = (int) (mx + 25*sizeFactor);}
-         
-     else if("/".equals(operacion.get(operacion.size()-1))){
+          mx = (int) (mx + 25*sizeFactor);}}
+     else{
+      if(contD==1){
+          gc.strokeLine(mx + 20*sizeFactor,  25*sizeFactor,mx + 20*sizeFactor, 75*sizeFactor);
+          gc.strokeLine(mx + 20*sizeFactor,  25*sizeFactor,mx + 10*sizeFactor, 35*sizeFactor);
+          gc.strokeLine(mx + 0*sizeFactor,80*sizeFactor,mx + 40*sizeFactor,80*sizeFactor);
+          auxmx -=25;
+          mx = (int) (mx + 25*sizeFactor);
+          }
+      else if(contD==2){
+          
           gc.strokeLine(mx + 20*sizeFactor,85*sizeFactor,mx + 20*sizeFactor,135*sizeFactor);
           gc.strokeLine(mx + 20*sizeFactor,85*sizeFactor,mx + 10*sizeFactor,95*sizeFactor);
           mx = (int) (mx + 25*sizeFactor);}
     }
+  }
     
-    public void dibuja_dos(GraphicsContext gc ,ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+    public void dibuja_dos(GraphicsContext gc ,ArrayList<String> operacion, Color myColorNumbers, double sizeFactor,int contD){
         
         gc.setStroke(myColorNumbers);
+      if(contD==0){  
       if(operacion.isEmpty()){ 
           gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);
           gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
@@ -58,27 +70,40 @@ public class Dibuja {
           gc.strokeLine(mx +10*sizeFactor,30*sizeFactor,mx +20*sizeFactor,30*sizeFactor);
           mx = (int) (mx + 15*sizeFactor);
        }
-       else if("/".equals(operacion.get(operacion.size()-1))){
-          gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +35*sizeFactor,85*sizeFactor);
-          gc.strokeLine(mx +35*sizeFactor,85*sizeFactor,mx +35*sizeFactor,110*sizeFactor);
-          gc.strokeLine(mx +10*sizeFactor,110*sizeFactor,mx +35*sizeFactor,110*sizeFactor); //horizontal media
-          gc.strokeLine(mx +10*sizeFactor,110*sizeFactor,mx +10*sizeFactor,135*sizeFactor);
-          gc.strokeLine(mx +10*sizeFactor,135*sizeFactor,mx +35*sizeFactor,135*sizeFactor);
-          mx = (int) (mx + 35*sizeFactor);}
-      
+  
       else if(!"/".equals(operacion.get(operacion.size()-1))){
           gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);
           gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
           gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor); //horizontal media
           gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +10*sizeFactor,75*sizeFactor);
           gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
-          mx = (int) (mx + 35*sizeFactor);}
-      
+          mx = (int) (mx + 35*sizeFactor);}}
+       else{
+       if(contD==1){
+       gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);
+       gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
+       gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor); //horizontal media
+       gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +10*sizeFactor,75*sizeFactor);
+       gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
+       gc.strokeLine(mx + 0*sizeFactor,80*sizeFactor,mx +50*sizeFactor,80*sizeFactor);
+       auxmx -=35;
+       mx = (int) (mx + 35*sizeFactor);}
+       else if(contD==2){
+        gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +35*sizeFactor,85*sizeFactor);
+        gc.strokeLine(mx +35*sizeFactor,85*sizeFactor,mx +35*sizeFactor,110*sizeFactor);
+        gc.strokeLine(mx +10*sizeFactor,110*sizeFactor,mx +35*sizeFactor,110*sizeFactor); //horizontal media
+        gc.strokeLine(mx +10*sizeFactor,110*sizeFactor,mx +10*sizeFactor,135*sizeFactor);
+        gc.strokeLine(mx +10*sizeFactor,135*sizeFactor,mx +35*sizeFactor,135*sizeFactor);
+        mx = (int) (mx + 35*sizeFactor);
+       }
+       
+       }
     }
     
-        public void dibuja_tres(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+        public void dibuja_tres(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor,int contD){
 
             gc.setStroke(myColorNumbers);
+        if(contD==0){  
         if(operacion.isEmpty()){
           gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);
           gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
@@ -98,18 +123,29 @@ public class Dibuja {
           gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
           gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
           gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
+          mx = (int) (mx + 35*sizeFactor);}}
+        else{
+        if(contD==1){
+          gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);
+          gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
+          gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
+          gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
+          gc.strokeLine(mx + 0*sizeFactor,80*sizeFactor,mx +50*sizeFactor,80*sizeFactor);
+          auxmx -=35;
           mx = (int) (mx + 35*sizeFactor);}
-        else if("/".equals(operacion.get(operacion.size()-1))){
+          else if(contD==2){
           gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +35*sizeFactor,85*sizeFactor);
           gc.strokeLine(mx +35*sizeFactor,85*sizeFactor,mx +35*sizeFactor,135*sizeFactor);
           gc.strokeLine(mx +10*sizeFactor,110*sizeFactor,mx +35*sizeFactor,110*sizeFactor);
           gc.strokeLine(mx +10*sizeFactor,135*sizeFactor,mx +35*sizeFactor,135*sizeFactor);
           mx = (int) (mx + 35*sizeFactor);}
+        }
     }
       
-          public void dibuja_cuatro(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+          public void dibuja_cuatro(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor,int contD){
 
               gc.setStroke(myColorNumbers);
+        if(contD==0){
         if(operacion.isEmpty()){
          gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
          gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
@@ -125,17 +161,28 @@ public class Dibuja {
          gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
          gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
          gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,50*sizeFactor);
+         mx = (int) (mx + 35*sizeFactor);}}
+        else{
+        if(contD==1){
+         gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
+         gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
+         gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,50*sizeFactor);
+         gc.strokeLine(mx + 0*sizeFactor,80*sizeFactor,mx +50*sizeFactor,80*sizeFactor);
+         auxmx -=35;
          mx = (int) (mx + 35*sizeFactor);}
-        else if("/".equals(operacion.get(operacion.size()-1))){
-         gc.strokeLine(mx +35*sizeFactor,85*sizeFactor,mx +35*sizeFactor,135*sizeFactor);
-         gc.strokeLine(mx +10*sizeFactor,110*sizeFactor,mx +35*sizeFactor,110*sizeFactor);
-         gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +10*sizeFactor,110*sizeFactor);
-         mx = (int) (mx + 35*sizeFactor);}
+        if(contD==2){
+        gc.strokeLine(mx +35*sizeFactor,85*sizeFactor,mx +35*sizeFactor,135*sizeFactor);
+        gc.strokeLine(mx +10*sizeFactor,110*sizeFactor,mx +35*sizeFactor,110*sizeFactor);
+        gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +10*sizeFactor,110*sizeFactor);
+        mx = (int) (mx + 35*sizeFactor);}
+        
+        }
     }
           
-    public void dibuja_cinco(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+    public void dibuja_cinco(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor,int contD){
 
             gc.setStroke(myColorNumbers);
+        if(contD==0){
         if(operacion.isEmpty()){
          gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);
          gc.strokeLine(mx +35*sizeFactor,50*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
@@ -156,19 +203,33 @@ public class Dibuja {
          gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
          gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,50*sizeFactor);
          gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
+         mx = (int) (mx + 35*sizeFactor);}}
+        else{
+        if(contD==1){
+         gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);
+         gc.strokeLine(mx +35*sizeFactor,50*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
+         gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
+         gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,50*sizeFactor);
+         gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
+         gc.strokeLine(mx + 0*sizeFactor,80*sizeFactor,mx +50*sizeFactor,80*sizeFactor);
+         auxmx -=35;
          mx = (int) (mx + 35*sizeFactor);}
-        else if("/".equals(operacion.get(operacion.size()-1))){
+        else if(contD==2){
          gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +35*sizeFactor*sizeFactor,85*sizeFactor);
          gc.strokeLine(mx +35*sizeFactor,110*sizeFactor,mx +35*sizeFactor,135*sizeFactor);
          gc.strokeLine(mx +10*sizeFactor,110*sizeFactor,mx +35*sizeFactor,110*sizeFactor);
          gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +10*sizeFactor,110*sizeFactor);
          gc.strokeLine(mx +10*sizeFactor,135*sizeFactor,mx +35*sizeFactor,135*sizeFactor);
-         mx = (int) (mx + 35*sizeFactor);}
+         mx = (int) (mx + 35*sizeFactor);
+        }
+        
+        }
     }
     
-        public void dibuja_seis(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+        public void dibuja_seis(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor,int contD){
 
             gc.setStroke(myColorNumbers);
+       if(contD==0){
        if(operacion.isEmpty()){
         gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);   //arriba
         gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //abajo
@@ -190,19 +251,33 @@ public class Dibuja {
         gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,75*sizeFactor);   //izquierda
         gc.strokeLine(mx +35*sizeFactor,50*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha abajo
         gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
+        mx = (int) (mx + 35*sizeFactor);}}
+       else{
+       if(contD==1){
+        gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);   //arriba
+        gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //abajo
+        gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,75*sizeFactor);   //izquierda
+        gc.strokeLine(mx +35*sizeFactor,50*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha abajo
+        gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
+        gc.strokeLine(mx + 0*sizeFactor,80*sizeFactor,mx +50*sizeFactor,80*sizeFactor);
+        auxmx -=35;
         mx = (int) (mx + 35*sizeFactor);}
-       else if("/".equals(operacion.get(operacion.size()-1))){
-        gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +35*sizeFactor,85*sizeFactor);   //arriba
-        gc.strokeLine(mx +10*sizeFactor,135*sizeFactor,mx +35*sizeFactor,135*sizeFactor);   //abajo
-        gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +10*sizeFactor,135*sizeFactor);   //izquierda
-        gc.strokeLine(mx +35*sizeFactor,110*sizeFactor,mx +35*sizeFactor,135*sizeFactor);   //derecha abajo
+       if(contD==2){
+        gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +35*sizeFactor,85*sizeFactor);//arriba
+        gc.strokeLine(mx +10*sizeFactor,135*sizeFactor,mx +35*sizeFactor,135*sizeFactor);//abajo
+        gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +10*sizeFactor,135*sizeFactor); //izquierda
+        gc.strokeLine(mx +35*sizeFactor,110*sizeFactor,mx +35*sizeFactor,135*sizeFactor);//derecha abajo
         gc.strokeLine(mx +10*sizeFactor,110*sizeFactor,mx +35*sizeFactor,110*sizeFactor);
-        mx = (int) (mx + 35*sizeFactor);}
+        mx = (int) (mx + 35*sizeFactor);
+       }
+       
+       }
     }
         
-        public void dibuja_siete(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+        public void dibuja_siete(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor,int contD){
 
             gc.setStroke(myColorNumbers);
+      if(contD==0){
       if(operacion.isEmpty()){
        gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);   //arriba
        gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,50*sizeFactor);   //izquierda arriba
@@ -217,16 +292,29 @@ public class Dibuja {
        gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);   //arriba
        gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,50*sizeFactor);   //izquierda arriba
        gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha
-       mx = (int) (mx + 35*sizeFactor);;}
-      else if("/".equals(operacion.get(operacion.size()-1))){
+       mx = (int) (mx + 35*sizeFactor);}
+    }
+      else{
+      if(contD==1){
+       gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);   //arriba
+       gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,50*sizeFactor);   //izquierda arriba
+       gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha
+       gc.strokeLine(mx + 0*sizeFactor,80*sizeFactor,mx +50*sizeFactor,80*sizeFactor);
+       auxmx -=35;
+       mx = (int) (mx + 35*sizeFactor);}
+      if(contD==2){
        gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +35*sizeFactor,85*sizeFactor);   //arriba
        gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +10*sizeFactor,110*sizeFactor);   //izquierda arriba
        gc.strokeLine(mx +35*sizeFactor,85*sizeFactor,mx +35*sizeFactor,135*sizeFactor);   //derecha
        mx = (int) (mx + 35*sizeFactor);}
-    }
+      }
         
-       public void dibuja_ocho(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+        
+        }
+        
+       public void dibuja_ocho(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor,int contD){
            gc.setStroke(myColorNumbers);
+      if(contD==0){
       if(operacion.isEmpty()){
        gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);   //arriba
        gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //abajo
@@ -247,19 +335,31 @@ public class Dibuja {
        gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,75*sizeFactor);   //izquierda
        gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha
        gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);   //horizontal media
-       mx = (int) (mx + 35*sizeFactor);;}
-      else if("/".equals(operacion.get(operacion.size()-1))){
+       mx = (int) (mx + 35*sizeFactor);}}
+      else{
+      if(contD==1){
+       gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);   //arriba
+       gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //abajo
+       gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,75*sizeFactor);   //izquierda
+       gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha
+       gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);   //horizontal media
+       gc.strokeLine(mx + 0*sizeFactor,80*sizeFactor,mx +50*sizeFactor,80*sizeFactor);
+       auxmx -=35;
+       mx = (int) (mx + 35*sizeFactor);}
+      if(contD==2){
         gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +35*sizeFactor,85*sizeFactor);   //arriba
         gc.strokeLine(mx +10*sizeFactor,135*sizeFactor,mx +35*sizeFactor,135*sizeFactor);   //abajo
         gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +10*sizeFactor,135*sizeFactor);   //izquierda
         gc.strokeLine(mx +35*sizeFactor,85*sizeFactor,mx +35*sizeFactor,135*sizeFactor);   //derecha
         gc.strokeLine(mx +10*sizeFactor,110*sizeFactor,mx +35*sizeFactor,110*sizeFactor);   //horizontal media
         mx = (int) (mx + 35*sizeFactor);}
+      }
     }  
        
-       public void dibuja_nueve(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+       public void dibuja_nueve(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor,int contD){
 
            gc.setStroke(myColorNumbers);
+      if(contD==0){
       if(operacion.isEmpty()){
        gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);   //arriba
        gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //abajo
@@ -280,19 +380,30 @@ public class Dibuja {
        gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,50*sizeFactor);   //izquierda arriba
        gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha
        gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);   //horizontal media
+       mx = (int) (mx + 35*sizeFactor);}}
+      else{
+      if(contD==1){
+       gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);   //arriba
+       gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //abajo
+       gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,50*sizeFactor);   //izquierda arriba
+       gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha
+       gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);   //horizontal media
+       gc.strokeLine(mx + 0*sizeFactor,80*sizeFactor,mx +50*sizeFactor,80*sizeFactor);
+       auxmx -=35;
        mx = (int) (mx + 35*sizeFactor);}
-      else if("/".equals(operacion.get(operacion.size()-1))){
+      if(contD==2){
        gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +35*sizeFactor,85*sizeFactor);   //arriba
        gc.strokeLine(mx +10*sizeFactor,135*sizeFactor,mx +35*sizeFactor,135*sizeFactor);   //abajo
        gc.strokeLine(mx +10*sizeFactor,85*sizeFactor,mx +10*sizeFactor,110*sizeFactor);   //izquierda arriba
        gc.strokeLine(mx +35*sizeFactor,85*sizeFactor,mx +35*sizeFactor,135*sizeFactor);   //derecha
        gc.strokeLine(mx +10*sizeFactor,110*sizeFactor,mx +35*sizeFactor,110*sizeFactor);   //horizontal media
-       mx = (int) (mx + 35*sizeFactor);}
+       mx = (int) (mx + 35*sizeFactor);}}
     }  
        
-       public void dibuja_cero(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+       public void dibuja_cero(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor,int contD){
 
            gc.setStroke(myColorNumbers);
+      if(contD==0){
       if(operacion.isEmpty()){
        gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);   //arriba
        gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor*sizeFactor,75*sizeFactor);   //abajo
@@ -300,7 +411,7 @@ public class Dibuja {
        gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha
        mx = (int) (mx + 35*sizeFactor);}
       else if("^".equals(operacion.get(operacion.size()-1))){
-      gc.strokeLine(mx +10*sizeFactor,30*sizeFactor,mx +20*sizeFactor,30*sizeFactor);   
+      gc.strokeLine(mx +10*sizeFactor,30*sizeFactor,mx +20*sizeFactor,30*sizeFactor);
       gc.strokeLine(mx +20*sizeFactor,30*sizeFactor,mx +20*sizeFactor,10*sizeFactor);
       gc.strokeLine(mx +20*sizeFactor,10*sizeFactor,mx +10*sizeFactor,10*sizeFactor);
       gc.strokeLine(mx +10*sizeFactor,10*sizeFactor,mx +10*sizeFactor,30*sizeFactor);
@@ -317,7 +428,21 @@ public class Dibuja {
        gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,50*sizeFactor);   //izquierda arriba
        gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha
        gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);   //horizontal media
+       mx = (int) (mx + 35*sizeFactor);}}
+      else{
+      if(contD==1){
+       gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);   //arriba
+       gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor*sizeFactor,75*sizeFactor);   //abajo
+       gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,75*sizeFactor);   //izquierda
+       gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha
        mx = (int) (mx + 35*sizeFactor);}
+      if(contD==2){
+       gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);   //arriba
+       gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //abajo
+       gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,50*sizeFactor);   //izquierda arriba
+       gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha
+       gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);   //horizontal media
+       mx = (int) (mx + 35*sizeFactor);}}
     }  
        
        public void dibuja_mas(GraphicsContext gc, ArrayList<String> operacion, Color myColorOperators, double sizeFactor){
@@ -368,5 +493,13 @@ public class Dibuja {
         public void limpiar(){
          mx = 0;
     }
-     
+        public int getmx (){
+        return mx;
+}
+        public int getauxmx (){
+        return auxmx;
+}
+        public void setAtributo (int mx){
+        this.mx = mx;
+}   
 }

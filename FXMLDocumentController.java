@@ -56,6 +56,7 @@ public class FXMLDocumentController implements Initializable {
     Color myColorNumbers=BLACK, myColorOperators=BLACK;
     int cont = 0;
     double sizeFactor = 1;
+    int contD=0;
         
     ArrayList<String> operacion = new ArrayList<String>();
     @FXML
@@ -79,14 +80,14 @@ public class FXMLDocumentController implements Initializable {
       public void changeColorNumbers(){
     myColorNumbers = myColorPickerNumbers.getValue();
     gc.clearRect(0, 0, 1000, 1000);
-    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
+    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor,contD);
   }
 
     @FXML
   public void changeColorOperators(){
     myColorOperators = myColorPickerOperators.getValue();
     gc.clearRect(0, 0, 1000, 1000);
-    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
+    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor,contD);
   }
     
     
@@ -131,7 +132,7 @@ public class FXMLDocumentController implements Initializable {
     public void accion0(ActionEvent event) {//listo  
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_cero(gc,operacion,myColorNumbers,sizeFactor);
+      dibuja.dibuja_cero(gc,operacion,myColorNumbers,sizeFactor,contD);
       operacion.add("0");}  
     
     @FXML
@@ -139,42 +140,42 @@ public class FXMLDocumentController implements Initializable {
       
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_uno(gc ,operacion,myColorNumbers,sizeFactor);
+      dibuja.dibuja_uno(gc ,operacion,myColorNumbers,sizeFactor,contD);
       operacion.add("1");}
     
     @FXML
     public void accion2(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_dos(gc ,operacion,myColorNumbers,sizeFactor);
+      dibuja.dibuja_dos(gc ,operacion,myColorNumbers,sizeFactor,contD);
       operacion.add("2");}
 
     @FXML
     public void accion3(ActionEvent event) {  
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_tres(gc,operacion,myColorNumbers,sizeFactor);
+      dibuja.dibuja_tres(gc,operacion,myColorNumbers,sizeFactor,contD);
       operacion.add("3");}
     
     @FXML
     public void accion4(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_cuatro(gc,operacion,myColorNumbers,sizeFactor);
+      dibuja.dibuja_cuatro(gc,operacion,myColorNumbers,sizeFactor,contD);
       operacion.add("4");}
     
     @FXML
     public void accion5(ActionEvent event) {       
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_cinco(gc,operacion,myColorNumbers,sizeFactor);
+      dibuja.dibuja_cinco(gc,operacion,myColorNumbers,sizeFactor,contD);
       operacion.add("5");}
     
     @FXML
     public void accion6(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_seis(gc,operacion,myColorNumbers,sizeFactor);
+      dibuja.dibuja_seis(gc,operacion,myColorNumbers,sizeFactor,contD);
       operacion.add("6");
       }
       
@@ -182,7 +183,7 @@ public class FXMLDocumentController implements Initializable {
     public void accion7(ActionEvent event) {    
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_siete(gc,operacion,myColorNumbers,sizeFactor);
+      dibuja.dibuja_siete(gc,operacion,myColorNumbers,sizeFactor,contD);
       operacion.add("7"); 
       }
   
@@ -190,7 +191,7 @@ public class FXMLDocumentController implements Initializable {
     public void accion8(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_ocho(gc,operacion,myColorNumbers,sizeFactor);
+      dibuja.dibuja_ocho(gc,operacion,myColorNumbers,sizeFactor,contD);
       operacion.add("8");  }
       
     
@@ -199,7 +200,7 @@ public class FXMLDocumentController implements Initializable {
          
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_nueve(gc,operacion,myColorNumbers,sizeFactor);
+      dibuja.dibuja_nueve(gc,operacion,myColorNumbers,sizeFactor,contD);
       operacion.add("9"); }
     
     
@@ -244,26 +245,27 @@ public class FXMLDocumentController implements Initializable {
     //nuevo
      @FXML
     private void accion_dividir(ActionEvent event) {
-        if(operacion.isEmpty() || "/".equals(operacion.get(operacion.size()-1))){}
-        
-        else{
-        
-        if(!"1".equals(operacion.get(operacion.size()-1))){
-         gc = texthere.getGraphicsContext2D();
-         gc.setStroke(myColorOperators);
-         dibuja.dibuja_dividir(gc,operacion, myColorOperators,sizeFactor);
-         operacion.add("/");}
-        
-        
-        if("1".equals(operacion.get(operacion.size()-1))){
-         gc = texthere.getGraphicsContext2D();
-         gc.setStroke(myColorOperators);
-         dibuja.dibuja_dividir1(gc, myColorOperators,sizeFactor);
-         operacion.add("/");}
+        for(int i=0;i<3;i++){
+        if(contD==0){
+        contD=1;
+        System.out.println(contD);
+        break;
         }
-        
-        
-    }
+        if(contD==1){
+        contD=2; 
+        System.out.println(contD);
+        int mx =dibuja.getmx();
+        int auxmx=dibuja.getauxmx();
+        mx=mx+auxmx;
+        dibuja.setAtributo(mx);
+        break;
+        } 
+        if(contD==2){
+        contD=0;
+        System.out.println(contD);
+        break;
+        }
+    }}
     
     @FXML
     private void accion_potencia(ActionEvent event) {
@@ -347,7 +349,7 @@ public class FXMLDocumentController implements Initializable {
         else{
         gc.clearRect(0, 0, 1000, 1000);
         
-        hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
+        hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor,contD);
         
         cont = 0;
         
@@ -364,7 +366,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void updateSize(MouseEvent event) {
     gc.clearRect(0, 0, 1000, 1000);
-    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
+    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor,contD);
     sizeFactor = mySizeOfExpressions.getValue();    
     }
     
