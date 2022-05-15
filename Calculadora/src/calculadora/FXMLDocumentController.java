@@ -32,6 +32,7 @@ public class FXMLDocumentController<myColorPickerOperators> implements Initializ
   ArrayList<String> operacion = new ArrayList<>();
   Dibuja dibuja = new Dibuja();
   Cordenadas cordenadas = new Cordenadas();
+  int contadorParentesis=0;
   
   
   
@@ -199,13 +200,17 @@ public class FXMLDocumentController<myColorPickerOperators> implements Initializ
     aux = 0;
     dibuja.dibuja_parentesisI(gc, myColorOperators);
     operacion.add("(");
+    contadorParentesis++;
   }
 
   @FXML
   public void accion_parentesisDerecho(ActionEvent event) {
     aux = 0;
-    dibuja.dibuja_parentesisD(gc, myColorOperators);
-    operacion.add(")");
+    if(contadorParentesis!=0){
+      dibuja.dibuja_parentesisD(gc, myColorOperators);
+      operacion.add(")");
+      contadorParentesis--;
+    }
   }
 @FXML
   private void accion_limpiar(ActionEvent event) {
@@ -284,7 +289,7 @@ public class FXMLDocumentController<myColorPickerOperators> implements Initializ
             cordenadas.puntos(")");
           }
           if("(".equals(operacion.get(i))){
-            cordenadas.puntos("(");           
+            cordenadas.puntos("(");          
           }
       }
       gc.setLineWidth(1);
