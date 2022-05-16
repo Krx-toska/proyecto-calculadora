@@ -16,7 +16,6 @@ import javafx.stage.Stage;
  * @author krox2
  */
 public class Calculadora extends Application {
-    
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
