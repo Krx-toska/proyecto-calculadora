@@ -40,6 +40,7 @@ public class FXMLDocumentController implements Initializable {
 
   Image myImage = new Image(getClass().getResourceAsStream("helloKitty.jpg"));
 
+  
   ArrayList<String> operacion = new ArrayList<>();
   Cordenadas cordenadas = new Cordenadas();
   Redibujar hola = new Redibujar();
