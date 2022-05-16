@@ -34,7 +34,6 @@ public class FXMLDocumentController implements Initializable {
   private Slider mySizeOfExpressions;
 
   ArrayList<String> operacion = new ArrayList<>();
-  //Dibuja dibuja = new Dibuja();
   Cordenadas cordenadas = new Cordenadas();
   Redibujar hola = new Redibujar();
   
@@ -42,6 +41,7 @@ public class FXMLDocumentController implements Initializable {
   Color myColorNumbers=BLACK, myColorOperators=BLACK;
   int cont = 0, contadorParentesis = 0;
   double sizeFactor = 1;
+  String textBoxInfo;
   String[] numeros = {"0","1","2","3","4","5","6","7","8","9"};
   String[] operadores = {"+","-","x","/","^","(",")"};
 
@@ -70,60 +70,70 @@ public class FXMLDocumentController implements Initializable {
       Dibuja.dibuja_cero(gc,operacion,myColorNumbers,sizeFactor);
       operacion.add("0");
     }
+    updateText();
   }  
   
   @FXML
   public void accion1(ActionEvent event) {//listo
     Dibuja.dibuja_uno(gc ,operacion,myColorNumbers,sizeFactor);
     operacion.add("1");
+    updateText();
   }
     
   @FXML
   public void accion2(ActionEvent event) {
     Dibuja.dibuja_dos(gc ,operacion,myColorNumbers,sizeFactor);
     operacion.add("2");
+    updateText();
   }
 
   @FXML
   public void accion3(ActionEvent event) {
     Dibuja.dibuja_tres(gc,operacion,myColorNumbers,sizeFactor);
     operacion.add("3");
+    updateText();
   }
   
   @FXML
   public void accion4(ActionEvent event) {
     Dibuja.dibuja_cuatro(gc,operacion,myColorNumbers,sizeFactor);
     operacion.add("4");
+    updateText();
   }
   
   @FXML
   public void accion5(ActionEvent event) {
     Dibuja.dibuja_cinco(gc,operacion,myColorNumbers,sizeFactor);
     operacion.add("5");
+    updateText();
   }
     
   @FXML
   public void accion6(ActionEvent event) {
     Dibuja.dibuja_seis(gc,operacion,myColorNumbers,sizeFactor);
     operacion.add("6");
+    updateText();
   }
       
   @FXML
   public void accion7(ActionEvent event) { 
     Dibuja.dibuja_siete(gc,operacion,myColorNumbers,sizeFactor);
     operacion.add("7"); 
+    updateText();
   }
 
   @FXML
   public void accion8(ActionEvent event) {
     Dibuja.dibuja_ocho(gc,operacion,myColorNumbers,sizeFactor);
-    operacion.add("8");  
+    operacion.add("8"); 
+    updateText(); 
   }
     
   @FXML
   public void accion9(ActionEvent event) {
     Dibuja.dibuja_nueve(gc,operacion,myColorNumbers,sizeFactor);
     operacion.add("9"); 
+    updateText();
   }  
 
   @FXML
@@ -132,6 +142,7 @@ public class FXMLDocumentController implements Initializable {
       Dibuja.dibuja_mas(gc,operacion,myColorOperators,sizeFactor);
       operacion.add("+");
     }
+    updateText();
   }
 
   @FXML
@@ -140,6 +151,7 @@ public class FXMLDocumentController implements Initializable {
       Dibuja.dibuja_menos(gc,operacion, myColorOperators,sizeFactor);
       operacion.add("-");
     }
+    updateText();
   }
 
   @FXML
@@ -148,6 +160,7 @@ public class FXMLDocumentController implements Initializable {
       Dibuja.dibuja_x(gc,operacion, myColorOperators,sizeFactor);
       operacion.add("x");
     }
+    updateText();
   }
 
   @FXML
@@ -157,6 +170,7 @@ public class FXMLDocumentController implements Initializable {
       operacion.add("(");
       contadorParentesis++;
     }
+    updateText();
   }
 
   @FXML
@@ -166,6 +180,7 @@ public class FXMLDocumentController implements Initializable {
       operacion.add(")");
       contadorParentesis--;
     }
+    updateText();
   }
 
   @FXML
@@ -173,6 +188,7 @@ public class FXMLDocumentController implements Initializable {
     gc.clearRect(0, 0, 1000, 1000);
     Dibuja.limpiaMx();
     operacion.clear();
+    updateText();
   }
   
   @FXML
@@ -184,11 +200,13 @@ public class FXMLDocumentController implements Initializable {
       Dibuja.dibuja_dividir1(gc, myColorOperators,sizeFactor);
       operacion.add("/");
     } 
+    updateText();
   }
     
   @FXML
   private void accion_potencia(ActionEvent event) {
     operacion.add("^");
+    updateText();
   }
     
   @FXML
@@ -264,6 +282,12 @@ public class FXMLDocumentController implements Initializable {
     sizeFactor = mySizeOfExpressions.getValue();    
     gc.clearRect(0, 0, 1000, 1000);
     hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
+  }
+
+  @FXML
+  void updateText() {
+    textBoxInfo = String.join("", operacion);
+    myText.setText(textBoxInfo);
   }
     
   private static boolean check(String[] arr, String toCheckValue){
