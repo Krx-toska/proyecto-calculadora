@@ -134,8 +134,13 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   public void accion8(ActionEvent event) {
     Dibuja.dibuja_ocho(gc,operacion,myColorNumbers,sizeFactor);
+<<<<<<< .merge_file_a04772
     operacion.add("8");  
     updateText();
+=======
+    operacion.add("8"); 
+    updateText(); 
+>>>>>>> .merge_file_a01036
   }
     
   @FXML
