@@ -15,12 +15,12 @@
    <children>
       <ImageView fitHeight="252.0" fitWidth="369.0" layoutX="358.0" layoutY="206.0" pickOnBounds="true">
          <image>
-            <Image url="@../../Imagenes/helloKitty.jpg" />
+            <Image url="@helloKitty.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="252.0" fitWidth="369.0" layoutY="206.0" pickOnBounds="true">
+      <ImageView fx:id="myImageView" fitHeight="252.0" fitWidth="369.0" layoutY="206.0" pickOnBounds="true">
          <image>
-            <Image url="@../../Imagenes/helloKitty.jpg" />
+            <Image url="@helloKitty.jpg" />
          </image>
       </ImageView>
       <Button fx:id="bttn_8" layoutX="115.0" layoutY="314.0" mnemonicParsing="false" onAction="#accion8" prefHeight="46.0" prefWidth="65.0" text="8">
