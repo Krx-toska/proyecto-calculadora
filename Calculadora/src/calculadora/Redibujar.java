@@ -14,7 +14,6 @@ import javafx.scene.paint.Color;
  * @author waki
  */
 public class Redibujar {
-    Dibuja dibuja = new Dibuja();
     ArrayList<String> auxlista = new ArrayList();
     public void redibujar(ArrayList<String> operacion,GraphicsContext gc,Color myColorOperators, Color myColorNumbers, double sizeFactor){
         Dibuja.limpiaMx();
