@@ -17,15 +17,21 @@ public class Redibujar {
     
     Dibuja dibuja = new Dibuja();
     ArrayList<String> auxlista = new ArrayList();
-   
+    ArrayList<String> auxlista2 = new ArrayList();
+ 
     
-    public void redibujar(ArrayList<String> operacion,GraphicsContext gc,Color myColorOperators, Color myColorNumbers, double sizeFactor,int contD){
+    public void redibujar(ArrayList<String> operacion,GraphicsContext gc,Color myColorOperators, Color myColorNumbers, double sizeFactor,int contD,ArrayList<String> auxlista2){
     dibuja.limpiar();
     auxlista.clear();
+    System.out.println(auxlista2);
+    String ax;
     int cont = 0;
-        
+         
      for(int i =0;i<operacion.size();i++){
+  
      auxlista.add(operacion.get(cont));
+     ax=auxlista2.get(cont);
+     contD = Integer.parseInt(ax);
      cont++;
     if ("1".equals(operacion.get(i)) ){
      dibuja.dibuja_uno(gc, auxlista,myColorNumbers,sizeFactor,contD);}
@@ -57,13 +63,10 @@ public class Redibujar {
      dibuja.dibuja_parentesisI(gc, operacion,myColorOperators,sizeFactor);}
     if (")".equals(operacion.get(i)) ){
      dibuja.dibuja_parentesisD(gc, operacion,myColorOperators,sizeFactor);}
-    if ("/".equals(operacion.get(i)) ){
-     cont--;
-     dibuja.dibuja_dividir(gc, auxlista,myColorOperators,sizeFactor);
-     cont=i;}
     if ("^".equals(operacion.get(i)) ){
      cont--;
      cont=i;}
+    System.out.println(contD);
      
  }
     

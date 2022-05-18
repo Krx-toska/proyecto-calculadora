@@ -80,14 +80,18 @@ public class FXMLDocumentController implements Initializable {
       public void changeColorNumbers(){
     myColorNumbers = myColorPickerNumbers.getValue();
     gc.clearRect(0, 0, 1000, 1000);
-    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor,contD);
+    ArrayList<String> bla =new ArrayList();
+    bla= dibuja.getauxlista();
+    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor,contD,bla);
   }
 
     @FXML
   public void changeColorOperators(){
     myColorOperators = myColorPickerOperators.getValue();
     gc.clearRect(0, 0, 1000, 1000);
-    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor,contD);
+    ArrayList<String> bla =new ArrayList();
+    bla= dibuja.getauxlista();
+    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor,contD,bla);
   }
     
     
@@ -248,21 +252,14 @@ public class FXMLDocumentController implements Initializable {
         for(int i=0;i<3;i++){
         if(contD==0){
         contD=1;
-        System.out.println(contD);
         break;
         }
         if(contD==1){
         contD=2; 
-        System.out.println(contD);
-        int mx =dibuja.getmx();
-        int auxmx=dibuja.getauxmx();
-        mx=mx+auxmx;
-        dibuja.setAtributo(mx);
         break;
         } 
         if(contD==2){
         contD=0;
-        System.out.println(contD);
         break;
         }
     }}
@@ -347,9 +344,11 @@ public class FXMLDocumentController implements Initializable {
            
         }
         else{
+        ArrayList<String> bla =new ArrayList();
+        bla= dibuja.getauxlista();
         gc.clearRect(0, 0, 1000, 1000);
         
-        hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor,contD);
+        hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor,contD,bla);
         
         cont = 0;
         
@@ -365,9 +364,11 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void updateSize(MouseEvent event) {
-    gc.clearRect(0, 0, 1000, 1000);
-    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor,contD);
+    ArrayList<String> bla =new ArrayList();
+    bla= dibuja.getauxlista();
     sizeFactor = mySizeOfExpressions.getValue();    
+    gc.clearRect(0, 0, 1000, 1000);
+    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor,contD,bla);
     }
     
     
