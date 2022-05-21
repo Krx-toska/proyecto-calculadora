@@ -34,25 +34,25 @@ public class Redibujar {
      contD = Integer.parseInt(ax);
      cont++;
     if ("1".equals(operacion.get(i)) ){
-     dibuja.dibuja_uno(gc, auxlista,myColorNumbers,sizeFactor,contD);}
+     dibuja.dibuja_uno(gc, auxlista,myColorNumbers,sizeFactor,contD,myColorOperators);}
     if ("2".equals(operacion.get(i)) ){
-     dibuja.dibuja_dos(gc, auxlista, myColorNumbers,sizeFactor,contD);}
+     dibuja.dibuja_dos(gc, auxlista, myColorNumbers,sizeFactor,contD,myColorOperators);}
     if ("3".equals(operacion.get(i)) ){
-     dibuja.dibuja_tres(gc, auxlista,myColorNumbers,sizeFactor,contD);}
+     dibuja.dibuja_tres(gc, auxlista,myColorNumbers,sizeFactor,contD,myColorOperators);}
     if ("4".equals(operacion.get(i)) ){
-     dibuja.dibuja_cuatro(gc, auxlista,myColorNumbers,sizeFactor,contD);}
+     dibuja.dibuja_cuatro(gc, auxlista,myColorNumbers,sizeFactor,contD,myColorOperators);}
     if ("5".equals(operacion.get(i)) ){
-     dibuja.dibuja_cinco(gc, auxlista,myColorNumbers,sizeFactor,contD);}
+     dibuja.dibuja_cinco(gc, auxlista,myColorNumbers,sizeFactor,contD,myColorOperators);}
     if ("6".equals(operacion.get(i)) ){
-     dibuja.dibuja_seis(gc, auxlista,myColorNumbers,sizeFactor,contD);}
+     dibuja.dibuja_seis(gc, auxlista,myColorNumbers,sizeFactor,contD,myColorOperators);}
     if ("7".equals(operacion.get(i)) ){
-     dibuja.dibuja_siete(gc, auxlista,myColorNumbers,sizeFactor,contD);}
+     dibuja.dibuja_siete(gc, auxlista,myColorNumbers,sizeFactor,contD,myColorOperators);}
     if ("8".equals(operacion.get(i)) ){
-     dibuja.dibuja_ocho(gc, auxlista,myColorNumbers,sizeFactor,contD);}
+     dibuja.dibuja_ocho(gc, auxlista,myColorNumbers,sizeFactor,contD,myColorOperators);}
     if ("9".equals(operacion.get(i)) ){
-     dibuja.dibuja_nueve(gc, auxlista,myColorNumbers,sizeFactor,contD);}
+     dibuja.dibuja_nueve(gc, auxlista,myColorNumbers,sizeFactor,contD,myColorOperators);}
     if ("0".equals(operacion.get(i)) ){
-     dibuja.dibuja_cero(gc, auxlista,myColorNumbers,sizeFactor,contD);}
+     dibuja.dibuja_cero(gc, auxlista,myColorNumbers,sizeFactor,contD,myColorOperators);}
     if ("+".equals(operacion.get(i)) ){
      dibuja.dibuja_mas(gc, operacion,myColorOperators,sizeFactor,contD);}
     if ("-".equals(operacion.get(i)) ){
@@ -65,9 +65,7 @@ public class Redibujar {
      dibuja.dibuja_parentesisD(gc, operacion,myColorOperators,sizeFactor);}
     if ("^".equals(operacion.get(i)) ){
      cont--;
-     cont=i;}
-    System.out.println(contD);
-     
+     cont=i;} 
  }
     
     

@@ -136,7 +136,7 @@ public class FXMLDocumentController implements Initializable {
     public void accion0(ActionEvent event) {//listo  
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_cero(gc,operacion,myColorNumbers,sizeFactor,contD);
+      dibuja.dibuja_cero(gc,operacion,myColorNumbers,sizeFactor,contD,myColorOperators);
       operacion.add("0");}  
     
     @FXML
@@ -144,42 +144,42 @@ public class FXMLDocumentController implements Initializable {
       
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_uno(gc ,operacion,myColorNumbers,sizeFactor,contD);
+      dibuja.dibuja_uno(gc ,operacion,myColorNumbers,sizeFactor,contD,myColorOperators);
       operacion.add("1");}
     
     @FXML
     public void accion2(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_dos(gc ,operacion,myColorNumbers,sizeFactor,contD);
+      dibuja.dibuja_dos(gc ,operacion,myColorNumbers,sizeFactor,contD,myColorOperators);
       operacion.add("2");}
 
     @FXML
     public void accion3(ActionEvent event) {  
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_tres(gc,operacion,myColorNumbers,sizeFactor,contD);
+      dibuja.dibuja_tres(gc,operacion,myColorNumbers,sizeFactor,contD,myColorOperators);
       operacion.add("3");}
     
     @FXML
     public void accion4(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_cuatro(gc,operacion,myColorNumbers,sizeFactor,contD);
+      dibuja.dibuja_cuatro(gc,operacion,myColorNumbers,sizeFactor,contD,myColorOperators);
       operacion.add("4");}
     
     @FXML
     public void accion5(ActionEvent event) {       
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_cinco(gc,operacion,myColorNumbers,sizeFactor,contD);
+      dibuja.dibuja_cinco(gc,operacion,myColorNumbers,sizeFactor,contD,myColorOperators);
       operacion.add("5");}
     
     @FXML
     public void accion6(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_seis(gc,operacion,myColorNumbers,sizeFactor,contD);
+      dibuja.dibuja_seis(gc,operacion,myColorNumbers,sizeFactor,contD,myColorOperators);
       operacion.add("6");
       }
       
@@ -187,7 +187,7 @@ public class FXMLDocumentController implements Initializable {
     public void accion7(ActionEvent event) {    
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_siete(gc,operacion,myColorNumbers,sizeFactor,contD);
+      dibuja.dibuja_siete(gc,operacion,myColorNumbers,sizeFactor,contD,myColorOperators);
       operacion.add("7"); 
       }
   
@@ -195,7 +195,7 @@ public class FXMLDocumentController implements Initializable {
     public void accion8(ActionEvent event) {
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_ocho(gc,operacion,myColorNumbers,sizeFactor,contD);
+      dibuja.dibuja_ocho(gc,operacion,myColorNumbers,sizeFactor,contD,myColorOperators);
       operacion.add("8");  }
       
     
@@ -204,7 +204,7 @@ public class FXMLDocumentController implements Initializable {
          
       gc = texthere.getGraphicsContext2D();
       gc.setStroke(myColorNumbers);
-      dibuja.dibuja_nueve(gc,operacion,myColorNumbers,sizeFactor,contD);
+      dibuja.dibuja_nueve(gc,operacion,myColorNumbers,sizeFactor,contD,myColorOperators);
       operacion.add("9"); }
     
     
