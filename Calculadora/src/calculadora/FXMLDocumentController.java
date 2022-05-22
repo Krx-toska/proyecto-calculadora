@@ -24,16 +24,19 @@ public class FXMLDocumentController implements Initializable {
   Button bttnMas, bttnMenos,  bttnX, bttnDividir, bttnParentesisDerecho, bttnParentesisIzquierdo;
   @FXML
   Button bttnClear, bttnCor;
-  private Button bbtn_f, bttn_sin,bttn_cos,bttn_tan;
+  @FXML
+  Button bttn_f, bttn_sin,bttn_cos,bttn_tan;
+  @FXML
+  Button bbtn_cambio;
   @FXML
   javafx.scene.canvas.Canvas texthere;
   @FXML
   ColorPicker myColorPickerNumbers, myColorPickerOperators;
   
   static GraphicsContext gc;
-  double mx = 0, aux = 0;
+  double aux = 0;
   Color myColorNumbers, myColorOperators;
-  int posicion = 0;
+  int posicion = 0,cambio = 0;
       
   ArrayList<String> operacion = new ArrayList<>();
   Dibuja dibuja = new Dibuja();
@@ -60,6 +63,24 @@ public class FXMLDocumentController implements Initializable {
       dibuja.dibuja_cero(gc,aux,myColorNumbers);
       operacion.add("0");
     }
+  }
+  @FXML
+  public void accion_cambio(ActionEvent event){
+      if(cambio == 0){
+      bttn_f.setVisible(false);
+      bttn_sin.setVisible(false);
+      bttn_cos.setVisible(false);
+      bttn_tan.setVisible(false);
+      cambio = 1;
+      }
+      else{
+       bttn_f.setVisible(true);
+      bttn_sin.setVisible(true);
+      bttn_cos.setVisible(true);
+      bttn_tan.setVisible(true); 
+      cambio = 0;
+      }
+      
   }
   
   @FXML
