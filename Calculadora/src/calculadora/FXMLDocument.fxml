@@ -109,12 +109,12 @@
       <Text layoutX="447.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colores Operadores" />
       <ColorPicker fx:id="myColorPickerNumbers" layoutX="431.0" layoutY="223.0" onAction="#changeColorNumbers" />
       <ColorPicker fx:id="myColorPickerOperators" layoutX="431.0" layoutY="278.0" onAction="#changeColorOperators" />
-      <Button fx:id="bttn_f" layoutX="348.0" layoutY="314.0" mnemonicParsing="false" onAction="#accion_factorial" prefHeight="46.0" prefWidth="65.0" text="!">
+      <Button id="bbtn_f" fx:id="bttn_f" layoutX="348.0" layoutY="314.0" mnemonicParsing="false" onAction="#accion_factorial" prefHeight="46.0" prefWidth="65.0" text="!">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="bttn_tan" layoutX="422.0" layoutY="370.0" mnemonicParsing="false" onAction="#accion_tangente" prefHeight="46.0" prefWidth="65.0" text="tan">
+      <Button fx:id="bttn_tan" layoutX="348.0" layoutY="370.0" mnemonicParsing="false" onAction="#accion_tangente" prefHeight="46.0" prefWidth="65.0" text="tan">
          <font>
             <Font size="20.0" />
          </font>
@@ -129,5 +129,6 @@
             <Font size="20.0" />
          </font>
       </Button>
+      <Button fx:id="bttn_Cambio" layoutX="421.0" layoutY="370.0" mnemonicParsing="false" onAction="#accion_cambio" prefHeight="46.0" prefWidth="147.0" text="Cambio" />
    </children>
 </AnchorPane>
