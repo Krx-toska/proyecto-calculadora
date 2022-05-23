@@ -59,6 +59,14 @@ public class Redibujar {
             if ("^".equals(operacion.get(i)) ){
                 cont--;
                 cont=i;}
+            if ("sin".equals(operacion.get(i)) ){
+                Dibuja.dibuja_seno(gc, myColorOperators,sizeFactor);}
+            if ("cos".equals(operacion.get(i)) ){
+                Dibuja.dibuja_coseno(gc, myColorOperators,sizeFactor);}   
+            if ("tan".equals(operacion.get(i)) ){
+                Dibuja.dibuja_tangente(gc, myColorOperators,sizeFactor);} 
+            if ("!".equals(operacion.get(i)) ){
+                Dibuja.dibuja_factorial(gc, myColorOperators, sizeFactor);} 
         }
     }
 }

@@ -130,7 +130,32 @@
       <ColorPicker fx:id="myColorPickerNumbers" layoutX="431.0" layoutY="223.0" onAction="#changeColorNumbers" />
       <ColorPicker fx:id="myColorPickerOperators" layoutX="431.0" layoutY="278.0" onAction="#changeColorOperators" />
       <Slider fx:id="mySizeOfExpressions" blockIncrement="0.2" layoutX="13.0" layoutY="34.0" majorTickUnit="1.0" max="2.0" onMouseReleased="#updateSize" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
-      <Button fx:id="bbtn_potencia" layoutX="348.0" layoutY="314.0" mnemonicParsing="false" onAction="#accion_potencia" prefHeight="46.0" prefWidth="65.0" text="^">
+      <Button fx:id="bttn_cambio" layoutX="348.0" layoutY="371.0" mnemonicParsing="false" onAction="#accion_cambio" prefHeight="46.0" prefWidth="65.0" text="Cambio">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="bttn_f" layoutX="431.0" layoutY="314.0" mnemonicParsing="false" onAction="#accion_factorial" prefHeight="46.0" prefWidth="65.0" text="!">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="bttn_cos" layoutX="431.0" layoutY="371.0" mnemonicParsing="false" onAction="#accion_coseno" prefHeight="46.0" prefWidth="65.0" text="Cos()">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="bttn_sin" layoutX="510.0" layoutY="371.0" mnemonicParsing="false" onAction="#accion_seno" prefHeight="46.0" prefWidth="65.0" text="Sin()">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="bttn_tan" layoutX="510.0" layoutY="314.0" mnemonicParsing="false" onAction="#accion_tangente" prefHeight="46.0" prefWidth="65.0" text="Tan()">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="bttn_potencia" layoutX="348.0" layoutY="314.0" mnemonicParsing="false" onAction="#accion_potencia" prefHeight="46.0" prefWidth="65.0" text="^">
          <font>
             <Font size="20.0" />
          </font>

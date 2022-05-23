@@ -26,7 +26,7 @@ import javafx.scene.text.Text;
  */
 public class FXMLDocumentController implements Initializable {     
   @FXML
-  private Button bttn_mas, bttn_menos, bttn_0, bttn_1, bttn_2, bttn_3, bttn_4, bttn_5, bttn_6, bttn_7,bttn_8, bttn_9, bttn_clear, bttn_dividir, bttn_x, bttn_parentesisDerecho, bttn_parentesisIzquierdo, bttn_cor, bttn_potencia;
+  private Button bttn_mas, bttn_menos, bttn_0, bttn_1, bttn_2, bttn_3, bttn_4, bttn_5, bttn_6, bttn_7,bttn_8, bttn_9, bttn_clear, bttn_dividir, bttn_x, bttn_parentesisDerecho, bttn_parentesisIzquierdo, bttn_cor, bttn_potencia, bttn_cambio, bttn_f, bttn_sin, bttn_cos, bttn_tan;
   @FXML
   private javafx.scene.canvas.Canvas texthere;
   @FXML
@@ -47,7 +47,7 @@ public class FXMLDocumentController implements Initializable {
   
   static GraphicsContext gc, gcaux;
   Color myColorNumbers=BLACK, myColorOperators=BLACK;
-  int cont = 0, contadorParentesis = 0;
+  int cont = 0, contadorParentesis = 0, cambio = 0;
   double sizeFactor = 1;
   String textBoxInfo;
   String[] numeros = {"0","1","2","3","4","5","6","7","8","9"};
@@ -218,6 +218,49 @@ public class FXMLDocumentController implements Initializable {
     operacion.add("^");
     updateText();
   }
+
+  @FXML
+  public void accion_factorial(ActionEvent event){
+    Dibuja.dibuja_factorial(gc, myColorOperators, sizeFactor);
+    operacion.add("!");
+  }
+
+  @FXML
+  public void accion_seno(ActionEvent event){
+    Dibuja.dibuja_seno(gc, myColorOperators, sizeFactor);
+    operacion.add("sin");
+  }
+
+  @FXML
+  public void accion_coseno(ActionEvent event){
+    Dibuja.dibuja_coseno(gc, myColorOperators, sizeFactor);
+    operacion.add("cos");
+  }
+
+  @FXML
+  public void accion_tangente(ActionEvent event){
+    Dibuja.dibuja_tangente(gc, myColorOperators, sizeFactor);
+    operacion.add("tan");
+  }
+
+  @FXML
+  public void accion_cambio(ActionEvent event){
+    if(cambio == 0){
+      bttn_potencia.setVisible(false);
+      bttn_f.setVisible(false);
+      bttn_sin.setVisible(false);
+      bttn_cos.setVisible(false);
+      bttn_tan.setVisible(false);
+      cambio = 1;
+    }else{
+      bttn_potencia.setVisible(true);
+      bttn_f.setVisible(true);
+      bttn_sin.setVisible(true);
+      bttn_cos.setVisible(true);
+      bttn_tan.setVisible(true); 
+      cambio = 0;
+    }
+  }
     
   @FXML
   public void accion_cordenadas(ActionEvent event){
@@ -271,6 +314,18 @@ public class FXMLDocumentController implements Initializable {
         }
         if("(".equals(operacion.get(i))){
           cordenadas.puntos("(", sizeFactor);
+        }
+        if("sin".equals(operacion.get(i))){
+          cordenadas.puntos("sin", sizeFactor);
+        }
+        if("cos".equals(operacion.get(i))){
+          cordenadas.puntos("cos", sizeFactor);
+        }
+        if("tan".equals(operacion.get(i))){
+          cordenadas.puntos("tan", sizeFactor);
+        }
+        if("!".equals(operacion.get(i))){
+          cordenadas.puntos("!", sizeFactor);
         }
       }   
     }else{

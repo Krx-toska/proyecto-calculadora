@@ -1,6 +1,8 @@
 package calculadora;
 
 import static calculadora.FXMLDocumentController.gc;
+
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 /**
@@ -9,6 +11,7 @@ import javafx.scene.paint.Color;
  */
 public class Cordenadas {
     double amx = 0;
+    
     public void puntos(String numero, double sizeFactor){
         gc.setLineWidth(4);
         gc.setStroke(Color.BLUEVIOLET);
@@ -130,9 +133,80 @@ public class Cordenadas {
             gc.strokeLine(amx + 25*sizeFactor,75*sizeFactor,amx + 25*sizeFactor,75*sizeFactor);
             amx = amx + 25*sizeFactor;
         }
+        if("sin".equals(numero)){
+            punto_s(gc, sizeFactor);
+            punto_i(gc, sizeFactor);
+            punto_con(gc, sizeFactor);
+            amx = amx + 35*sizeFactor;                
+             
+        }
+         if("cos".equals(numero)){
+            punto_con(gc, sizeFactor);
+            punto_con(gc, sizeFactor);
+            punto_s(gc, sizeFactor);
+            amx = amx + 35*sizeFactor;                
+             
+         }
+         if("tan".equals(numero)){
+            punto_t(gc, sizeFactor);
+            punto_s(gc, sizeFactor);
+            punto_con(gc, sizeFactor);
+            amx = amx + 35*sizeFactor;              
+         }
+         if("!".equals(numero)){
+            gc.strokeLine(amx + 20*sizeFactor, 60*sizeFactor, amx + 20*sizeFactor, 60*sizeFactor);
+            gc.strokeLine(amx + 20*sizeFactor, 25*sizeFactor, amx + 20*sizeFactor, 25*sizeFactor);
+            gc.strokeLine(amx + 20*sizeFactor, 70*sizeFactor, amx + 20*sizeFactor, 70*sizeFactor);
+            amx = amx + 35*sizeFactor;                
+             
+         }
         gc.setLineWidth(1);
         gc.setStroke(Color.BLACK);
     }
+
+    public void punto_s(GraphicsContext gc, double sizeFactor){
+        gc.strokeLine(amx + 20*sizeFactor, 70*sizeFactor, amx + 25*sizeFactor, 70*sizeFactor);//abajo s
+        gc.strokeLine(amx + 25*sizeFactor, 70*sizeFactor, amx + 25*sizeFactor, 70*sizeFactor); 
+        gc.strokeLine(amx + 25*sizeFactor, 65*sizeFactor, amx + 25*sizeFactor, 65*sizeFactor);//abajo derecha s
+        gc.strokeLine(amx + 20*sizeFactor, 65*sizeFactor, amx + 20*sizeFactor, 65*sizeFactor);//medio s 
+        gc.strokeLine(amx + 20*sizeFactor, 60*sizeFactor, amx + 20*sizeFactor, 60*sizeFactor);//arriba izquierda s
+        gc.strokeLine(amx + 20*sizeFactor, 65*sizeFactor, amx + 25*sizeFactor, 65*sizeFactor);
+        gc.strokeLine(amx + 25*sizeFactor, 60*sizeFactor, amx + 25*sizeFactor, 60*sizeFactor);//arriba s 
+        amx= amx + 10*sizeFactor;
+    }
+
+    public void punto_i(GraphicsContext gc, double sizeFactor){//listo
+        gc.strokeLine(amx + 22.5*sizeFactor, 65*sizeFactor, amx + 22.5*sizeFactor, 65*sizeFactor);
+        gc.strokeLine(amx + 22.5*sizeFactor, 70*sizeFactor, amx + 22.5*sizeFactor, 70*sizeFactor);
+        gc.strokeLine(amx + 22.5*sizeFactor, 60*sizeFactor, amx + 22.5*sizeFactor, 60*sizeFactor);
+        amx= amx + 10*sizeFactor;
+    }
+
+    public void punto_con(GraphicsContext gc, double sizeFactor){
+        gc.strokeLine(amx + 25*sizeFactor, 70*sizeFactor, amx + 25*sizeFactor, 70*sizeFactor);//abajo o
+        gc.strokeLine(amx + 20*sizeFactor, 70*sizeFactor, amx + 20*sizeFactor, 70*sizeFactor);//abajo o
+        gc.strokeLine(amx + 20*sizeFactor, 60*sizeFactor, amx + 20*sizeFactor, 60*sizeFactor);//izquierda o
+        gc.strokeLine(amx + 25*sizeFactor, 60*sizeFactor, amx + 25*sizeFactor, 60*sizeFactor);//arriba o
+        amx = amx + 10*sizeFactor;
+    }
+    public void punto_a(GraphicsContext gc, double sizeFactor){
+        gc.strokeLine(amx + 20*sizeFactor, 65*sizeFactor, amx + 20*sizeFactor, 65*sizeFactor);//abajo o
+        gc.strokeLine(amx + 20*sizeFactor, 65*sizeFactor, amx + 20*sizeFactor, 65*sizeFactor);//abajo o 
+        gc.strokeLine(amx + 25*sizeFactor, 65*sizeFactor, amx + 25*sizeFactor, 65*sizeFactor);//abajo o
+        gc.strokeLine(amx + 20*sizeFactor, 65*sizeFactor, amx + 20*sizeFactor, 65*sizeFactor);//abajo o
+        gc.strokeLine(amx + 20*sizeFactor, 60*sizeFactor, amx + 20*sizeFactor, 60*sizeFactor);//arriba o
+        gc.strokeLine(amx + 25*sizeFactor, 60*sizeFactor, amx + 25*sizeFactor, 60*sizeFactor); 
+        gc.strokeLine(amx + 25*sizeFactor, 70*sizeFactor, amx + 25*sizeFactor, 70*sizeFactor);//derecha o     
+        amx= amx + 10*sizeFactor;
+    }
+
+    public void punto_t(GraphicsContext gc, double sizeFactor){
+        gc.strokeLine(amx + 22.5*sizeFactor, 60*sizeFactor, amx + 22.5*sizeFactor, 60*sizeFactor);
+        gc.strokeLine(amx + 22.5*sizeFactor, 70*sizeFactor, amx + 22.5*sizeFactor, 70*sizeFactor);
+        gc.strokeLine(amx + 20.5*sizeFactor, 60*sizeFactor, amx + 24.5*sizeFactor, 60*sizeFactor);
+        amx= amx + 10*sizeFactor;
+    }
+
     public void limpiar(){
         amx = 0;
     }
