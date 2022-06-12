@@ -4,6 +4,7 @@ package calculadora;
 import javafx.fxml.FXML;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -26,7 +27,7 @@ import javafx.scene.text.Text;
  */
 public class FXMLDocumentController implements Initializable {     
   @FXML
-  private Button bttn_mas, bttn_menos, bttn_0, bttn_1, bttn_2, bttn_3, bttn_4, bttn_5, bttn_6, bttn_7,bttn_8, bttn_9, bttn_clear, bttn_dividir, bttn_x, bttn_parentesisDerecho, bttn_parentesisIzquierdo, bttn_cor, bttn_potencia, bttn_cambio, bttn_f, bttn_sin, bttn_cos, bttn_tan;
+  private Button bttn_mas, bttn_menos, bttn_0, bttn_1, bttn_2, bttn_3, bttn_4, bttn_5, bttn_6, bttn_7,bttn_8, bttn_9, bttn_clear, bttn_dividir, bttn_x, bttn_parentesisDerecho, bttn_parentesisIzquierdo, bttn_cor, bttn_potencia, bttn_cambio, bttn_f, bttn_sin, bttn_cos, bttn_tan, bttn_paraBase;;
   @FXML
   private javafx.scene.canvas.Canvas texthere;
   @FXML
@@ -37,17 +38,21 @@ public class FXMLDocumentController implements Initializable {
   private Slider mySizeOfExpressions;
   @FXML
   ImageView myImageView;
+  @FXML
+  private Text textoColorNumeros, textoColorOperadores;
 
   Image myImage = new Image(getClass().getResourceAsStream("helloKitty.jpg"));
 
   
   ArrayList<String> operacion = new ArrayList<>();
+  List<String> expresionEnBinario = new ArrayList<String>();
   Cordenadas cordenadas = new Cordenadas();
   Redibujar hola = new Redibujar();
   
   static GraphicsContext gc, gcaux;
   Color myColorNumbers=BLACK, myColorOperators=BLACK;
   int cont = 0, contadorParentesis = 0, cambio = 0;
+  boolean estadoCambioDeBase = false;
   double sizeFactor = 1;
   String textBoxInfo;
   String[] numeros = {"0","1","2","3","4","5","6","7","8","9"};
@@ -259,6 +264,38 @@ public class FXMLDocumentController implements Initializable {
       bttn_cos.setVisible(true);
       bttn_tan.setVisible(true); 
       cambio = 0;
+    }
+  }
+
+  @FXML
+  void accion_cambioDeBase(ActionEvent event) {
+    if(estadoCambioDeBase == false){
+      bttn_2.setVisible(false);
+      bttn_3.setVisible(false);
+      bttn_4.setVisible(false);
+      bttn_5.setVisible(false);
+      bttn_6.setVisible(false);
+      bttn_7.setVisible(false);
+      bttn_8.setVisible(false);
+      bttn_9.setVisible(false);
+      estadoCambioDeBase = true;
+      gc.clearRect(0, 0, 1000, 1000);
+      hola.redibujar(Binario.toBinary(operacion), gc, myColorOperators, myColorNumbers, sizeFactor);
+      operacion = Binario.toBinary(operacion);
+    }else{
+      bttn_2.setVisible(true);
+      bttn_3.setVisible(true);
+      bttn_4.setVisible(true);
+      bttn_5.setVisible(true);
+      bttn_6.setVisible(true);
+      bttn_7.setVisible(true);
+      bttn_8.setVisible(true);
+      bttn_9.setVisible(true);
+      estadoCambioDeBase = false;
+      gc.clearRect(0, 0, 1000, 1000);
+      hola.redibujar(Binario.toDecimal(operacion), gc, myColorOperators, myColorNumbers, sizeFactor);
+      operacion = Binario.toDecimal(operacion);
+      updateText();
     }
   }
     

@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -83,7 +84,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="bttn_x" layoutX="270.0" layoutY="207.0" mnemonicParsing="false" onAction="#accion_x" prefHeight="0.0" prefWidth="65.0" text="X">
+      <Button fx:id="bttn_x" layoutX="270.0" layoutY="207.0" mnemonicParsing="false" onAction="#accion_x" prefHeight="46.0" prefWidth="65.0" text="X">
          <font>
             <Font size="20.0" />
          </font>
@@ -125,12 +126,10 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Text layoutX="454.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colores Numeros" />
-      <Text layoutX="447.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colores Operadores" />
       <ColorPicker fx:id="myColorPickerNumbers" layoutX="431.0" layoutY="223.0" onAction="#changeColorNumbers" />
       <ColorPicker fx:id="myColorPickerOperators" layoutX="431.0" layoutY="278.0" onAction="#changeColorOperators" />
       <Slider fx:id="mySizeOfExpressions" blockIncrement="0.2" layoutX="13.0" layoutY="34.0" majorTickUnit="1.0" max="2.0" onMouseReleased="#updateSize" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
-      <Button fx:id="bttn_cambio" layoutX="348.0" layoutY="371.0" mnemonicParsing="false" onAction="#accion_cambio" prefHeight="46.0" prefWidth="65.0" text="Cambio">
+      <Button fx:id="bttn_cambio" layoutX="340.0" layoutY="314.0" mnemonicParsing="false" onAction="#accion_cambio" prefHeight="46.0" prefWidth="86.0" text="Cambio" textOverrun="CLIP">
          <font>
             <Font size="20.0" />
          </font>
@@ -155,7 +154,16 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="bttn_potencia" layoutX="348.0" layoutY="314.0" mnemonicParsing="false" onAction="#accion_potencia" prefHeight="46.0" prefWidth="65.0" text="^">
+      <Button fx:id="bttn_potencia" layoutX="583.0" layoutY="314.0" mnemonicParsing="false" onAction="#accion_potencia" prefHeight="46.0" prefWidth="65.0" text="^">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="16.0" layoutX="452.0" layoutY="206.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
+      <Text fx:id="textoColorNumeros" layoutX="454.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colores Numeros" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="16.0" layoutX="443.0" layoutY="261.0" stroke="BLACK" strokeType="INSIDE" width="124.0" />
+      <Text fx:id="textoColorOperadores" layoutX="447.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colores Operadores" />
+      <Button fx:id="bttn_paraBase" layoutX="340.0" layoutY="371.0" mnemonicParsing="false" onAction="#accion_cambioDeBase" prefHeight="46.0" prefWidth="86.0" text="Base">
          <font>
             <Font size="20.0" />
          </font>
