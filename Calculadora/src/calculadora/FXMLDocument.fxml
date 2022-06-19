@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -168,5 +169,7 @@
             <Font size="20.0" />
          </font>
       </Button>
+      <TextField fx:id="inputText" layoutX="43.0" layoutY="422.0" prefHeight="33.0" prefWidth="383.0" promptText="Ingrese formula" />
+      <Button fx:id="bttnConvertir" layoutX="431.0" layoutY="426.0" mnemonicParsing="false" onAction="#textToDraw" prefHeight="25.0" prefWidth="65.0" text="Convertir" />
    </children>
 </AnchorPane>
