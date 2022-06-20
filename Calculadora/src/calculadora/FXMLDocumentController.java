@@ -1,4 +1,3 @@
-
 package calculadora;
 
 import javafx.fxml.FXML;
@@ -11,12 +10,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import static javafx.scene.paint.Color.BLACK;
@@ -28,7 +25,7 @@ import javafx.scene.text.Text;
  */
 public class FXMLDocumentController implements Initializable {     
   @FXML
-  private Button bttnConvertir, bttn_mas, bttn_menos, bttn_0, bttn_1, bttn_2, bttn_3, bttn_4, bttn_5, bttn_6, bttn_7,bttn_8, bttn_9, bttn_clear, bttn_dividir, bttn_x, bttn_parentesisDerecho, bttn_parentesisIzquierdo, bttn_cor, bttn_potencia, bttn_cambio, bttn_f, bttn_sin, bttn_cos, bttn_tan, bttn_paraBase;;
+  private Button bttn_mas, bttn_menos, bttn_0, bttn_1, bttn_2, bttn_3, bttn_4, bttn_5, bttn_6, bttn_7,bttn_8, bttn_9, bttn_clear, bttn_dividir, bttn_x, bttn_parentesisDerecho, bttn_parentesisIzquierdo, bttn_cor, bttn_potencia, bttn_cambio, bttn_f, bttn_sin, bttn_cos, bttn_tan, bttn_paraBase;;
   @FXML
   private javafx.scene.canvas.Canvas texthere;
   @FXML
@@ -41,10 +38,8 @@ public class FXMLDocumentController implements Initializable {
   ImageView myImageView;
   @FXML
   private Text textoColorNumeros, textoColorOperadores;
-  @FXML
-  private TextField inputText;
 
-  Image myImage = new Image(getClass().getResourceAsStream("helloKitty.jpg"));
+  
 
   
   ArrayList<String> operacion = new ArrayList<>();
@@ -65,20 +60,18 @@ public class FXMLDocumentController implements Initializable {
   public void initialize(URL url, ResourceBundle rb) {
     gc = texthere.getGraphicsContext2D();
   }
-  public void displayImage(){
-    myImageView.setImage(myImage);
-  }
+  
   @FXML
   public void changeColorNumbers(){
     myColorNumbers = myColorPickerNumbers.getValue();
-    gc.clearRect(0, 0, 1000, 1000);
+    gc.clearRect(0, 0, 99999999, 99999999);
     hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
   }
 
   @FXML
   public void changeColorOperators(){
     myColorOperators = myColorPickerOperators.getValue();
-    gc.clearRect(0, 0, 1000, 1000);
+    gc.clearRect(0, 0, 99999999, 99999999);
     hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
   }
     
@@ -203,7 +196,7 @@ public class FXMLDocumentController implements Initializable {
 
   @FXML
   private void accion_limpiar(ActionEvent event) {
-    gc.clearRect(0, 0, 1000, 1000);
+    gc.clearRect(0, 0, 99999999, 99999999);
     Dibuja.limpiaMx();
     operacion.clear();
     updateText();
@@ -265,21 +258,9 @@ public class FXMLDocumentController implements Initializable {
       bttn_f.setVisible(true);
       bttn_sin.setVisible(true);
       bttn_cos.setVisible(true);
-      bttn_tan.setVisible(true);
+      bttn_tan.setVisible(true); 
       cambio = 0;
     }
-  }
-
-  @FXML
-  void textToDraw(ActionEvent event) {
-    String newOp = inputText.getText();
-    operacion.clear();
-    for (int i = 0; i < newOp.length(); i++) {
-      operacion.add(String.valueOf(newOp.charAt(i)));
-    }
-    gc.clearRect(0, 0, 1000, 1000);
-    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
-    cordenadas.limpiar();
   }
 
   @FXML
@@ -294,7 +275,7 @@ public class FXMLDocumentController implements Initializable {
       bttn_8.setVisible(false);
       bttn_9.setVisible(false);
       estadoCambioDeBase = true;
-      gc.clearRect(0, 0, 1000, 1000);
+      gc.clearRect(0, 0, 99999999, 99999999);
       hola.redibujar(Binario.toBinary(operacion), gc, myColorOperators, myColorNumbers, sizeFactor);
       operacion = Binario.toBinary(operacion);
     }else{
@@ -307,7 +288,7 @@ public class FXMLDocumentController implements Initializable {
       bttn_8.setVisible(true);
       bttn_9.setVisible(true);
       estadoCambioDeBase = false;
-      gc.clearRect(0, 0, 1000, 1000);
+      gc.clearRect(0, 0, 99999999, 99999999);
       hola.redibujar(Binario.toDecimal(operacion), gc, myColorOperators, myColorNumbers, sizeFactor);
       operacion = Binario.toDecimal(operacion);
       updateText();
@@ -381,7 +362,7 @@ public class FXMLDocumentController implements Initializable {
         }
       }   
     }else{
-      gc.clearRect(0, 0, 1000, 1000);
+      gc.clearRect(0, 0, 99999999, 99999999);
       hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
       cont = 0;
     }
@@ -397,7 +378,7 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   private void updateSize(MouseEvent event) {
     sizeFactor = mySizeOfExpressions.getValue();    
-    gc.clearRect(0, 0, 1000, 1000);
+    gc.clearRect(0, 0, 99999999, 99999999);
     hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
   }
 
