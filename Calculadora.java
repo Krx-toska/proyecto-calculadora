@@ -16,15 +16,16 @@ import javafx.stage.Stage;
  * @author krox2
  */
 public class Calculadora extends Application {
-    
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("Super calculadora");
+        stage.setTitle("Super mega hiper calculadora");
         stage.show();
+        
+        
         
     }
 

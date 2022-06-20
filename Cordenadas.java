@@ -1,6 +1,8 @@
 package calculadora;
 
 import static calculadora.FXMLDocumentController.gc;
+
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 /**
@@ -8,162 +10,204 @@ import javafx.scene.paint.Color;
  * @author krox2
  */
 public class Cordenadas {
-   
-        
-        int Amx = 0;
-        
+    double amx = 0;
     
-       
-    public void puntos(String numero){
+    public void puntos(String numero, double sizeFactor){
+        gc.setLineWidth(4);
+        gc.setStroke(Color.BLUEVIOLET);
+        if("0".equals(numero)){
+            gc.strokeLine(amx + 10*sizeFactor,25*sizeFactor,amx + 10*sizeFactor,25*sizeFactor);   
+            gc.strokeLine(amx + 10*sizeFactor,75*sizeFactor,amx + 10*sizeFactor,75*sizeFactor);   
+            gc.strokeLine(amx + 35*sizeFactor,75*sizeFactor,amx + 35*sizeFactor,75*sizeFactor);   
+            gc.strokeLine(amx + 35*sizeFactor,25*sizeFactor,amx + 35*sizeFactor,25*sizeFactor);
+            amx = amx + 35*sizeFactor;
+        }   
+        if("1".equals(numero)){
+            gc.strokeLine(amx + 20*sizeFactor,25*sizeFactor,amx + 20*sizeFactor,25*sizeFactor);
+            gc.strokeLine(amx + 10*sizeFactor,35*sizeFactor,amx + 10*sizeFactor,35*sizeFactor);
+            gc.strokeLine(amx + 20*sizeFactor,75*sizeFactor,amx + 20*sizeFactor,75*sizeFactor);
+            amx = amx + 25*sizeFactor;
+        }
+        if("2".equals(numero)){
+            gc.strokeLine(amx + 10*sizeFactor,25*sizeFactor,amx + 10*sizeFactor,25*sizeFactor);
+            gc.strokeLine(amx + 35*sizeFactor,25*sizeFactor,amx + 35*sizeFactor,25*sizeFactor);
+            gc.strokeLine(amx + 10*sizeFactor,50*sizeFactor,amx + 10*sizeFactor,50*sizeFactor); //horizontal media
+            gc.strokeLine(amx + 10*sizeFactor,75*sizeFactor,amx + 10*sizeFactor,75*sizeFactor);
+            gc.strokeLine(amx + 35*sizeFactor,75*sizeFactor,amx + 35*sizeFactor,75*sizeFactor);             
+            gc.strokeLine(amx + 35*sizeFactor,50*sizeFactor,amx + 35*sizeFactor,50*sizeFactor);
+            amx = amx + 35*sizeFactor;
+        }
+        if("3".equals(numero)){
+            gc.strokeLine(amx + 10*sizeFactor,25*sizeFactor,amx + 10*sizeFactor,25*sizeFactor);
+            gc.strokeLine(amx + 35*sizeFactor,25*sizeFactor,amx + 35*sizeFactor,25*sizeFactor);
+            gc.strokeLine(amx + 10*sizeFactor,50*sizeFactor,amx + 10*sizeFactor,50*sizeFactor);
+            gc.strokeLine(amx + 35*sizeFactor,75*sizeFactor,amx + 35*sizeFactor,75*sizeFactor);
+            gc.strokeLine(amx + 35*sizeFactor,25*sizeFactor,amx + 35*sizeFactor,25*sizeFactor);
+            gc.strokeLine(amx + 35*sizeFactor,50*sizeFactor,amx + 35*sizeFactor,50*sizeFactor);  
+            gc.strokeLine(amx + 10*sizeFactor,75*sizeFactor,amx + 10*sizeFactor,75*sizeFactor);
+            amx = amx + 35*sizeFactor;
+        }
+        if("4".equals(numero)){
+            gc.strokeLine(amx + 35*sizeFactor,25*sizeFactor,amx + 35*sizeFactor,25*sizeFactor);
+            gc.strokeLine(amx + 10*sizeFactor,50*sizeFactor,amx + 10*sizeFactor,50*sizeFactor);
+            gc.strokeLine(amx + 10*sizeFactor,25*sizeFactor,amx + 10*sizeFactor,25*sizeFactor);
+            gc.strokeLine(amx + 35*sizeFactor,75*sizeFactor,amx + 35*sizeFactor,75*sizeFactor);
+            gc.strokeLine(amx + 35*sizeFactor,50*sizeFactor,amx + 35*sizeFactor,50*sizeFactor);
+            amx = amx + 35*sizeFactor;
+        }
+        if("5".equals(numero)){
+            gc.strokeLine(amx + 10*sizeFactor,25*sizeFactor,amx + 10*sizeFactor,25*sizeFactor);
+            gc.strokeLine(amx + 35*sizeFactor,50*sizeFactor,amx + 35*sizeFactor,50*sizeFactor);
+            gc.strokeLine(amx + 10*sizeFactor,50*sizeFactor,amx + 10*sizeFactor,50*sizeFactor);
+            gc.strokeLine(amx + 10*sizeFactor,50*sizeFactor,amx + 10*sizeFactor,50*sizeFactor);
+            gc.strokeLine(amx + 10*sizeFactor,75*sizeFactor,amx + 10*sizeFactor,75*sizeFactor);
+            gc.strokeLine(amx + 35*sizeFactor,25*sizeFactor,amx + 35*sizeFactor,25*sizeFactor);
+            gc.strokeLine(amx + 35*sizeFactor,75*sizeFactor,amx + 35*sizeFactor,75*sizeFactor);
+            amx = amx + 35*sizeFactor;
+        }
+        if("6".equals(numero)){
+            gc.strokeLine(amx + 10*sizeFactor,25*sizeFactor,amx + 10*sizeFactor,25*sizeFactor);  
+            gc.strokeLine(amx + 10*sizeFactor,75*sizeFactor,amx + 10*sizeFactor,75*sizeFactor);  
+            gc.strokeLine(amx + 10*sizeFactor,50*sizeFactor,amx + 10*sizeFactor,50*sizeFactor);   
+            gc.strokeLine(amx + 35*sizeFactor,50*sizeFactor,amx + 35*sizeFactor,50*sizeFactor);   
+            gc.strokeLine(amx + 35*sizeFactor,75*sizeFactor,amx + 35*sizeFactor,75*sizeFactor);
+            gc.strokeLine(amx + 35*sizeFactor,25*sizeFactor,amx + 35*sizeFactor,25*sizeFactor);
+            amx = amx + 35*sizeFactor;
+        }
+        if("7".equals(numero)){
+            gc.strokeLine(amx + 10*sizeFactor,25*sizeFactor,amx + 10*sizeFactor,25*sizeFactor);    
+            gc.strokeLine(amx + 10*sizeFactor,50*sizeFactor,amx + 10*sizeFactor,50*sizeFactor);     
+            gc.strokeLine(amx + 35*sizeFactor,75*sizeFactor,amx + 35*sizeFactor,75*sizeFactor);
+            gc.strokeLine(amx + 35*sizeFactor,25*sizeFactor,amx + 35*sizeFactor,25*sizeFactor);
+            amx = amx + 35*sizeFactor;
+        }
         
-       
-            
-            gc.setLineWidth(4);
-            gc.setStroke(Color.BLUEVIOLET);
-            if(numero == "0"){
-               gc.strokeLine(Amx +10,25,Amx +10,25);   
-               gc.strokeLine(Amx +10,75,Amx +10,75);   
-               gc.strokeLine(Amx +35,75,Amx +35,75);   
-               gc.strokeLine(Amx +35,25,Amx +35,25);
-              
-               Amx = Amx + 35;
-            }   
-           if(numero == "1"){
-               gc.strokeLine(Amx + 20,25,Amx + 20,25);
-               gc.strokeLine(Amx + 10,35,Amx + 10,35);
-               gc.strokeLine(Amx + 20,75,Amx + 20,75);
-               Amx = Amx + 25;
-           }
-           if(numero == "2"){
-               gc.strokeLine(Amx +10,25,Amx +10,25);
-               gc.strokeLine(Amx +35,25,Amx +35,25);
-               gc.strokeLine(Amx +10,50,Amx +10,50); //horizontal media
-               gc.strokeLine(Amx +10,75,Amx +10,75);
-               gc.strokeLine(Amx +35,75,Amx +35,75);             
-               gc.strokeLine(Amx +35,50,Amx +35,50);
-               Amx = Amx + 35;
-           }
-           if(numero == "3"){
-               gc.strokeLine(Amx +10,25,Amx +10,25);
-               gc.strokeLine(Amx +35,25,Amx +35,25);
-               gc.strokeLine(Amx +10,50,Amx +10,50);
-               gc.strokeLine(Amx +35,75,Amx +35,75);
-               gc.strokeLine(Amx +35,25,Amx +35,25);
-               gc.strokeLine(Amx +35,50,Amx +35,50);  
-               gc.strokeLine(Amx +10,75,Amx +10,75);
-               Amx = Amx + 35;
-           }
-           if(numero == "4"){
-               gc.strokeLine(Amx +35,25,Amx +35,25);
-               gc.strokeLine(Amx +10,50,Amx +10,50);
-               gc.strokeLine(Amx +10,25,Amx +10,25);
-               gc.strokeLine(Amx +35,75,Amx +35,75);
-               gc.strokeLine(Amx +35,50,Amx +35,50);
-               
-               Amx = Amx + 35;
-           }
-           if(numero == "5"){
-               gc.strokeLine(Amx +10,25,Amx +10,25);
-               gc.strokeLine(Amx +35,50,Amx +35,50);
-               gc.strokeLine(Amx +10,50,Amx +10,50);
-               gc.strokeLine(Amx +10,50,Amx +10,50);
-               gc.strokeLine(Amx +10,75,Amx +10,75);
-               gc.strokeLine(Amx +35,25,Amx +35,25);
-               gc.strokeLine(Amx +35,75,Amx +35,75);
-               Amx = Amx + 35;
-           }
-           if(numero == "6"){
-               gc.strokeLine(Amx +10,25,Amx +10,25);  
-               gc.strokeLine(Amx +10,75,Amx +10,75);  
-               gc.strokeLine(Amx +10,50,Amx +10,50);   
-               gc.strokeLine(Amx +35,50,Amx +35,50);   
-               gc.strokeLine(Amx +35,75,Amx +35,75);
-               gc.strokeLine(Amx +35,25,Amx +35,25);
-               Amx = Amx + 35;
-           }
-           if(numero == "7"){
-               gc.strokeLine(Amx +10,25,Amx +10,25);    
-               gc.strokeLine(Amx +10,50,Amx +10,50);     
-               gc.strokeLine(Amx +35,75,Amx +35,75);
-               gc.strokeLine(Amx +35,25,Amx +35,25);
-               Amx = Amx + 35;
-           }
-           
-           if(numero == "8"){
-               gc.strokeLine(Amx +10,25,Amx +10,25);  
-               gc.strokeLine(Amx +10,75,Amx +10,75);  
-               gc.strokeLine(Amx +10,50,Amx +10,50);   
-               gc.strokeLine(Amx +35,50,Amx +35,50);   
-               gc.strokeLine(Amx +35,75,Amx +35,75);
-               gc.strokeLine(Amx +35,25,Amx +35,25);
-               Amx = Amx + 35;
-           }
-           if(numero == "9"){
-               gc.strokeLine(Amx +10,25,Amx +10,25);  
-               gc.strokeLine(Amx +10,75,Amx +10,75);  
-               gc.strokeLine(Amx +10,50,Amx +10,50);   
-               gc.strokeLine(Amx +35,50,Amx +35,50);   
-               gc.strokeLine(Amx +35,75,Amx +35,75);
-               gc.strokeLine(Amx +35,25,Amx +35,25);
-               Amx = Amx + 35;
-           }
-           if(numero == "x"){
-               gc.strokeLine(Amx +20,35,Amx +20,35);   
-               gc.strokeLine(Amx +32.5,65,Amx +32.5,65);   
-               gc.strokeLine(Amx +20,65,Amx +20,65);
-               gc.strokeLine(Amx +32.5,35,Amx +32.5,35);
-               Amx = Amx + 35;
-               
-           }
-           if(numero == "/"){
-              gc.strokeLine(Amx +10,80,Amx +10,80);
-              gc.strokeLine(Amx -30,80,Amx -30,80);    
-           }
-           
-           if(numero == "+"){
-              gc.strokeLine(Amx +22.5,37.5,Amx +22.5,37.5);
-              gc.strokeLine(Amx +22.5,62.5,Amx +22.5,62.5); 
-              gc.strokeLine(Amx +35,50,Amx +35,50);
-              gc.strokeLine(Amx +10,50,Amx +10,50);
-              Amx = Amx + 35;
-               
-               
-           }
-           if(numero == "-"){
-              gc.strokeLine(Amx +35,50,Amx +35,50);
-              gc.strokeLine(Amx +10,50,Amx +10,50);
-              Amx = Amx + 35;            
-               
-               
-           }
-           if(numero == ")"){
-              gc.strokeLine(Amx + 15,25,Amx + 15,25);
-              gc.strokeLine(Amx + 15,75,Amx + 15,75);
-              
-              Amx = Amx + 25;            
-               
-               
-           }
-           if(numero == "("){
-              gc.strokeLine(Amx + 25,25,Amx + 25,25);
-              gc.strokeLine(Amx + 25,75,Amx + 25,75);
-              
-              Amx = Amx + 25;            
-               
+        if("8".equals(numero)){
+            gc.strokeLine(amx + 10*sizeFactor,25*sizeFactor,amx + 10*sizeFactor,25*sizeFactor);  
+            gc.strokeLine(amx + 10*sizeFactor,75*sizeFactor,amx + 10*sizeFactor,75*sizeFactor);  
+            gc.strokeLine(amx + 10*sizeFactor,50*sizeFactor,amx + 10*sizeFactor,50*sizeFactor);   
+            gc.strokeLine(amx + 35*sizeFactor,50*sizeFactor,amx + 35*sizeFactor,50*sizeFactor);   
+            gc.strokeLine(amx + 35*sizeFactor,75*sizeFactor,amx + 35*sizeFactor,75*sizeFactor);
+            gc.strokeLine(amx + 35*sizeFactor,25*sizeFactor,amx + 35*sizeFactor,25*sizeFactor);
+            amx = amx + 35*sizeFactor;
+        }
+        if("9".equals(numero)){
+            gc.strokeLine(amx + 10*sizeFactor,25*sizeFactor,amx + 10*sizeFactor,25*sizeFactor);  
+            gc.strokeLine(amx + 10*sizeFactor,75*sizeFactor,amx + 10*sizeFactor,75*sizeFactor);  
+            gc.strokeLine(amx + 10*sizeFactor,50*sizeFactor,amx + 10*sizeFactor,50*sizeFactor);   
+            gc.strokeLine(amx + 35*sizeFactor,50*sizeFactor,amx + 35*sizeFactor,50*sizeFactor);   
+            gc.strokeLine(amx + 35*sizeFactor,75*sizeFactor,amx + 35*sizeFactor,75*sizeFactor);
+            gc.strokeLine(amx + 35*sizeFactor,25*sizeFactor,amx + 35*sizeFactor,25*sizeFactor);
+            amx = amx + 35*sizeFactor;
+        }
+        if("x".equals(numero)){
+            gc.strokeLine(amx + 20*sizeFactor,35*sizeFactor,amx + 20*sizeFactor,35*sizeFactor);   
+            gc.strokeLine(amx + 32.5*sizeFactor,65*sizeFactor,amx + 32.5*sizeFactor,65*sizeFactor);   
+            gc.strokeLine(amx + 20*sizeFactor,65*sizeFactor,amx + 20*sizeFactor,65*sizeFactor);
+            gc.strokeLine(amx + 32.5*sizeFactor,35*sizeFactor,amx + 32.5*sizeFactor,35*sizeFactor);
+            amx = amx + 35*sizeFactor;
+        }
+        if("/".equals(numero)){
+            gc.strokeLine(amx + 10*sizeFactor,80*sizeFactor,amx + 10*sizeFactor,80*sizeFactor);
+            gc.strokeLine(amx - 30*sizeFactor,80*sizeFactor,amx - 30*sizeFactor,80*sizeFactor);    
+        }
+        if("+".equals(numero)){
+            gc.strokeLine(amx + 22.5*sizeFactor,37.5*sizeFactor,amx + 22.5*sizeFactor,37.5*sizeFactor);
+            gc.strokeLine(amx + 22.5*sizeFactor,62.5*sizeFactor,amx + 22.5*sizeFactor,62.5*sizeFactor); 
+            gc.strokeLine(amx + 35*sizeFactor,50*sizeFactor,amx + 35*sizeFactor,50*sizeFactor);
+            gc.strokeLine(amx + 10*sizeFactor,50*sizeFactor,amx + 10*sizeFactor,50*sizeFactor);
+            amx = amx + 35*sizeFactor;
+        }
+        if("-".equals(numero)){
+            gc.strokeLine(amx + 35*sizeFactor,50*sizeFactor,amx + 35*sizeFactor,50*sizeFactor);
+            gc.strokeLine(amx + 10*sizeFactor,50*sizeFactor,amx + 10*sizeFactor,50*sizeFactor);
+            amx = amx + 35*sizeFactor;       
+        }
+        if(")".equals(numero)){
+            gc.strokeLine(amx + 15*sizeFactor,25*sizeFactor,amx + 15*sizeFactor,25*sizeFactor);
+            gc.strokeLine(amx + 15*sizeFactor,75*sizeFactor,amx + 15*sizeFactor,75*sizeFactor);
+            amx = amx + 25*sizeFactor;       
+        }
+        if("(".equals(numero)){
+            gc.strokeLine(amx + 25*sizeFactor,25*sizeFactor,amx + 25*sizeFactor,25*sizeFactor);
+            gc.strokeLine(amx + 25*sizeFactor,75*sizeFactor,amx + 25*sizeFactor,75*sizeFactor);
+            amx = amx + 25*sizeFactor;
+        }
+        if("sin".equals(numero)){
+            punto_s(gc, sizeFactor);
+            punto_i(gc, sizeFactor);
+            punto_con(gc, sizeFactor);
+            amx = amx + 35*sizeFactor;                
              
-           }
-           
-           
+        }
+         if("cos".equals(numero)){
+            punto_con(gc, sizeFactor);
+            punto_con(gc, sizeFactor);
+            punto_s(gc, sizeFactor);
+            amx = amx + 35*sizeFactor;                
+             
+         }
+         if("tan".equals(numero)){
+            punto_t(gc, sizeFactor);
+            punto_s(gc, sizeFactor);
+            punto_con(gc, sizeFactor);
+            amx = amx + 35*sizeFactor;              
+         }
+         if("!".equals(numero)){
+            gc.strokeLine(amx + 20*sizeFactor, 60*sizeFactor, amx + 20*sizeFactor, 60*sizeFactor);
+            gc.strokeLine(amx + 20*sizeFactor, 25*sizeFactor, amx + 20*sizeFactor, 25*sizeFactor);
+            gc.strokeLine(amx + 20*sizeFactor, 70*sizeFactor, amx + 20*sizeFactor, 70*sizeFactor);
+            amx = amx + 35*sizeFactor;                
+             
+         }
         gc.setLineWidth(1);
         gc.setStroke(Color.BLACK);
-        
     }
-        
 
-    
-    public void limpiar(){
-         Amx = 0;
-         
+    public void punto_s(GraphicsContext gc, double sizeFactor){
+        gc.strokeLine(amx + 20*sizeFactor, 70*sizeFactor, amx + 25*sizeFactor, 70*sizeFactor);//abajo s
+        gc.strokeLine(amx + 25*sizeFactor, 70*sizeFactor, amx + 25*sizeFactor, 70*sizeFactor); 
+        gc.strokeLine(amx + 25*sizeFactor, 65*sizeFactor, amx + 25*sizeFactor, 65*sizeFactor);//abajo derecha s
+        gc.strokeLine(amx + 20*sizeFactor, 65*sizeFactor, amx + 20*sizeFactor, 65*sizeFactor);//medio s 
+        gc.strokeLine(amx + 20*sizeFactor, 60*sizeFactor, amx + 20*sizeFactor, 60*sizeFactor);//arriba izquierda s
+        gc.strokeLine(amx + 20*sizeFactor, 65*sizeFactor, amx + 25*sizeFactor, 65*sizeFactor);
+        gc.strokeLine(amx + 25*sizeFactor, 60*sizeFactor, amx + 25*sizeFactor, 60*sizeFactor);//arriba s 
+        amx= amx + 10*sizeFactor;
     }
-    //si
+
+    public void punto_i(GraphicsContext gc, double sizeFactor){//listo
+        gc.strokeLine(amx + 22.5*sizeFactor, 65*sizeFactor, amx + 22.5*sizeFactor, 65*sizeFactor);
+        gc.strokeLine(amx + 22.5*sizeFactor, 70*sizeFactor, amx + 22.5*sizeFactor, 70*sizeFactor);
+        gc.strokeLine(amx + 22.5*sizeFactor, 60*sizeFactor, amx + 22.5*sizeFactor, 60*sizeFactor);
+        amx= amx + 10*sizeFactor;
+    }
+
+    public void punto_con(GraphicsContext gc, double sizeFactor){
+        gc.strokeLine(amx + 25*sizeFactor, 70*sizeFactor, amx + 25*sizeFactor, 70*sizeFactor);//abajo o
+        gc.strokeLine(amx + 20*sizeFactor, 70*sizeFactor, amx + 20*sizeFactor, 70*sizeFactor);//abajo o
+        gc.strokeLine(amx + 20*sizeFactor, 60*sizeFactor, amx + 20*sizeFactor, 60*sizeFactor);//izquierda o
+        gc.strokeLine(amx + 25*sizeFactor, 60*sizeFactor, amx + 25*sizeFactor, 60*sizeFactor);//arriba o
+        amx = amx + 10*sizeFactor;
+    }
+    public void punto_a(GraphicsContext gc, double sizeFactor){
+        gc.strokeLine(amx + 20*sizeFactor, 65*sizeFactor, amx + 20*sizeFactor, 65*sizeFactor);//abajo o
+        gc.strokeLine(amx + 20*sizeFactor, 65*sizeFactor, amx + 20*sizeFactor, 65*sizeFactor);//abajo o 
+        gc.strokeLine(amx + 25*sizeFactor, 65*sizeFactor, amx + 25*sizeFactor, 65*sizeFactor);//abajo o
+        gc.strokeLine(amx + 20*sizeFactor, 65*sizeFactor, amx + 20*sizeFactor, 65*sizeFactor);//abajo o
+        gc.strokeLine(amx + 20*sizeFactor, 60*sizeFactor, amx + 20*sizeFactor, 60*sizeFactor);//arriba o
+        gc.strokeLine(amx + 25*sizeFactor, 60*sizeFactor, amx + 25*sizeFactor, 60*sizeFactor); 
+        gc.strokeLine(amx + 25*sizeFactor, 70*sizeFactor, amx + 25*sizeFactor, 70*sizeFactor);//derecha o     
+        amx= amx + 10*sizeFactor;
+    }
+
+    public void punto_t(GraphicsContext gc, double sizeFactor){
+        gc.strokeLine(amx + 22.5*sizeFactor, 60*sizeFactor, amx + 22.5*sizeFactor, 60*sizeFactor);
+        gc.strokeLine(amx + 22.5*sizeFactor, 70*sizeFactor, amx + 22.5*sizeFactor, 70*sizeFactor);
+        gc.strokeLine(amx + 20.5*sizeFactor, 60*sizeFactor, amx + 24.5*sizeFactor, 60*sizeFactor);
+        amx= amx + 10*sizeFactor;
+    }
+
+    public void limpiar(){
+        amx = 0;
+    }
 }
