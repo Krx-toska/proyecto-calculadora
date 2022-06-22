@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.control.ColorPicker;
@@ -27,7 +28,7 @@ import javafx.scene.text.Text;
  */
 public class FXMLDocumentController implements Initializable {     
   @FXML
-  private Button bttn_mas, bttn_menos, bttn_0, bttn_1, bttn_2, bttn_3, bttn_4, bttn_5, bttn_6, bttn_7,bttn_8, bttn_9, bttn_clear, bttn_dividir, bttn_x, bttn_parentesisDerecho, bttn_parentesisIzquierdo, bttn_cor, bttn_potencia, bttn_cambio, bttn_f, bttn_sin, bttn_cos, bttn_tan, bttn_paraBase;;
+  private Button bttnConvertir, bttn_mas, bttn_menos, bttn_0, bttn_1, bttn_2, bttn_3, bttn_4, bttn_5, bttn_6, bttn_7,bttn_8, bttn_9, bttn_clear, bttn_dividir, bttn_x, bttn_parentesisDerecho, bttn_parentesisIzquierdo, bttn_cor, bttn_potencia, bttn_cambio, bttn_f, bttn_sin, bttn_cos, bttn_tan, bttn_paraBase;;
   @FXML
   private javafx.scene.canvas.Canvas texthere;
   @FXML
@@ -40,6 +41,8 @@ public class FXMLDocumentController implements Initializable {
   ImageView myImageView;
   @FXML
   private Text textoColorNumeros, textoColorOperadores;
+  @FXML
+  private TextField inputText;
 
   Image myImage = new Image(getClass().getResourceAsStream("helloKitty.jpg"));
 
@@ -262,9 +265,23 @@ public class FXMLDocumentController implements Initializable {
       bttn_f.setVisible(true);
       bttn_sin.setVisible(true);
       bttn_cos.setVisible(true);
-      bttn_tan.setVisible(true); 
+      bttn_tan.setVisible(true);
       cambio = 0;
     }
+  }
+
+  @FXML
+  void textToDraw(ActionEvent event) {
+    String newOp = inputText.getText();
+    operacion.clear();
+    myText.setText("");
+    for (int i = 0; i < newOp.length(); i++) {
+      operacion.add(String.valueOf(newOp.charAt(i)));
+    }
+    gc.clearRect(0, 0, 1000, 1000);
+    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
+    updateText();
+    cordenadas.limpiar();
   }
 
   @FXML
