@@ -274,11 +274,13 @@ public class FXMLDocumentController implements Initializable {
   void textToDraw(ActionEvent event) {
     String newOp = inputText.getText();
     operacion.clear();
+    myText.setText("");
     for (int i = 0; i < newOp.length(); i++) {
       operacion.add(String.valueOf(newOp.charAt(i)));
     }
     gc.clearRect(0, 0, 1000, 1000);
     hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
+    updateText();
     cordenadas.limpiar();
   }
 
