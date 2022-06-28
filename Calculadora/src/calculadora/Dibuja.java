@@ -664,4 +664,12 @@ public class Dibuja {
         dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
 
     }
+
+    public static void dibuja_raiz(GraphicsContext gc, ArrayList<String> operacion, Color myColorOperators, double sizeFactor) {
+        gc.clearRect(mx+10, 0, 100, 100);
+
+        gc.strokeLine(mx + 20*sizeFactor,  60*sizeFactor,mx + 30*sizeFactor, 75*sizeFactor);
+        gc.strokeLine(mx + 30*sizeFactor,  75*sizeFactor,mx + 40*sizeFactor, 25*sizeFactor);
+        mx = mx + 35*sizeFactor;
+    }
 }
