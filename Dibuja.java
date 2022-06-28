@@ -18,12 +18,13 @@ import static calculadora.Division.tamano;
 public class Dibuja {
     static double mx = 0;
     static boolean contG=false;
-    static double aux = 1000;
+    static double auxmx = 1000;
+    static double aux = 0;
     static ArrayList nivelmx = new ArrayList();
     
     public static void limpiaMx(){
-        mx = 0; aux = 1000;
-        contG=false;
+        mx = 0; auxmx = 1000; aux = 0;
+        contG=false; nivelmx.clear();
     }
 
     public static void dibuja_uno(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
@@ -84,7 +85,7 @@ public class Dibuja {
             
             aux = (int) niveles.get(niveles.size()-1);
             
-            System.out.println(tamano);
+        
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
             gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar); //horizontal media
@@ -645,8 +646,11 @@ public class Dibuja {
     
     public static void reubicar(){
     
-    if (aux>mx){
-    aux=mx;
+    if (auxmx>mx){
+    System.out.println("hola");
+    auxmx=mx;
+    nivelmx.add(auxmx);
+    System.out.println(nivelmx);
     }
     else{}
     
