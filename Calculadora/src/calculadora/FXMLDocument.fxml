@@ -171,5 +171,10 @@
       </Button>
       <TextField fx:id="inputText" layoutX="43.0" layoutY="422.0" prefHeight="33.0" prefWidth="383.0" promptText="Ingrese formula" />
       <Button fx:id="bttnConvertir" layoutX="431.0" layoutY="426.0" mnemonicParsing="false" onAction="#textToDraw" prefHeight="25.0" prefWidth="65.0" text="Convertir" />
+      <Button fx:id="bttn_raiz" layoutX="583.0" layoutY="371.0" mnemonicParsing="false" onAction="#accion_raiz" prefHeight="46.0" prefWidth="65.0" text="Raiz">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

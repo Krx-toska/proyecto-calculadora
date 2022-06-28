@@ -418,5 +418,8 @@ public class FXMLDocumentController implements Initializable {
       }
     }
     return test;
-  }       
+  }
+
+    public void accion_raiz(ActionEvent actionEvent) {
+    }
 }
