@@ -66,7 +66,10 @@ public class Redibujar {
             if ("tan".equals(operacion.get(i)) ){
                 Dibuja.dibuja_tangente(gc, myColorOperators,sizeFactor);} 
             if ("!".equals(operacion.get(i)) ){
-                Dibuja.dibuja_factorial(gc, myColorOperators, sizeFactor);} 
+                Dibuja.dibuja_factorial(gc, myColorOperators, sizeFactor);}
+            if ("√".equals(operacion.get(i)) ){
+                Dibuja.dibuja_raiz(gc, operacion, myColorOperators, sizeFactor);
+            }
         }
     }
 }

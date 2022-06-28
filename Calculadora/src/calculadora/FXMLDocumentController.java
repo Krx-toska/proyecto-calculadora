@@ -427,7 +427,9 @@ public class FXMLDocumentController implements Initializable {
 
     public void accion_raiz(ActionEvent actionEvent) {
     Dibuja.dibuja_raiz(gc,operacion,myColorOperators,sizeFactor);
+    Dibuja.dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
     contadorParentesis++;
-    operacion.add("√(");
+    operacion.add("√");
+    operacion.add("(");
     }
 }
