@@ -183,7 +183,12 @@ public class FXMLDocumentController implements Initializable {
 
   @FXML
   public void accion_parentesisIzquierdo(ActionEvent event){
-    if(!check(numeros, operacion.get(operacion.size()-1))){
+    if (operacion.isEmpty()){
+      Dibuja.dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
+      operacion.add("(");
+      contadorParentesis++;
+    }
+    else if(!check(numeros, operacion.get(operacion.size()-1))){
       Dibuja.dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
       operacion.add("(");
       contadorParentesis++;
@@ -193,7 +198,7 @@ public class FXMLDocumentController implements Initializable {
 
   @FXML
   public void accion_parentesisDerecho(ActionEvent event) {
-    if(contadorParentesis!=0 && !check(operadores, operacion.get(operacion.size()-1))){
+    if(contadorParentesis!=0 && (!check(operadores, operacion.get(operacion.size()-1))||operacion.get(operacion.size()-1) == ")" )){
       Dibuja.dibuja_parentesisD(gc,operacion, myColorOperators,sizeFactor);
       operacion.add(")");
       contadorParentesis--;
@@ -422,6 +427,7 @@ public class FXMLDocumentController implements Initializable {
 
     public void accion_raiz(ActionEvent actionEvent) {
     Dibuja.dibuja_raiz(gc,operacion,myColorOperators,sizeFactor);
-    operacion.add("√");
+    contadorParentesis++;
+    operacion.add("√(");
     }
 }
