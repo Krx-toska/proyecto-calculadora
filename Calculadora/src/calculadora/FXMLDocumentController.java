@@ -28,7 +28,7 @@ import javafx.scene.text.Text;
  */
 public class FXMLDocumentController implements Initializable {     
   @FXML
-  private Button bttnConvertir, bttn_mas, bttn_menos, bttn_0, bttn_1, bttn_2, bttn_3, bttn_4, bttn_5, bttn_6, bttn_7,bttn_8, bttn_9, bttn_clear, bttn_dividir, bttn_x, bttn_parentesisDerecho, bttn_parentesisIzquierdo, bttn_cor, bttn_potencia, bttn_cambio, bttn_f, bttn_sin, bttn_cos, bttn_tan, bttn_paraBase;;
+  private Button bttn_raiz, bttnGrado, bttnCalcular, bttnConvertir, bttn_mas, bttn_menos, bttn_0, bttn_1, bttn_2, bttn_3, bttn_4, bttn_5, bttn_6, bttn_7,bttn_8, bttn_9, bttn_clear, bttn_dividir, bttn_x, bttn_parentesisDerecho, bttn_parentesisIzquierdo, bttn_cor, bttn_potencia, bttn_cambio, bttn_f, bttn_sin, bttn_cos, bttn_tan, bttn_paraBase;
   @FXML
   private javafx.scene.canvas.Canvas texthere;
   @FXML
@@ -236,24 +236,35 @@ public class FXMLDocumentController implements Initializable {
   public void accion_factorial(ActionEvent event){
     Dibuja.dibuja_factorial(gc, myColorOperators, sizeFactor);
     operacion.add("!");
+    updateText();
   }
 
   @FXML
   public void accion_seno(ActionEvent event){
     Dibuja.dibuja_seno(gc, myColorOperators, sizeFactor);
     operacion.add("sin");
+    updateText();
   }
 
   @FXML
   public void accion_coseno(ActionEvent event){
     Dibuja.dibuja_coseno(gc, myColorOperators, sizeFactor);
     operacion.add("cos");
+    updateText();
   }
 
   @FXML
   public void accion_tangente(ActionEvent event){
     Dibuja.dibuja_tangente(gc, myColorOperators, sizeFactor);
     operacion.add("tan");
+    updateText();
+  }
+
+  @FXML
+  void accionGrado(ActionEvent event) {
+    Dibuja.dibuja_grados(gc, myColorOperators, sizeFactor);
+    operacion.add("°");
+    updateText();
   }
 
   @FXML
@@ -264,6 +275,8 @@ public class FXMLDocumentController implements Initializable {
       bttn_sin.setVisible(false);
       bttn_cos.setVisible(false);
       bttn_tan.setVisible(false);
+      bttnGrado.setVisible(false);
+      bttn_raiz.setVisible(false);
       cambio = 1;
     }else{
       bttn_potencia.setVisible(true);
@@ -271,8 +284,31 @@ public class FXMLDocumentController implements Initializable {
       bttn_sin.setVisible(true);
       bttn_cos.setVisible(true);
       bttn_tan.setVisible(true);
+      bttnGrado.setVisible(true);
+      bttn_raiz.setVisible(true);
       cambio = 0;
     }
+  }
+
+  @FXML
+  void accionCalcular(ActionEvent event) {
+    String expresion = "";
+    String resultado = "";
+    String resi = "";
+    for (int i = 0; i < operacion.size(); i++) {
+      if (operacion.get(i) == "°"){}
+      else {
+        expresion = expresion + operacion.get(i);
+      }
+    }
+    resultado = String.valueOf(eval(expresion));
+    operacion.clear();
+    gc.clearRect(0,0,1000,1000);
+    for (int i = 0; i < resultado.length(); i++) {
+      operacion.add(String.valueOf(resultado.charAt(i)));
+    };
+    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
+    updateText();
   }
 
   @FXML
@@ -432,4 +468,114 @@ public class FXMLDocumentController implements Initializable {
     operacion.add("√");
     operacion.add("(");
     }
+
+  public static double eval(final String str) {
+    return new Object() {
+      int pos = -1, ch;
+
+      void nextChar() {
+        ch = (++pos < str.length()) ? str.charAt(pos) : -1;
+      }
+
+      boolean eat(int charToEat) {
+        while (ch == ' ') nextChar();
+        if (ch == charToEat) {
+          nextChar();
+          return true;
+        }
+        return false;
+      }
+
+      double parse() {
+        nextChar();
+        double x = parseExpression();
+        if (pos < str.length()) throw new RuntimeException("Unexpected: " + (char)ch);
+        return x;
+      }
+
+      // Grammar:
+      // expression = term | expression `+` term | expression `-` term
+      // term = factor | term `*` factor | term `/` factor
+      // factor = `+` factor | `-` factor | `(` expression `)` | number
+      //        | functionName `(` expression `)` | functionName factor
+      //        | factor `^` factor
+
+      double parseExpression() {
+        double x = parseTerm();
+        for (;;) {
+          if      (eat('+')) x += parseTerm(); // addition
+          else if (eat('-')) x -= parseTerm(); // subtraction
+          else return x;
+        }
+      }
+
+      double parseTerm() {
+        double x = parseFactor();
+        for (;;) {
+          if      (eat('x')) x *= parseFactor(); // multiplication
+          else if (eat('/')) x /= parseFactor(); // division
+          else return x;
+        }
+      }
+      long factorial(double number) {
+        long result = 1;
+
+        for (int factor = 2; factor <= number; factor++) {
+          result *= factor;
+        }
+
+        return result;
+      }
+
+      double parseFactor() {
+        if (eat('+')) return +parseFactor(); // unary plus
+        if (eat('-')) return -parseFactor(); // unary minus
+
+        double x;
+        int startPos = this.pos;
+        if (eat('(')) { // parentheses
+          x = parseExpression();
+          if (!eat(')')) throw new RuntimeException("Missing ')'");
+        } else if ((ch >= '0' && ch <= '9') || ch == '.') { // numbers
+          while ((ch >= '0' && ch <= '9') || ch == '.') nextChar();
+          x = Double.parseDouble(str.substring(startPos, this.pos));
+        } else if ((ch >= 'a' && ch <= 'z') || ch == '√' || ch == '!') { // functions
+          while ((ch >= 'a' && ch <= 'z') || ch == '√' || ch == '!') nextChar();
+          String func = str.substring(startPos, this.pos);
+          if (eat('(')) {
+            x = parseExpression();
+            if (!eat(')')) throw new RuntimeException("Missing ')' after argument to " + func);
+          } else {
+            x = parseFactor();
+          }
+          System.out.println(func);
+          switch (func) {
+            case "√":
+              x = Math.sqrt(x);
+              break;
+            case "sin":
+              x = Math.sin(Math.toRadians(x));
+              break;
+            case "cos":
+              x = Math.cos(Math.toRadians(x));
+              break;
+            case "tan":
+              x = Math.tan(Math.toRadians(x));
+              break;
+            case "!":
+              x = factorial(x);
+              break;
+            default:
+              throw new RuntimeException("Unknown function: " + func);
+          }
+        } else {
+          throw new RuntimeException("Unexpected: " + (char)ch);
+        }
+
+        if (eat('^')) x = Math.pow(x, parseFactor()); // exponentiation
+
+        return x;
+      }
+    }.parse();
+  }
 }

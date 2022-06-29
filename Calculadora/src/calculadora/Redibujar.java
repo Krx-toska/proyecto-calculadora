@@ -70,6 +70,12 @@ public class Redibujar {
             if ("√".equals(operacion.get(i)) ){
                 Dibuja.dibuja_raiz(gc, operacion, myColorOperators, sizeFactor);
             }
+            if (".".equals(operacion.get(i)) ){
+                Dibuja.dibujaPunto(gc, operacion, myColorNumbers, sizeFactor);
+            }
+            if ("°".equals(operacion.get(i)) ){
+                Dibuja.dibuja_grados(gc, myColorOperators, sizeFactor);
+            }
         }
     }
 }

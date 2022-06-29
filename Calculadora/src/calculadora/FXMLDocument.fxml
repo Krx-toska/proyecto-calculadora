@@ -176,5 +176,15 @@
             <Font size="20.0" />
          </font>
       </Button>
+      <Button fx:id="bttnCalcular" layoutX="583.0" layoutY="206.0" mnemonicParsing="false" onAction="#accionCalcular" prefHeight="101.0" prefWidth="65.0" text="=">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Button>
+      <Button fx:id="bttnGrado" layoutX="655.0" layoutY="314.0" mnemonicParsing="false" onAction="#accionGrado" prefHeight="46.0" prefWidth="65.0" text="°">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

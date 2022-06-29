@@ -32,7 +32,6 @@ public class Dibuja {
 
             gc.strokeLine(mx + 20*sizeFactor,  25*sizeFactor,mx + 20*sizeFactor, 75*sizeFactor);
             gc.strokeLine(mx + 20*sizeFactor,  25*sizeFactor,mx + 10*sizeFactor, 35*sizeFactor);
-            dibuja_grados(gc,sizeFactor);
             mx = mx + 25*sizeFactor;
 
 
@@ -72,7 +71,6 @@ public class Dibuja {
             gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor); //horizontal media
             gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +10*sizeFactor,75*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
-            dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
 
         }
@@ -120,7 +118,6 @@ public class Dibuja {
             gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
-            dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
 
         }
@@ -166,7 +163,6 @@ public class Dibuja {
             gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,50*sizeFactor);
-            dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
 
         }
@@ -208,7 +204,6 @@ public class Dibuja {
             gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,50*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);
-            dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
         }
 
@@ -257,7 +252,6 @@ public class Dibuja {
             gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,75*sizeFactor);   //izquierda
             gc.strokeLine(mx +35*sizeFactor,50*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha abajo
             gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);
-            dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
         }
 
@@ -304,7 +298,6 @@ public class Dibuja {
             gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +35*sizeFactor,25*sizeFactor);   //arriba
             gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,50*sizeFactor);   //izquierda arriba
             gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha
-            dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
         }
 
@@ -345,7 +338,6 @@ public class Dibuja {
             gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,75*sizeFactor);   //izquierda
             gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha
             gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);   //horizontal media
-            dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
         }
 
@@ -394,7 +386,6 @@ public class Dibuja {
             gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,50*sizeFactor);   //izquierda arriba
             gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha
             gc.strokeLine(mx +10*sizeFactor,50*sizeFactor,mx +35*sizeFactor,50*sizeFactor);   //horizontal media
-            dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
         }
 
@@ -442,7 +433,6 @@ public class Dibuja {
             gc.strokeLine(mx +10*sizeFactor,75*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //abajo
             gc.strokeLine(mx +10*sizeFactor,25*sizeFactor,mx +10*sizeFactor,75*sizeFactor);   //izquierda
             gc.strokeLine(mx +35*sizeFactor,25*sizeFactor,mx +35*sizeFactor,75*sizeFactor);   //derecha
-            dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
         }
 
@@ -587,8 +577,10 @@ public class Dibuja {
         mx = mx + 10*sizeFactor;
     }
 
-    public static void dibuja_grados(GraphicsContext gc, double sizeFactor){
-        gc.strokeOval(mx+50, 15, 10, 10);
+    public static void dibuja_grados(GraphicsContext gc, Color myColorOperators, double sizeFactor){
+        gc.setStroke(myColorOperators);
+        gc.strokeOval(mx+15*sizeFactor, 15*sizeFactor, 10*sizeFactor, 10*sizeFactor);
+        mx = mx + 5*sizeFactor;
     }
 
     public static void dibuja_i(GraphicsContext gc, double sizeFactor){
@@ -625,13 +617,9 @@ public class Dibuja {
 
     public static void dibuja_seno(GraphicsContext gc, Color myColorOperators, double sizeFactor){
         gc.setStroke(myColorOperators);
-
-
         dibuja_s(gc, sizeFactor);
         dibuja_i(gc, sizeFactor);
         dibuja_n(gc, sizeFactor);
-        dibuja_grados(gc,sizeFactor);
-        contG=true;
         mx = mx + 35*sizeFactor;
     }
 
@@ -640,8 +628,6 @@ public class Dibuja {
         dibuja_c(gc, sizeFactor);
         dibuja_o(gc, sizeFactor);
         dibuja_s(gc, sizeFactor);
-        dibuja_grados(gc,sizeFactor);
-        contG=true;
         mx = mx + 35*sizeFactor;
     }
 
@@ -650,26 +636,25 @@ public class Dibuja {
         dibuja_t(gc, sizeFactor);
         dibuja_a(gc, sizeFactor);
         dibuja_n(gc, sizeFactor);
-        dibuja_grados(gc,sizeFactor);
-        contG=true;
         mx = mx + 35*sizeFactor;
     }
 
     public static void dibuja_raiz(GraphicsContext gc, ArrayList<String> operacion, Color myColorOperators, double sizeFactor) {
+        gc.setStroke(myColorOperators);
         gc.clearRect(mx+10, 0, 100, 100);
-
         gc.strokeLine(mx + 20*sizeFactor,  60*sizeFactor,mx + 30*sizeFactor, 75*sizeFactor);
         gc.strokeLine(mx + 30*sizeFactor,  75*sizeFactor,mx + 40*sizeFactor, 25*sizeFactor);
         mx = mx + 35*sizeFactor;
-        dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
 
     }
 
-    public static void dibuja_raiz(GraphicsContext gc, ArrayList<String> operacion, Color myColorOperators, double sizeFactor) {
-        gc.clearRect(mx+10, 0, 100, 100);
+    public static void dibujaPunto(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+        gc.setStroke(myColorNumbers);
+        gc.setLineWidth(4);
+        gc.strokeLine(mx + 8*sizeFactor,  75*sizeFactor,mx + 8*sizeFactor, 75*sizeFactor);
+        gc.setLineWidth(1);
+        mx = mx + 8*sizeFactor;
 
-        gc.strokeLine(mx + 20*sizeFactor,  60*sizeFactor,mx + 30*sizeFactor, 75*sizeFactor);
-        gc.strokeLine(mx + 30*sizeFactor,  75*sizeFactor,mx + 40*sizeFactor, 25*sizeFactor);
-        mx = mx + 35*sizeFactor;
+
     }
 }
