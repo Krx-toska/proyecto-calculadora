@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import javafx.scene.canvas.GraphicsContext;
 import static calculadora.Dibuja.auxmx2;
 import static calculadora.Dibuja.auxmxDD;
+import static calculadora.FXMLDocumentController.operacion;
+import static calculadora.Dibuja.contG;
 
 
 /**
@@ -47,9 +49,23 @@ public class Division {
     DD=false;
     }
     
+    public void limpiarniveles(){
+    niveles.clear();
+    }
     
-    public void division(GraphicsContext gc){
+    public void limpiarDD(){
+    bajarD =0; auxmxD=1000;
+    tamanoD = 1;
+    auxtamanoD = 0;
+    nivelesD.clear();
     
+    }
+    
+    
+    public void division(GraphicsContext gc, double sizeFactor){
+        
+    mx=mx+5;
+        
     if (niveles.isEmpty()){
         System.out.println("funciona");
         
@@ -58,7 +74,7 @@ public class Division {
         
         System.out.println(niveles);
         
-        gc.strokeLine(mx+0,180,mx+60,180);
+        gc.strokeLine(mx+0*sizeFactor,180*sizeFactor,mx+60*sizeFactor,180*sizeFactor);
         reubicar();
         auxmx =1000;
                 
@@ -96,13 +112,13 @@ public class Division {
     if((int)niveles.get(niveles.size()-1) == 3){
     
     auxBajar = 75;
-    sube = 45;
+    sube = 44;
     }
     
     else if((int)niveles.get(niveles.size()-1)== 2){
     
     auxBajar = 25;
-    sube = 95;
+    sube = 94;
     }
     
     nivelesD.add(5);
@@ -157,19 +173,21 @@ public class Division {
     
     public void bajar(){
         
-        
+        contG=false;
         
         if(!nivelesD.isEmpty()){
             
             
             if(nivelesD.size()==1){
             nivelesD.remove(nivelesD.size()-1);
-            mx=mx+10;
+            mx=mx+15;
+            auxmxDD=1000;
+            limpiarDD();
             }
             
 
             else if(nivelesD.get(nivelesD.size()-1) == nivelesD.get(nivelesD.size()-2)){
-                
+            operacion.add("/");  
             int aux = (int) nivelesD.get(nivelesD.size()-1);
             nivelesD.remove(nivelesD.size()-1);
             
@@ -190,6 +208,8 @@ public class Division {
             
             else if(niveles.get(niveles.size()-1) == niveles.get(niveles.size()-2)){
                 
+            operacion.add("/");
+            
             int aux = (int) niveles.get(niveles.size()-1);
             niveles.remove(niveles.size()-1);
             
@@ -207,13 +227,13 @@ public class Division {
             else{
             DD=false;
             int aux = (int) niveles.get(niveles.size()-1);   
-            mx = mx+15;
+            mx = mx+20;
             bajar = (double)  listaBajar.get(listaBajar.size()-1);
             listaBajar.remove(listaBajar.size()-1);
             niveles.remove(niveles.size()-1);
             System.out.println("niveles "+ niveles);
             tamano = tamano + (auxtamano*0.25);
-     
+            
             }
           
         }
@@ -224,7 +244,7 @@ public class Division {
             
               mx= auxmx2;
               bajar=0;
-              mx=mx+70;
+              mx=mx+55;
               limpiar();
               nivelmx.clear();
               

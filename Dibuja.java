@@ -13,7 +13,8 @@ import static calculadora.Division.nivelesD;
 import static calculadora.Division.bajarD;
 import static calculadora.Division.tamanoD;
 import static calculadora.Division.DD;
-
+import static calculadora.FXMLDocumentController.operacion;
+import static calculadora.FXMLDocumentController.contP;
 /**
  *
  * @author waki
@@ -38,8 +39,15 @@ public class Dibuja {
     
         if(niveles.isEmpty()){ 
             
+            if(contP==true){
+            gc.strokeLine(mx +20*sizeFactor,110*sizeFactor,mx +20*sizeFactor,130*sizeFactor);
+            gc.strokeLine(mx +20*sizeFactor,110*sizeFactor,mx +15*sizeFactor,115*sizeFactor);
+            mx = mx + 15*sizeFactor;
+
+            }
+            else{
             if(contG==true){
-            gc.clearRect(mx+10, 40, 100, 100);
+            gc.clearRect(mx+10*sizeFactor, 40*sizeFactor, 100*sizeFactor, 100*sizeFactor);
             gc.strokeLine(mx + 20*sizeFactor,  125*sizeFactor,mx + 20*sizeFactor, 175*sizeFactor);
             gc.strokeLine(mx + 20*sizeFactor,  125*sizeFactor,mx + 10*sizeFactor, 135*sizeFactor);
             dibuja_grados(gc,sizeFactor);
@@ -50,7 +58,7 @@ public class Dibuja {
             gc.strokeLine(mx + 20*sizeFactor,  125*sizeFactor,mx + 10*sizeFactor, 135*sizeFactor);
             mx = mx + 25*sizeFactor;}
         
-        }
+        }}
         
         
         else{
@@ -62,7 +70,7 @@ public class Dibuja {
           
             reubicarD();
             if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -86,17 +94,19 @@ public class Dibuja {
             
                  if(contG==true){
                  aux = (int) niveles.get(niveles.size()-1);
-                 gc.clearRect(mx+5*aux+ 10*tamano, 40*tamano, 100, 100);
+                 gc.clearRect(mx+3.5*aux+ 10*sizeFactor*tamano, 114*tamano+bajar*sizeFactor, 100*sizeFactor*tamano, 100*sizeFactor*tamano);
                  
                  gc.strokeLine(mx +5*aux + 20*sizeFactor*tamano, 125*sizeFactor*tamano+bajar,mx +5*aux + 20*sizeFactor*tamano, 175*sizeFactor*tamano+bajar);
                  gc.strokeLine(mx +5*aux + 20*sizeFactor*tamano, 125*sizeFactor*tamano+bajar,mx +5*aux + 10*sizeFactor*tamano, 135*sizeFactor*tamano+bajar);
                  
                  dibuja_grados(gc,sizeFactor);
+                 
                  reubicar();
                  reubicar2();
             
-                  if(DD==false){
-               int contD = 0;
+            if(DD==false){
+            int contD = 0;
+            
             for(int x =0;x<niveles.size();x+=2){
             gc.strokeLine(mx+0+5*contD,180-50*contD,mx+60-5*contD,180-50*contD);  
             contD++;    
@@ -111,8 +121,6 @@ public class Dibuja {
             mx = mx + 25*sizeFactor*tamano;
                  
                  }
-                
-                
                  else{   
             aux = (int) niveles.get(niveles.size()-1);
             
@@ -148,7 +156,7 @@ public class Dibuja {
         if(niveles.isEmpty()){
         
             if(contG==true){
-            gc.clearRect(mx+10, 40, 100, 100);
+            gc.clearRect(mx+10*sizeFactor, 40*sizeFactor, 100*sizeFactor, 100*sizeFactor);
             
             
             gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);
@@ -187,7 +195,7 @@ public class Dibuja {
             
             
             if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -209,6 +217,45 @@ public class Dibuja {
             }
             
             else{
+                
+                 if(contG==true){
+                 aux = (int) niveles.get(niveles.size()-1);
+                 gc.clearRect(mx+3.5*aux+ 10*sizeFactor*tamano, 114*tamano+bajar*sizeFactor, 100*sizeFactor*tamano, 100*sizeFactor*tamano);
+                
+                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
+                 gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
+                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar); //horizontal media
+                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
+                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
+                 dibuja_grados(gc,sizeFactor);
+                 reubicar();
+                 reubicar2();
+            
+                 if(DD==false){
+                 int contD = 0;
+                 for(int x =0;x<niveles.size();x+=2){
+            
+            
+            //Ejemplo con cambiar tamano y tener la division tiene 2 problemas.
+            
+            gc.strokeLine((mx+0+5*contD)*sizeFactor,(180-50*contD)*sizeFactor,(mx+60-5*contD)*sizeFactor,(180-50*contD)*sizeFactor);  
+            
+            
+            
+            contD++;    
+            }}
+            
+            else if(DD==true){
+            gc.strokeLine(mx+0,180,mx+60,180);
+            gc.strokeLine(mx+0+5 *aux,180+50,mx+60-5*aux,180+50);
+            
+            }
+            
+            mx = mx + 35*sizeFactor*tamano;
+                }
+                
+
+                else{    
                         
             aux = (int) niveles.get(niveles.size()-1);
             
@@ -227,9 +274,9 @@ public class Dibuja {
             for(int x =0;x<niveles.size();x+=2){
             
             
+            //Ejemplo con cambiar tamano y tener la division tiene 2 problemas.
             
-            
-            gc.strokeLine(mx+0+5*contD,180-50*contD,mx+60-5*contD,180-50*contD);  
+            gc.strokeLine((mx+0+5*contD)*sizeFactor,(180-50*contD)*sizeFactor,(mx+60-5*contD)*sizeFactor,(180-50*contD)*sizeFactor);  
             
             
             
@@ -244,7 +291,7 @@ public class Dibuja {
             
             mx = mx + 35*sizeFactor*tamano;}
             
-    }}
+    }}}
     
     public static void dibuja_tres(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
         gc.setStroke(myColorNumbers);
@@ -253,7 +300,7 @@ public class Dibuja {
        if(niveles.isEmpty()){
            
            if(contG==true){
-            gc.clearRect(mx+10, 40, 100, 100);
+            gc.clearRect(mx+10*sizeFactor, 40*sizeFactor, 100*sizeFactor, 100*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,125*sizeFactor,mx +35*sizeFactor,125*sizeFactor);
             gc.strokeLine(mx +35*sizeFactor,125*sizeFactor,mx +35*sizeFactor,175*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,150*sizeFactor,mx +35*sizeFactor,150*sizeFactor);
@@ -283,7 +330,7 @@ public class Dibuja {
             reubicarD();
             
             if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -303,7 +350,42 @@ public class Dibuja {
             
        }
        else{
-                        
+             
+                 if(contG==true){
+                 aux = (int) niveles.get(niveles.size()-1);
+                 gc.clearRect(mx+3.5*aux+ 10*sizeFactor*tamano, 114*tamano+bajar*sizeFactor, 100*sizeFactor*tamano, 100*sizeFactor*tamano);
+            
+                 gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
+                 gc.strokeLine(mx +5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
+                 gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
+                 gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
+       
+                 dibuja_grados(gc,sizeFactor);
+                 
+                 reubicar();
+                 reubicar2();
+            
+            if(DD==false){
+            int contD = 0;
+            for(int x =0;x<niveles.size();x+=2){
+            
+            gc.strokeLine(mx+0+5*contD,180-50*contD,mx+60-5*contD,180-50*contD);  
+
+            contD++;    
+            }}
+            
+            else if(DD==true){
+            gc.strokeLine(mx+0,180,mx+60,180);
+            gc.strokeLine(mx+0+5 *aux,180+50,mx+60-5*aux,180+50);
+            
+            }
+            
+            mx = mx + 35*sizeFactor*tamano;
+            
+            }
+           
+            else{
+           
             aux = (int) niveles.get(niveles.size()-1);
        
             gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
@@ -336,11 +418,7 @@ public class Dibuja {
             
             mx = mx + 35*sizeFactor*tamano;
        
-       
-       }
-       
-       
-       }}
+       }} }}
     
       
     public static void dibuja_cuatro(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
@@ -349,7 +427,7 @@ public class Dibuja {
         if(niveles.isEmpty()){
             
             if(contG==true){
-            gc.clearRect(mx+10, 40, 100, 100);
+            gc.clearRect(mx+10*sizeFactor, 40*sizeFactor, 100*sizeFactor, 100*sizeFactor);
             
             gc.strokeLine(mx +35*sizeFactor,125*sizeFactor,mx +35*sizeFactor,175*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,150*sizeFactor,mx +35*sizeFactor,150*sizeFactor);
@@ -378,7 +456,7 @@ public class Dibuja {
             reubicarD();
             
             if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -397,6 +475,46 @@ public class Dibuja {
         }
         else{
         
+            if(contG==true){
+                 aux = (int) niveles.get(niveles.size()-1);
+                 gc.clearRect(mx+3.5*aux+ 10*sizeFactor*tamano, 114*tamano+bajar*sizeFactor, 100*sizeFactor*tamano, 100*sizeFactor*tamano);
+            
+                 gc.strokeLine(mx +5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
+                 gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
+                 gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx +5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
+                 
+                 dibuja_grados(gc,sizeFactor);
+                 reubicar();
+                 reubicar2();
+            
+            if(DD==false){
+            int contD = 0;
+            for(int x =0;x<niveles.size();x+=2){
+            
+            
+            
+            
+            gc.strokeLine(mx+0+5*contD,180-50*contD,mx+60-5*contD,180-50*contD);  
+            
+            
+            
+            contD++;    
+            }}
+            
+            else if(DD==true){
+            gc.strokeLine(mx+0,180,mx+60,180);
+            gc.strokeLine(mx+0+5 *aux,180+50,mx+60-5*aux,180+50);
+            
+            }
+            
+            mx = mx + 35*sizeFactor*tamano;
+            
+            
+            }
+            
+            
+            
+            else{
             aux = (int) niveles.get(niveles.size()-1);
         
             gc.strokeLine(mx +5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
@@ -427,10 +545,7 @@ public class Dibuja {
             }
             
             mx = mx + 35*sizeFactor*tamano;
-        }
-        
-        
-        }}
+        }}}}
           
     public static void dibuja_cinco(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
         gc.setStroke(myColorNumbers);
@@ -438,7 +553,7 @@ public class Dibuja {
         if(niveles.isEmpty()){
             
             if(contG==true){
-            gc.clearRect(mx+10, 40, 100, 100);
+            gc.clearRect(mx+10*sizeFactor, 40*sizeFactor, 100*sizeFactor, 100*sizeFactor);
             
             gc.strokeLine(mx +10*sizeFactor,125*sizeFactor,mx +35*sizeFactor,125*sizeFactor);
             gc.strokeLine(mx +35*sizeFactor,150*sizeFactor,mx +35*sizeFactor,175*sizeFactor);
@@ -472,7 +587,7 @@ public class Dibuja {
             reubicarD();
             
             if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -491,6 +606,49 @@ public class Dibuja {
 
         }
         else{
+            
+            if(contG==true){
+                 aux = (int) niveles.get(niveles.size()-1);
+                 gc.clearRect(mx+3.5*aux+ 10*sizeFactor*tamano, 114*tamano+bajar*sizeFactor, 100*sizeFactor*tamano, 100*sizeFactor*tamano);
+            
+                 aux = (int) niveles.get(niveles.size()-1);
+                 gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
+                 gc.strokeLine(mx +5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
+                 gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
+                 gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx +5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
+                 gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
+                 
+                 dibuja_grados(gc,sizeFactor);
+        
+            reubicar();
+            reubicar2();
+            
+            if(DD==false){
+            int contD = 0;
+            for(int x =0;x<niveles.size();x+=2){
+            
+            
+            
+            
+            gc.strokeLine(mx+0+5*contD,180-50*contD,mx+60-5*contD,180-50*contD);  
+            
+            
+            
+            contD++;    
+            }}
+            
+            else if(DD==true){
+            gc.strokeLine(mx+0,180,mx+60,180);
+            gc.strokeLine(mx+0+5 *aux,180+50,mx+60-5*aux,180+50);
+            
+            }
+            
+            mx = mx + 35*sizeFactor*tamano;
+            
+            
+            }
+            
+            else{
             
             aux = (int) niveles.get(niveles.size()-1);
             gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
@@ -525,16 +683,17 @@ public class Dibuja {
             
             mx = mx + 35*sizeFactor*tamano;
         
-        }
+        }}
         
         }}
     
     public static void dibuja_seis(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
         gc.setStroke(myColorNumbers);
         
-         if(niveles.isEmpty()){
+        if(niveles.isEmpty()){
+            
             if(contG==true){
-            gc.clearRect(mx+10, 40, 100, 100);
+            gc.clearRect(mx+10*sizeFactor, 40*sizeFactor, 100*sizeFactor, 100*sizeFactor);
             
             gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);   //arriba
             gc.strokeLine(mx +10*sizeFactor,175*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);   //abajo
@@ -543,22 +702,24 @@ public class Dibuja {
             gc.strokeLine(mx +10*sizeFactor,150*sizeFactor+bajar,mx +35*sizeFactor,150*sizeFactor+bajar);
             dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
+            
+            
             }
             
             else{
-        
             gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);   //arriba
             gc.strokeLine(mx +10*sizeFactor,175*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);   //abajo
             gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,175*sizeFactor+bajar);   //izquierda
             gc.strokeLine(mx +35*sizeFactor,150*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);   //derecha abajo
             gc.strokeLine(mx +10*sizeFactor,150*sizeFactor+bajar,mx +35*sizeFactor,150*sizeFactor+bajar);
-            
-            mx = mx + 35*sizeFactor;
-        }}
-        
+            mx = mx + 35*sizeFactor;}
+        }
         else{
+        
         if(!nivelesD.isEmpty()){
             aux = (int) niveles.get(niveles.size()-1);
+        
+            
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD);   //arriba
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   //abajo
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   //izquierda
@@ -568,7 +729,7 @@ public class Dibuja {
             reubicarD();
             
             if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -582,20 +743,62 @@ public class Dibuja {
 
             contD++;    
             }
-            
-            
-            
-            mx = mx+12;
+
+            mx = mx+14*sizeFactor;
         }
-        else {
+        else{
+            System.out.println("asas");
+            if(contG==true){
+                 aux = (int) niveles.get(niveles.size()-1);
+                 gc.clearRect(mx+3.5*aux+ 10*sizeFactor*tamano, 114*tamano+bajar*sizeFactor, 100*sizeFactor*tamano, 100*sizeFactor*tamano);
             
+                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);   //arriba
+                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //abajo
+                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //izquierda
+                 gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //derecha abajo
+                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar); 
+                 
+                 
+                 dibuja_grados(gc,sizeFactor);
+                 reubicar();
+                 reubicar2();
+            
+            if(DD==false){
+            int contD = 0;
+            for(int x =0;x<niveles.size();x+=2){
+            
+            
+            
+            
+            gc.strokeLine(mx+0+5*contD,180-50*contD,mx+60-5*contD,180-50*contD);  
+            
+            
+            
+            contD++;    
+            }}
+            
+            else if(DD==true){
+            gc.strokeLine(mx+0,180,mx+60,180);
+            gc.strokeLine(mx+0+5 *aux,180+50,mx+60-5*aux,180+50);
+            
+            }
+            
+            mx = mx + 35*sizeFactor*tamano;
+            
+            
+            }
+            
+            
+            
+            else{
             aux = (int) niveles.get(niveles.size()-1);
-            
+        
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);   //arriba
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //abajo
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //izquierda
             gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //derecha abajo
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar); 
+        
             reubicar();
             reubicar2();
             
@@ -620,43 +823,45 @@ public class Dibuja {
             }
             
             mx = mx + 35*sizeFactor*tamano;
-        }
-        }
-    }
+        }}}}
         
     public static void dibuja_siete(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
         gc.setStroke(myColorNumbers);
-             
+        
+        if(niveles.isEmpty()){
             
-            if(niveles.isEmpty()){
-                if(contG==true){
-                gc.clearRect(mx+10, 40, 100, 100);
+            if(contG==true){
+            gc.clearRect(mx+10*sizeFactor, 40*sizeFactor, 100*sizeFactor, 100*sizeFactor);
                 gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);   //arriba
                 gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,150*sizeFactor+bajar);   //izquierda arriba
                 gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar); 
                 dibuja_grados(gc,sizeFactor);
-                mx = mx + 35*sizeFactor*tamano;}
-                
-                else{
-        
-                gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);   //arriba
-                gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,150*sizeFactor+bajar);   //izquierda arriba
-                gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar); 
             
-            mx = mx + 35*sizeFactor*tamano;
-        }}
-        
+            dibuja_grados(gc,sizeFactor);
+            mx = mx + 35*sizeFactor;
+            }
+            
+            else{
+            gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);   //arriba
+            gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,150*sizeFactor+bajar);   //izquierda arriba
+            gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);
+            mx = mx + 35*sizeFactor;}
+        }
         else{
+        
         if(!nivelesD.isEmpty()){
             aux = (int) niveles.get(niveles.size()-1);
+        
+            
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD);   //arriba
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +10*sizeFactor*tamanoD,150*sizeFactor*tamanoD+bajarD);   //izquierda arriba
             gc.strokeLine(mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);    
+            dibuja_grados(gc,sizeFactor);
             
             reubicarD();
             
             if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -670,17 +875,57 @@ public class Dibuja {
 
             contD++;    
             }
-            
-            
-            
-            mx = mx+12;
+
+            mx = mx+14*sizeFactor;
         }
-        else {
+        else{
+        //dfdsfdfdsdff
+            if(contG==true){
+                 aux = (int) niveles.get(niveles.size()-1);
+                 gc.clearRect(mx+3.5*aux+ 10*sizeFactor*tamano, 114*tamano+bajar*sizeFactor, 100*sizeFactor*tamano, 100*sizeFactor*tamano);
             
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);   //arriba
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar);   //izquierda arriba
+                gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar); 
+                 
+                 dibuja_grados(gc,sizeFactor);
+                 reubicar();
+                 reubicar2();
+            
+            if(DD==false){
+            int contD = 0;
+            for(int x =0;x<niveles.size();x+=2){
+            
+            
+            
+            
+            gc.strokeLine(mx+0+5*contD,180-50*contD,mx+60-5*contD,180-50*contD);  
+            
+            
+            
+            contD++;    
+            }}
+            
+            else if(DD==true){
+            gc.strokeLine(mx+0,180,mx+60,180);
+            gc.strokeLine(mx+0+5 *aux,180+50,mx+60-5*aux,180+50);
+            
+            }
+            
+            mx = mx + 35*sizeFactor*tamano;
+            
+            
+            }
+            
+            
+            
+            else{
             aux = (int) niveles.get(niveles.size()-1);
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);   //arriba
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar);   //izquierda arriba
-            gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar); 
+        
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);   //arriba
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar);   //izquierda arriba
+                gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
+        
             reubicar();
             reubicar2();
             
@@ -705,49 +950,53 @@ public class Dibuja {
             }
             
             mx = mx + 35*sizeFactor*tamano;
-        }}
-    }  
+        }}}}
     
-        public static void dibuja_ocho(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
-        gc.setStroke(myColorNumbers);
-             
+       
+    
+    public static void dibuja_ocho(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+            gc.setStroke(myColorNumbers);
+        
         if(niveles.isEmpty()){
             
-                if(contG==true){
-                gc.clearRect(mx+10, 40, 100, 100);
-                
+            if(contG==true){
+            gc.clearRect(mx+10*sizeFactor, 40*sizeFactor, 100*sizeFactor, 100*sizeFactor);
                 gc.strokeLine(mx +10*sizeFactor,150*sizeFactor+bajar,mx +35*sizeFactor,150*sizeFactor+bajar);
                 gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);
                 gc.strokeLine(mx +10*sizeFactor,175*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);   //arriba
                 gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,175*sizeFactor+bajar);   //izquierda arriba
-                gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar); 
+                gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);
                 dibuja_grados(gc,sizeFactor);
-                mx = mx + 35*sizeFactor;
-                }
-                
-                else{
+            
+            dibuja_grados(gc,sizeFactor);
+            mx = mx + 35*sizeFactor;
+            }
+            
+            else{
                 gc.strokeLine(mx +10*sizeFactor,150*sizeFactor+bajar,mx +35*sizeFactor,150*sizeFactor+bajar);
                 gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);
                 gc.strokeLine(mx +10*sizeFactor,175*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);   //arriba
                 gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,175*sizeFactor+bajar);   //izquierda arriba
                 gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar); 
-            
-            mx = mx + 35*sizeFactor;
-        }}
-        
+            mx = mx + 35*sizeFactor;}
+        }
         else{
+        
         if(!nivelesD.isEmpty()){
             aux = (int) niveles.get(niveles.size()-1);
+        
+            
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,150*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,150*sizeFactor*tamanoD+bajarD);
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD);
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   //arriba
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   //izquierda arriba
-            gc.strokeLine(mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);  
+            gc.strokeLine(mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);    
+            dibuja_grados(gc,sizeFactor);
             
             reubicarD();
             
             if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -761,26 +1010,32 @@ public class Dibuja {
 
             contD++;    
             }
-            
-            
-            
-            mx = mx+12;
+
+            mx = mx+14*sizeFactor;
         }
-        else {
+        else{
+        //dfdsfdfdsdff
+            if(contG==true){
+                 aux = (int) niveles.get(niveles.size()-1);
+                 gc.clearRect(mx+3.5*aux+ 10*sizeFactor*tamano, 114*tamano+bajar*sizeFactor, 100*sizeFactor*tamano, 100*sizeFactor*tamano);
             
-            aux = (int) niveles.get(niveles.size()-1);
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //arriba
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //izquierda arriba
-            gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar); 
-            reubicar();
-            reubicar2();
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //arriba
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //izquierda arriba
+                gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar); 
+                 
+                 dibuja_grados(gc,sizeFactor);
+                 reubicar();
+                 reubicar2();
             
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
-
+            
+            
+            
+            
             gc.strokeLine(mx+0+5*contD,180-50*contD,mx+60-5*contD,180-50*contD);  
             
             
@@ -795,48 +1050,92 @@ public class Dibuja {
             }
             
             mx = mx + 35*sizeFactor*tamano;
-        }
-    }  }
+            
+            
+            }
+            
+            
+            
+            else{
+            aux = (int) niveles.get(niveles.size()-1);
+        
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //arriba
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //izquierda arriba
+                gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
+        
+            reubicar();
+            reubicar2();
+            
+            if(DD==false){
+            int contD = 0;
+            for(int x =0;x<niveles.size();x+=2){
+            
+            
+            
+            
+            gc.strokeLine(mx+0+5*contD,180-50*contD,mx+60-5*contD,180-50*contD);  
+            
+            
+            
+            contD++;    
+            }}
+            
+            else if(DD==true){
+            gc.strokeLine(mx+0,180,mx+60,180);
+            gc.strokeLine(mx+0+5 *aux,180+50,mx+60-5*aux,180+50);
+            
+            }
+            
+            mx = mx + 35*sizeFactor*tamano;
+        }}}}
+        
        
     public static void dibuja_nueve(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
-        gc.setStroke(myColorNumbers);
-            
-        if(niveles.isEmpty()){
-                if(contG==true){
-                gc.clearRect(mx+10, 40, 100, 100);
-                gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);
-                gc.strokeLine(mx +10*sizeFactor,175*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);
-                gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,150*sizeFactor+bajar);   //arriba  //izquierda arriba
-                gc.strokeLine(mx +10*sizeFactor,150*sizeFactor+bajar,mx +35*sizeFactor,150*sizeFactor+bajar);
-                gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar); 
-                dibuja_grados(gc,sizeFactor);
-                mx = mx + 35*sizeFactor;
-                
-                }
-                
-                else{
-                gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);
-                gc.strokeLine(mx +10*sizeFactor,175*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);
-                gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,150*sizeFactor+bajar);   //arriba  //izquierda arriba
-                gc.strokeLine(mx +10*sizeFactor,150*sizeFactor+bajar,mx +35*sizeFactor,150*sizeFactor+bajar);
-                gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar); 
-            
-            mx = mx + 35*sizeFactor;
-        }}
+         gc.setStroke(myColorNumbers);
         
+        if(niveles.isEmpty()){
+            
+            if(contG==true){
+            gc.clearRect(mx+10*sizeFactor, 40*sizeFactor, 100*sizeFactor, 100*sizeFactor);
+                
+                gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);
+                gc.strokeLine(mx +10*sizeFactor,175*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);
+                gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,150*sizeFactor+bajar);   //arriba  //izquierda arriba
+                gc.strokeLine(mx +10*sizeFactor,150*sizeFactor+bajar,mx +35*sizeFactor,150*sizeFactor+bajar);
+                gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);
+                dibuja_grados(gc,sizeFactor);
+            
+            dibuja_grados(gc,sizeFactor);
+            mx = mx + 35*sizeFactor;
+            }
+            
+            else{
+                gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);
+                gc.strokeLine(mx +10*sizeFactor,175*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);
+                gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,150*sizeFactor+bajar);   //arriba  //izquierda arriba
+                gc.strokeLine(mx +10*sizeFactor,150*sizeFactor+bajar,mx +35*sizeFactor,150*sizeFactor+bajar);
+                gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar); 
+            mx = mx + 35*sizeFactor;}
+        }
         else{
+        
         if(!nivelesD.isEmpty()){
             aux = (int) niveles.get(niveles.size()-1);
+        
+            
+            gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,150*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,150*sizeFactor*tamanoD+bajarD);
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD);
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +10*sizeFactor*tamanoD,150*sizeFactor*tamanoD+bajarD);   //arriba
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,150*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,150*sizeFactor*tamanoD+bajarD);   //izquierda arriba
+            gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   //arriba
+            gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   //izquierda arriba
             gc.strokeLine(mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);    
+            dibuja_grados(gc,sizeFactor);
             
             reubicarD();
             
             if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -850,26 +1149,32 @@ public class Dibuja {
 
             contD++;    
             }
-            
-            
-            
-            mx = mx+12;
+
+            mx = mx+14*sizeFactor;
         }
-        else {
+        else{
+        //dfdsfdfdsdff
+            if(contG==true){
+                 aux = (int) niveles.get(niveles.size()-1);
+                 gc.clearRect(mx+3.5*aux+ 10*sizeFactor*tamano, 114*tamano+bajar*sizeFactor, 100*sizeFactor*tamano, 100*sizeFactor*tamano);
             
-            aux = (int) niveles.get(niveles.size()-1);
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar);   //arriba
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);   //izquierda arriba
-            gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);  
-            reubicar();
-            reubicar2();
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar);   //arriba
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);   //izquierda arriba
+                gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar); ; 
+                 
+                 dibuja_grados(gc,sizeFactor);
+                 reubicar();
+                 reubicar2();
             
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
-
+            
+            
+            
+            
             gc.strokeLine(mx+0+5*contD,180-50*contD,mx+60-5*contD,180-50*contD);  
             
             
@@ -884,48 +1189,93 @@ public class Dibuja {
             }
             
             mx = mx + 35*sizeFactor*tamano;
-        }}
-    } 
+            
+            
+            }
+            
+            
+            
+            else{
+            aux = (int) niveles.get(niveles.size()-1);
+        
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar);   //arriba
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);   //izquierda arriba
+                gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar); 
+        
+            reubicar();
+            reubicar2();
+            
+            if(DD==false){
+            int contD = 0;
+            for(int x =0;x<niveles.size();x+=2){
+            
+            
+            
+            
+            gc.strokeLine(mx+0+5*contD,180-50*contD,mx+60-5*contD,180-50*contD);  
+            
+            
+            
+            contD++;    
+            }}
+            
+            else if(DD==true){
+            gc.strokeLine(mx+0,180,mx+60,180);
+            gc.strokeLine(mx+0+5 *aux,180+50,mx+60-5*aux,180+50);
+            
+            }
+            
+            mx = mx + 35*sizeFactor*tamano;
+        }}}}
+    
+        
+     
+        
     
        
     public static void dibuja_cero(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
         gc.setStroke(myColorNumbers);
-            
+        
         if(niveles.isEmpty()){
-            if(contG==true){
-            gc.clearRect(mx+10, 40, 100, 100);
             
-            gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);   //arriba
-            gc.strokeLine(mx +10*sizeFactor,175*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);   //abajo
-            gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,175*sizeFactor+bajar);   //izquierda
-            gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar); 
+            if(contG==true){
+            gc.clearRect(mx+10*sizeFactor, 40*sizeFactor, 100*sizeFactor, 100*sizeFactor);
+                
+                gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);   //arriba
+                gc.strokeLine(mx +10*sizeFactor,175*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);   //abajo
+                gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,175*sizeFactor+bajar);   //izquierda
+                gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);
+                dibuja_grados(gc,sizeFactor);
+            
             dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
-            
             }
             
             else{
-        
-            gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);   //arriba
-            gc.strokeLine(mx +10*sizeFactor,175*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);   //abajo
-            gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,175*sizeFactor+bajar);   //izquierda
-            gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar); 
-            
-            mx = mx + 35*sizeFactor;
-        }}
-        
+                gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);   //arriba
+                gc.strokeLine(mx +10*sizeFactor,175*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);   //abajo
+                gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,175*sizeFactor+bajar);   //izquierda
+                gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);  
+            mx = mx + 35*sizeFactor;}
+        }
         else{
+        
         if(!nivelesD.isEmpty()){
             aux = (int) niveles.get(niveles.size()-1);
+        
+            
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD);
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   //arriba
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   //izquierda arriba
-            gc.strokeLine(mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   
+            gc.strokeLine(mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);     
+            dibuja_grados(gc,sizeFactor);
             
             reubicarD();
             
             if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -939,25 +1289,31 @@ public class Dibuja {
 
             contD++;    
             }
-            
-            
-            
-            mx = mx+12;
+
+            mx = mx+14*sizeFactor;
         }
-        else {
+        else{
+        //dfdsfdfdsdff
+            if(contG==true){
+                 aux = (int) niveles.get(niveles.size()-1);
+                 gc.clearRect(mx+3.5*aux+ 10*sizeFactor*tamano, 114*tamano+bajar*sizeFactor, 100*sizeFactor*tamano, 100*sizeFactor*tamano);
             
-            aux = (int) niveles.get(niveles.size()-1);
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //arriba
-            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //izquierda arriba
-            gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar); 
-            reubicar();
-            reubicar2();
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //arriba
+                gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //izquierda arriba
+                gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar); 
+                 
+                 dibuja_grados(gc,sizeFactor);
+                 reubicar();
+                 reubicar2();
             
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
-
+            
+            
+            
+            
             gc.strokeLine(mx+0+5*contD,180-50*contD,mx+60-5*contD,180-50*contD);  
             
             
@@ -972,8 +1328,45 @@ public class Dibuja {
             }
             
             mx = mx + 35*sizeFactor*tamano;
-        }}
-    }
+            
+            
+            }
+            
+            
+            
+            else{
+            aux = (int) niveles.get(niveles.size()-1);
+        
+            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
+            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //arriba
+            gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //izquierda arriba
+            gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar); 
+        
+            reubicar();
+            reubicar2();
+            
+            if(DD==false){
+            int contD = 0;
+            for(int x =0;x<niveles.size();x+=2){
+            
+            
+            
+            
+            gc.strokeLine(mx+0+5*contD,180-50*contD,mx+60-5*contD,180-50*contD);  
+            
+            
+            
+            contD++;    
+            }}
+            
+            else if(DD==true){
+            gc.strokeLine(mx+0,180,mx+60,180);
+            gc.strokeLine(mx+0+5 *aux,180+50,mx+60-5*aux,180+50);
+            
+            }
+            
+            mx = mx + 35*sizeFactor*tamano;
+        }}}}
        
     public static void dibuja_mas(GraphicsContext gc, ArrayList<String> operacion, Color myColorOperators, double sizeFactor){
         gc.setStroke(myColorOperators);
@@ -1000,7 +1393,7 @@ public class Dibuja {
             reubicarD();
             
             if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -1022,6 +1415,12 @@ public class Dibuja {
             
             aux = (int) niveles.get(niveles.size()-1);
         
+            if(contG==true){
+        
+            contG=false;
+            mx=mx+20;
+            }
+            
             gc.strokeLine(mx +5*aux + 22.5*sizeFactor*tamano,137.5*sizeFactor*tamano+bajar,mx +5*aux +22.5*sizeFactor*tamano,162.5*sizeFactor*tamano+bajar);        //Altura maxima = 25, Altura Minima, 75
             gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);        //Ancho maximo = 30, parte desde x = 10
             
@@ -1081,7 +1480,7 @@ public class Dibuja {
             reubicarD();
             
             if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -1104,6 +1503,12 @@ public class Dibuja {
         else{
         
         aux = (int) niveles.get(niveles.size()-1);
+        
+        if(contG==true){
+        
+        contG=false;
+        mx=mx+20;
+        }
         
         gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
         
@@ -1160,7 +1565,7 @@ public class Dibuja {
                 reubicarD();
                 
                 if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -1181,6 +1586,12 @@ public class Dibuja {
             else{
                 
             aux = (int) niveles.get(niveles.size()-1);
+            
+            if(contG==true){
+        
+            contG=false;
+            mx=mx+20;
+            }
             gc.strokeLine(mx +5*aux +20*sizeFactor*tamano,135*sizeFactor*tamano+bajar,mx +5*aux + 32.5*sizeFactor*tamano,165*sizeFactor*tamano+bajar); 
             gc.strokeLine(mx +5*aux +20*sizeFactor*tamano,165*sizeFactor*tamano+bajar,mx +5*aux + 32.5*sizeFactor*tamano,135*sizeFactor*tamano+bajar);
             
@@ -1216,14 +1627,14 @@ public class Dibuja {
         gc.strokeArc(mx +20*sizeFactor,125*sizeFactor,10*sizeFactor,50*sizeFactor,90,180,ArcType.OPEN); 
         mx = mx + 25*sizeFactor;}
         
-        
+        else{
         if(!nivelesD.isEmpty()){
             aux = (int) niveles.get(niveles.size()-1);
             
             gc.strokeArc(mx +5*aux+10*sizeFactor,125*sizeFactor*tamanoD+bajarD,10*sizeFactor*tamanoD,50*sizeFactor*tamanoD,90,180,ArcType.OPEN); 
             reubicarD();
             if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -1245,7 +1656,7 @@ public class Dibuja {
                 
             aux = (int) niveles.get(niveles.size()-1);
         
-             gc.strokeArc(mx +5*aux+10*sizeFactor,125*sizeFactor*tamano+bajar,10*sizeFactor*tamano,50*sizeFactor*tamano,90,180,ArcType.OPEN);
+            gc.strokeArc(mx +5*aux+10*sizeFactor,125*sizeFactor*tamano+bajar,10*sizeFactor*tamano,50*sizeFactor*tamano,90,180,ArcType.OPEN);
         
             reubicar();
             reubicar2();
@@ -1268,11 +1679,11 @@ public class Dibuja {
             mx = mx + 35*sizeFactor*tamano;
         }
         
-    }
+    }}
         
     public static void dibuja_parentesisD(GraphicsContext gc, ArrayList<String> operacion, Color myColorOperators, double sizeFactor){
         gc.setStroke(myColorOperators); 
-        
+
         if(niveles.isEmpty()){
         gc.strokeArc(mx +10*sizeFactor,125*sizeFactor,10*sizeFactor,50*sizeFactor,90,-180,ArcType.OPEN); 
         mx = mx + 25*sizeFactor;}
@@ -1286,7 +1697,7 @@ public class Dibuja {
             gc.strokeArc(mx +5*aux+10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,10*sizeFactor*tamanoD,50*sizeFactor*tamanoD,90,-180,ArcType.OPEN); 
             reubicarD();
             if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -1353,7 +1764,7 @@ public class Dibuja {
             gc.strokeLine(mx +5*aux+ 20*sizeFactor*tamanoD, 170*sizeFactor*tamanoD+bajarD, mx +5*aux+ 20*sizeFactor*tamanoD, 170*sizeFactor*tamanoD+bajarD);
             reubicarD();
             if((int) niveles.get(niveles.size()-1)==2){
-            gc.strokeLine(mx+0+10 *aux,180-25,mx+60-15*aux,180-25);}
+            gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
             else if((int) niveles.get(niveles.size()-1)==3){
             gc.strokeLine(mx+0+10 *aux,180-75,mx+60-15*aux,180-75);}
@@ -1494,7 +1905,7 @@ public class Dibuja {
     public static void dibuja_grados(GraphicsContext gc, double sizeFactor){
         
         if(niveles.isEmpty()){
-        gc.strokeOval(mx+50, 115, 10, 10);
+        gc.strokeOval(mx+45*sizeFactor, 115*sizeFactor, 10*sizeFactor, 10*sizeFactor);
         }
         
         else{
@@ -1504,7 +1915,7 @@ public class Dibuja {
         else{
             
             aux = (int) niveles.get(niveles.size()-1);  
-            gc.strokeOval(mx+5*aux+50*tamano, 115*tamano+bajar, 10*tamano, 10*tamano);
+            gc.strokeOval(mx+5*aux+45*tamano, 115*tamano+bajar, 10*tamano, 10*tamano);
             reubicar();
             reubicar2();
             
@@ -1746,7 +2157,7 @@ public class Dibuja {
     public static void dibuja_seno(GraphicsContext gc, Color myColorOperators, double sizeFactor){
         gc.setStroke(myColorOperators);
         if(contG==true){
-        
+        operacion.remove(operacion.size()-1);
         return;
         }  
         
@@ -1760,7 +2171,7 @@ public class Dibuja {
 
     public static void dibuja_coseno(GraphicsContext gc, Color myColorOperators, double sizeFactor){
         if(contG==true){
-        
+        operacion.remove(operacion.size()-1);
         return;
         }  
         
@@ -1775,7 +2186,7 @@ public class Dibuja {
 
     public static void dibuja_tangente(GraphicsContext gc, Color myColorOperators, double sizeFactor){
         if(contG==true){
-        
+        operacion.remove(operacion.size()-1);
         return;
         }  
         

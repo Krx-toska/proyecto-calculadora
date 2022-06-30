@@ -21,6 +21,8 @@ import javafx.scene.image.ImageView;
 import static javafx.scene.paint.Color.BLACK;
 import javafx.scene.text.Text;
 
+import static calculadora.Dibuja.contG;
+
 /**
  *
  * @author krox2
@@ -43,7 +45,7 @@ public class FXMLDocumentController implements Initializable {
   Image myImage = new Image(getClass().getResourceAsStream("helloKitty.jpg"));
 
   
-  ArrayList<String> operacion = new ArrayList<>();
+  static ArrayList<String> operacion = new ArrayList<>();
   List<String> expresionEnBinario = new ArrayList<String>();
   Cordenadas cordenadas = new Cordenadas();
   Redibujar hola = new Redibujar();
@@ -57,6 +59,8 @@ public class FXMLDocumentController implements Initializable {
   String textBoxInfo;
   String[] numeros = {"0","1","2","3","4","5","6","7","8","9"};
   String[] operadores = {"+","-","x","/","^","(",")"};
+  
+  static boolean contP = false;
     @FXML
     private Button bbtn_dividir;
     @FXML
@@ -188,12 +192,17 @@ public class FXMLDocumentController implements Initializable {
 
   @FXML
   public void accion_parentesisIzquierdo(ActionEvent event){
+      
+    if(contG==true){
+    return;
+    }  
+    else{
     if(!check(numeros, operacion.get(operacion.size()-1))){
       Dibuja.dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
       operacion.add("(");
       contadorParentesis++;
     }
-    updateText();
+    updateText();}
   }
 
   @FXML
@@ -219,15 +228,29 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   private void accion_dividir(ActionEvent event) {
       
-    division.division(gc);
+    division.division(gc, sizeFactor);
     updateText();
   }
     
   @FXML
   private void accion_potencia(ActionEvent event) {
+    if(operacion.isEmpty()  || operacion.get(operacion.size()-1)=="^"){
+    
+    return;
+    }
+    else{
+    if(contP==false){
     operacion.add("^");
+    contP=true;
+    }
+    
+    else{
+    
+    contP=false;
+    }
+    
     updateText();
-  }
+  }}
 
   @FXML
   public void accion_factorial(ActionEvent event){
@@ -409,10 +432,8 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void accion_mover(ActionEvent event) {
-        
-        operacion.add("/");
+
         division.bajar();
-        
-        
+
     }
 }

@@ -15,13 +15,20 @@ import javafx.scene.paint.Color;
  */
 public class Redibujar {
     ArrayList<String> auxlista = new ArrayList();
+    Division d = new Division();
     public void redibujar(ArrayList<String> operacion,GraphicsContext gc,Color myColorOperators, Color myColorNumbers, double sizeFactor){
+        d.limpiarniveles();
         Dibuja.limpiaMx();
         auxlista.clear();
         int cont = 0; 
         for(int i =0;i<operacion.size();i++){
             auxlista.add(operacion.get(cont));
             cont++;
+            
+            if ("/".equals(operacion.get(i)) ){
+                
+                d.division(gc, sizeFactor);
+            }
             if ("1".equals(operacion.get(i)) ){
                 Dibuja.dibuja_uno(gc, auxlista,myColorNumbers,sizeFactor);}
             if ("2".equals(operacion.get(i)) ){
@@ -52,10 +59,7 @@ public class Redibujar {
                 Dibuja.dibuja_parentesisI(gc, operacion,myColorOperators,sizeFactor);}
             if (")".equals(operacion.get(i)) ){
                 Dibuja.dibuja_parentesisD(gc, operacion,myColorOperators,sizeFactor);}
-            if ("/".equals(operacion.get(i)) ){
-                cont--;
-                Dibuja.dibuja_dividir(gc, auxlista,myColorOperators,sizeFactor);
-                cont=i;}
+            
             if ("^".equals(operacion.get(i)) ){
                 cont--;
                 cont=i;}
