@@ -33,7 +33,7 @@ public class Dibuja {
         contG=false; nivelmx.clear(); double auxmxDD = 1000;
     }
 
-    public static void dibuja_uno(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+    public static void dibuja_uno(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor, Color myColorOperators){
         gc.setStroke(myColorNumbers);
         
     
@@ -50,6 +50,8 @@ public class Dibuja {
             gc.clearRect(mx+10*sizeFactor, 40*sizeFactor, 100*sizeFactor, 100*sizeFactor);
             gc.strokeLine(mx + 20*sizeFactor,  125*sizeFactor,mx + 20*sizeFactor, 175*sizeFactor);
             gc.strokeLine(mx + 20*sizeFactor,  125*sizeFactor,mx + 10*sizeFactor, 135*sizeFactor);
+            
+            gc.setStroke(myColorOperators);
             dibuja_grados(gc,sizeFactor);
             mx = mx + 25*sizeFactor;
             }
@@ -69,6 +71,7 @@ public class Dibuja {
             gc.strokeLine(mx +5*aux + 20*sizeFactor*tamanoD, 125*sizeFactor*tamanoD+bajarD,mx +5*aux + 10*sizeFactor*tamanoD, 135*sizeFactor*tamanoD+bajarD);
           
             reubicarD();
+            gc.setStroke(myColorOperators);
             if((int) niveles.get(niveles.size()-1)==2){
             gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
@@ -99,11 +102,11 @@ public class Dibuja {
                  gc.strokeLine(mx +5*aux + 20*sizeFactor*tamano, 125*sizeFactor*tamano+bajar,mx +5*aux + 20*sizeFactor*tamano, 175*sizeFactor*tamano+bajar);
                  gc.strokeLine(mx +5*aux + 20*sizeFactor*tamano, 125*sizeFactor*tamano+bajar,mx +5*aux + 10*sizeFactor*tamano, 135*sizeFactor*tamano+bajar);
                  
+                 gc.setStroke(myColorOperators);
                  dibuja_grados(gc,sizeFactor);
                  
                  reubicar();
                  reubicar2();
-            
             if(DD==false){
             int contD = 0;
             
@@ -129,7 +132,7 @@ public class Dibuja {
             gc.strokeLine(mx +5*aux+20*sizeFactor*tamano,120*sizeFactor*tamano+bajar,mx+5*aux +20*sizeFactor*tamano,140*sizeFactor*tamano+bajar);
             gc.strokeLine(mx +5*aux+20*sizeFactor*tamano,120*sizeFactor*tamano+bajar,mx +5*aux+15*sizeFactor*tamano,125*sizeFactor*tamano+bajar);
             
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -155,7 +158,7 @@ public class Dibuja {
             
             reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -171,7 +174,7 @@ public class Dibuja {
             
             mx = mx + 25*sizeFactor*tamano;}}}}}
 
-    public static void dibuja_dos(GraphicsContext gc ,ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+    public static void dibuja_dos(GraphicsContext gc ,ArrayList<String> operacion, Color myColorNumbers, double sizeFactor, Color myColorOperators){
         gc.setStroke(myColorNumbers);
         
         if(niveles.isEmpty()){
@@ -185,7 +188,7 @@ public class Dibuja {
             gc.strokeLine(mx +10*sizeFactor,150*sizeFactor+bajar,mx +35*sizeFactor,150*sizeFactor+bajar); //horizontal media
             gc.strokeLine(mx +10*sizeFactor,150*sizeFactor+bajar,mx +10*sizeFactor,175*sizeFactor+bajar);
             gc.strokeLine(mx +10*sizeFactor,175*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);
-            
+            gc.setStroke(myColorOperators);
             dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
                 
@@ -227,7 +230,7 @@ public class Dibuja {
             
             reubicarD();
             
-            
+            gc.setStroke(myColorOperators);
             if((int) niveles.get(niveles.size()-1)==2){
             gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
@@ -261,10 +264,11 @@ public class Dibuja {
                  gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar); //horizontal media
                  gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
                  gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
+                 gc.setStroke(myColorOperators);
                  dibuja_grados(gc,sizeFactor);
                  reubicar();
                  reubicar2();
-            
+                 
                  if(DD==false){
                  int contD = 0;
                  for(int x =0;x<niveles.size();x+=2){
@@ -301,7 +305,7 @@ public class Dibuja {
              gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,130*sizeFactor*tamano+bajar,mx +5*aux +10*sizeFactor*tamano,140*sizeFactor*tamano+bajar);
              gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,140*sizeFactor*tamano+bajar,mx +5*aux +20*sizeFactor*tamano,140*sizeFactor*tamano+bajar);
             
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -333,7 +337,7 @@ public class Dibuja {
             
             reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -358,7 +362,7 @@ public class Dibuja {
             
     }}}
     
-    public static void dibuja_tres(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+    public static void dibuja_tres(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor, Color myColorOperators){
         gc.setStroke(myColorNumbers);
         
 
@@ -370,7 +374,7 @@ public class Dibuja {
             gc.strokeLine(mx +35*sizeFactor,125*sizeFactor,mx +35*sizeFactor,175*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,150*sizeFactor,mx +35*sizeFactor,150*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,175*sizeFactor,mx +35*sizeFactor,175*sizeFactor);
-            
+            gc.setStroke(myColorOperators);
             dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
            }
@@ -407,7 +411,7 @@ public class Dibuja {
             gc.strokeLine(mx +5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD,mx +5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);
             
             reubicarD();
-            
+            gc.setStroke(myColorOperators);
             if((int) niveles.get(niveles.size()-1)==2){
             gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
@@ -438,7 +442,7 @@ public class Dibuja {
                  gc.strokeLine(mx +5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
                  gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
                  gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
-       
+                 gc.setStroke(myColorOperators);
                  dibuja_grados(gc,sizeFactor);
                  
                  reubicar();
@@ -478,7 +482,7 @@ public class Dibuja {
             
             reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -514,7 +518,7 @@ public class Dibuja {
        
             reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -539,7 +543,7 @@ public class Dibuja {
        
        }}}}}
     
-    public static void dibuja_cuatro(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+    public static void dibuja_cuatro(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor, Color myColorOperators){
         gc.setStroke(myColorNumbers);
         
         if(niveles.isEmpty()){
@@ -550,7 +554,7 @@ public class Dibuja {
             gc.strokeLine(mx +35*sizeFactor,125*sizeFactor,mx +35*sizeFactor,175*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,150*sizeFactor,mx +35*sizeFactor,150*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,125*sizeFactor,mx +10*sizeFactor,150*sizeFactor);
-            
+            gc.setStroke(myColorOperators);
             dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
             }
@@ -581,7 +585,7 @@ public class Dibuja {
             gc.strokeLine(mx +5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx +5*aux +10*sizeFactor*tamanoD,150*sizeFactor*tamanoD+bajarD);
             
             reubicarD();
-            
+            gc.setStroke(myColorOperators);
             if((int) niveles.get(niveles.size()-1)==2){
             gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
@@ -609,7 +613,7 @@ public class Dibuja {
                  gc.strokeLine(mx +5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
                  gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
                  gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx +5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
-                 
+                 gc.setStroke(myColorOperators);
                  dibuja_grados(gc,sizeFactor);
                  reubicar();
                  reubicar2();
@@ -653,7 +657,7 @@ public class Dibuja {
             
             reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -688,7 +692,7 @@ public class Dibuja {
         
             reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -712,7 +716,7 @@ public class Dibuja {
             mx = mx + 35*sizeFactor*tamano;
         }}}}}
           
-    public static void dibuja_cinco(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+    public static void dibuja_cinco(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor, Color myColorOperators){
         gc.setStroke(myColorNumbers);
         
         if(niveles.isEmpty()){
@@ -725,6 +729,7 @@ public class Dibuja {
             gc.strokeLine(mx +10*sizeFactor,150*sizeFactor,mx +35*sizeFactor,150*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,125*sizeFactor,mx +10*sizeFactor,150*sizeFactor);
             gc.strokeLine(mx +10*sizeFactor,175*sizeFactor,mx +35*sizeFactor,175*sizeFactor);
+            gc.setStroke(myColorOperators);
             dibuja_grados(gc,sizeFactor);
             
             mx = mx + 35*sizeFactor;}
@@ -762,7 +767,7 @@ public class Dibuja {
             gc.strokeLine(mx +5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD,mx +5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);
             
             reubicarD();
-            
+            gc.setStroke(myColorOperators);
             if((int) niveles.get(niveles.size()-1)==2){
             gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
@@ -794,7 +799,7 @@ public class Dibuja {
                  gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
                  gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx +5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar);
                  gc.strokeLine(mx +5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx +5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);
-                 
+                 gc.setStroke(myColorOperators);
                  dibuja_grados(gc,sizeFactor);
         
             reubicar();
@@ -837,7 +842,7 @@ public class Dibuja {
                 gc.strokeLine(mx +5*aux+20*sizeFactor*tamano,130*sizeFactor*tamano+bajar,mx +5*aux+10*sizeFactor*tamano,130*sizeFactor*tamano+bajar);
                 gc.strokeLine(mx +5*aux+10*sizeFactor*tamano,130*sizeFactor*tamano+bajar,mx +5*aux+10*sizeFactor*tamano,120*sizeFactor*tamano+bajar);
                 gc.strokeLine(mx +5*aux+10*sizeFactor*tamano,120*sizeFactor*tamano+bajar,mx +5*aux+20*sizeFactor*tamano,120*sizeFactor*tamano+bajar);
-                
+                gc.setStroke(myColorOperators);
                 reubicar();
                 reubicar2();
             
@@ -876,7 +881,7 @@ public class Dibuja {
         
             reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -901,7 +906,7 @@ public class Dibuja {
         
         }}}}}
     
-    public static void dibuja_seis(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+    public static void dibuja_seis(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor, Color myColorOperators){
         gc.setStroke(myColorNumbers);
         
         if(niveles.isEmpty()){
@@ -914,6 +919,7 @@ public class Dibuja {
             gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,175*sizeFactor+bajar);   //izquierda
             gc.strokeLine(mx +35*sizeFactor,150*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);   //derecha abajo
             gc.strokeLine(mx +10*sizeFactor,150*sizeFactor+bajar,mx +35*sizeFactor,150*sizeFactor+bajar);
+            gc.setStroke(myColorOperators);
             dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
             
@@ -956,7 +962,7 @@ public class Dibuja {
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,150*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,150*sizeFactor*tamanoD+bajarD);
             
             reubicarD();
-            
+            gc.setStroke(myColorOperators);
             if((int) niveles.get(niveles.size()-1)==2){
             gc.strokeLine(mx+0+5 *aux,180-25,mx+60-15*aux,180-25);}
             
@@ -987,7 +993,7 @@ public class Dibuja {
                  gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //derecha abajo
                  gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar); 
                  
-                 
+                 gc.setStroke(myColorOperators);
                  dibuja_grados(gc,sizeFactor);
                  reubicar();
                  reubicar2();
@@ -1034,7 +1040,7 @@ public class Dibuja {
             
             reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -1072,7 +1078,7 @@ public class Dibuja {
         
             reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -1096,7 +1102,7 @@ public class Dibuja {
             mx = mx + 35*sizeFactor*tamano;
         }}}}}
         
-    public static void dibuja_siete(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+    public static void dibuja_siete(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor, Color myColorOperators){
         gc.setStroke(myColorNumbers);
         
         if(niveles.isEmpty()){
@@ -1106,9 +1112,11 @@ public class Dibuja {
                 gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,125*sizeFactor+bajar);   //arriba
                 gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,150*sizeFactor+bajar);   //izquierda arriba
                 gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar); 
+                
+                gc.setStroke(myColorOperators);
                 dibuja_grados(gc,sizeFactor);
             
-            dibuja_grados(gc,sizeFactor);
+            
             mx = mx + 35*sizeFactor;
             }
             
@@ -1137,8 +1145,9 @@ public class Dibuja {
             
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD);   //arriba
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +10*sizeFactor*tamanoD,150*sizeFactor*tamanoD+bajarD);   //izquierda arriba
-            gc.strokeLine(mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);    
-            dibuja_grados(gc,sizeFactor);
+            gc.strokeLine(mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);
+            gc.setStroke(myColorOperators);
+            
             
             reubicarD();
             
@@ -1169,7 +1178,7 @@ public class Dibuja {
                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar);   //arriba
                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar);   //izquierda arriba
                 gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar); 
-                 
+                 gc.setStroke(myColorOperators);
                  dibuja_grados(gc,sizeFactor);
                  reubicar();
                  reubicar2();
@@ -1210,7 +1219,7 @@ public class Dibuja {
             gc.strokeLine(mx +5*aux+20*sizeFactor*tamano,140*sizeFactor*tamano+bajar,mx +5*aux+20*sizeFactor*tamano,120*sizeFactor*tamano+bajar);
             gc.strokeLine(mx +5*aux+20*sizeFactor*tamano,120*sizeFactor*tamano+bajar,mx +5*aux+10*sizeFactor*tamano,120*sizeFactor*tamano+bajar);
             gc.strokeLine(mx +5*aux+10*sizeFactor*tamano,120*sizeFactor*tamano+bajar,mx +5*aux+10*sizeFactor*tamano,130*sizeFactor*tamano+bajar);
-            
+            gc.setStroke(myColorOperators);
             reubicar();
             reubicar2();
             
@@ -1248,7 +1257,7 @@ public class Dibuja {
         
             reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -1272,7 +1281,7 @@ public class Dibuja {
             mx = mx + 35*sizeFactor*tamano;
         }}}}}
     
-    public static void dibuja_ocho(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+    public static void dibuja_ocho(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor, Color myColorOperators){
             gc.setStroke(myColorNumbers);
         
         if(niveles.isEmpty()){
@@ -1284,7 +1293,8 @@ public class Dibuja {
                 gc.strokeLine(mx +10*sizeFactor,175*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);   //arriba
                 gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,175*sizeFactor+bajar);   //izquierda arriba
                 gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);
-                dibuja_grados(gc,sizeFactor);
+                
+            gc.setStroke(myColorOperators);
             
             dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
@@ -1322,8 +1332,8 @@ public class Dibuja {
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD);
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   //arriba
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   //izquierda arriba
-            gc.strokeLine(mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);    
-            dibuja_grados(gc,sizeFactor);
+            gc.strokeLine(mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   
+            gc.setStroke(myColorOperators);
             
             reubicarD();
             
@@ -1356,7 +1366,7 @@ public class Dibuja {
                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //arriba
                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //izquierda arriba
                 gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar); 
-                 
+                 gc.setStroke(myColorOperators);
                  dibuja_grados(gc,sizeFactor);
                  reubicar();
                  reubicar2();
@@ -1402,7 +1412,7 @@ public class Dibuja {
 
             reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -1440,7 +1450,7 @@ public class Dibuja {
         
             reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -1465,7 +1475,7 @@ public class Dibuja {
         }}}}}
         
        
-    public static void dibuja_nueve(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+    public static void dibuja_nueve(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor, Color myColorOperators){
          gc.setStroke(myColorNumbers);
         
         if(niveles.isEmpty()){
@@ -1478,6 +1488,7 @@ public class Dibuja {
                 gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,150*sizeFactor+bajar);   //arriba  //izquierda arriba
                 gc.strokeLine(mx +10*sizeFactor,150*sizeFactor+bajar,mx +35*sizeFactor,150*sizeFactor+bajar);
                 gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);
+                gc.setStroke(myColorOperators);
                 dibuja_grados(gc,sizeFactor);
             
             dibuja_grados(gc,sizeFactor);
@@ -1517,8 +1528,8 @@ public class Dibuja {
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   //arriba
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   //izquierda arriba
             gc.strokeLine(mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);    
-            dibuja_grados(gc,sizeFactor);
-            
+           
+            gc.setStroke(myColorOperators);
             reubicarD();
             
             if((int) niveles.get(niveles.size()-1)==2){
@@ -1550,7 +1561,7 @@ public class Dibuja {
                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar);   //arriba
                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,150*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,150*sizeFactor*tamano+bajar);   //izquierda arriba
                 gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar); ; 
-                 
+                 gc.setStroke(myColorOperators);
                  dibuja_grados(gc,sizeFactor);
                  reubicar();
                  reubicar2();
@@ -1596,7 +1607,7 @@ public class Dibuja {
                 
                 reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -1633,7 +1644,7 @@ public class Dibuja {
         
             reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -1657,7 +1668,7 @@ public class Dibuja {
             mx = mx + 35*sizeFactor*tamano;
         }}}}}
 
-    public static void dibuja_cero(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor){
+    public static void dibuja_cero(GraphicsContext gc, ArrayList<String> operacion, Color myColorNumbers, double sizeFactor, Color myColorOperators){
         gc.setStroke(myColorNumbers);
         
         if(niveles.isEmpty()){
@@ -1669,9 +1680,9 @@ public class Dibuja {
                 gc.strokeLine(mx +10*sizeFactor,175*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);   //abajo
                 gc.strokeLine(mx +10*sizeFactor,125*sizeFactor+bajar,mx +10*sizeFactor,175*sizeFactor+bajar);   //izquierda
                 gc.strokeLine(mx +35*sizeFactor,125*sizeFactor+bajar,mx +35*sizeFactor,175*sizeFactor+bajar);
+                gc.setStroke(myColorOperators);
                 dibuja_grados(gc,sizeFactor);
             
-            dibuja_grados(gc,sizeFactor);
             mx = mx + 35*sizeFactor;
             }
             
@@ -1704,7 +1715,7 @@ public class Dibuja {
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   //arriba
             gc.strokeLine(mx+5*aux +10*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +10*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);   //izquierda arriba
             gc.strokeLine(mx+5*aux +35*sizeFactor*tamanoD,125*sizeFactor*tamanoD+bajarD,mx+5*aux +35*sizeFactor*tamanoD,175*sizeFactor*tamanoD+bajarD);     
-            dibuja_grados(gc,sizeFactor);
+            gc.setStroke(myColorOperators);
             
             reubicarD();
             
@@ -1736,11 +1747,11 @@ public class Dibuja {
                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //arriba
                 gc.strokeLine(mx+5*aux +10*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +10*sizeFactor*tamano,175*sizeFactor*tamano+bajar);   //izquierda arriba
                 gc.strokeLine(mx+5*aux +35*sizeFactor*tamano,125*sizeFactor*tamano+bajar,mx+5*aux +35*sizeFactor*tamano,175*sizeFactor*tamano+bajar); 
-                 
+                 gc.setStroke(myColorOperators);
                  dibuja_grados(gc,sizeFactor);
                  reubicar();
                  reubicar2();
-            
+                 
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -1778,7 +1789,7 @@ public class Dibuja {
                 
             reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
@@ -1814,7 +1825,7 @@ public class Dibuja {
         
             reubicar();
             reubicar2();
-            
+            gc.setStroke(myColorOperators);
             if(DD==false){
             int contD = 0;
             for(int x =0;x<niveles.size();x+=2){
