@@ -60,6 +60,9 @@ public class FXMLDocumentController implements Initializable {
   String[] numeros = {"0","1","2","3","4","5","6","7","8","9"};
   String[] operadores = {"+","-","x","/","^","(",")"};
   
+  static ArrayList<Boolean> Rdiviones = new ArrayList<>();
+  static ArrayList<Boolean> Rbajar = new ArrayList<>();
+  
   static boolean contP = false;
     @FXML
     private Button bbtn_dividir;
@@ -217,6 +220,7 @@ public class FXMLDocumentController implements Initializable {
 
   @FXML
   private void accion_limpiar(ActionEvent event) {
+    contP=false;
     gc.clearRect(0, 0, 1000, 1000);
     Dibuja.limpiaMx();
     operacion.clear();
@@ -234,7 +238,7 @@ public class FXMLDocumentController implements Initializable {
     
   @FXML
   private void accion_potencia(ActionEvent event) {
-    if(operacion.isEmpty()  || operacion.get(operacion.size()-1)=="^"){
+    if(operacion.isEmpty()  || operacion.get(operacion.size()-1)=="^" || contG==true){
     
     return;
     }

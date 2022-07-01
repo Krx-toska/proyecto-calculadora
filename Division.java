@@ -14,6 +14,7 @@ import javafx.scene.canvas.GraphicsContext;
 import static calculadora.Dibuja.auxmx2;
 import static calculadora.Dibuja.auxmxDD;
 import static calculadora.FXMLDocumentController.operacion;
+import static calculadora.FXMLDocumentController.contP;
 import static calculadora.Dibuja.contG;
 
 
@@ -155,7 +156,7 @@ public class Division {
     
    
     
-    gc.strokeLine(mx+0+5*aux,180-50*aux,mx+60-5*aux,180-50*aux);
+    gc.strokeLine(mx+0+5*aux,180-50*aux,mx+60-12*aux,180-50*aux);
     reubicar();
     auxmx=1000;
     contN++;
@@ -174,6 +175,7 @@ public class Division {
     public void bajar(){
         
         contG=false;
+        contP=false;
         
         if(!nivelesD.isEmpty()){
             
