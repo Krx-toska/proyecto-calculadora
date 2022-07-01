@@ -9,7 +9,7 @@ public class Binario {
         ArrayList<String> expresionEnBinario = new ArrayList<String>();
         String numerosTemp = "", toBinaryTemp = "";
         int number;
-        String operadores = "+-x/^()";
+        String operadores = "+-x/^()bajar";
         for (int i = 0; i < expresion.size(); i++) {
             if (operadores.contains(expresion.get(i))) {
                 number = Integer.parseInt(numerosTemp);
@@ -35,7 +35,7 @@ public class Binario {
         ArrayList<String> expresionEnDecimal = new ArrayList<String>();
         String binaryTemp = "", toNumberTemp = "";
         int number;
-        String operadores = "+-x/^()";
+        String operadores = "+-x/^()bajar";
         for (int i = 0; i < expresion.size(); i++) {
             if (operadores.contains(expresion.get(i))) {
                 number = Integer.parseInt(binaryTemp,2);
