@@ -24,8 +24,7 @@ public class Redibujar {
         
         contP=false;
         auxlista.clear();
-        int cont = 0; 
-     
+        int cont = 0;
         for( int i=0 ;i<operacion.size();i++){
             auxlista.add(operacion.get(cont));
             cont++;
@@ -72,7 +71,7 @@ public class Redibujar {
             if ("sin".equals(operacion.get(i)) ){
                 Dibuja.dibuja_seno(gc, myColorOperators,sizeFactor);}
             if ("cos".equals(operacion.get(i)) ){
-                Dibuja.dibuja_coseno(gc, myColorOperators,sizeFactor);}   
+                Dibuja.dibuja_coseno(gc, myColorOperators,sizeFactor);}
             if ("tan".equals(operacion.get(i)) ){
                 Dibuja.dibuja_tangente(gc, myColorOperators,sizeFactor);} 
             if ("!".equals(operacion.get(i)) ){

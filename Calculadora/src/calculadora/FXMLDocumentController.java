@@ -205,7 +205,7 @@ public class FXMLDocumentController implements Initializable {
 
   @FXML
   public void accion_menos(ActionEvent event) {//listo
-    if(!"-".equals(operacion.get(operacion.size()-1))){
+    if(operacion.isEmpty() || !"-".equals(operacion.get(operacion.size()-1))){
       Dibuja.dibuja_menos(gc,operacion, myColorOperators,sizeFactor);
       operacion.add("-");
       operacionR.add("-");
@@ -230,7 +230,7 @@ public class FXMLDocumentController implements Initializable {
     return;
     }  
     else{
-      if(operacionR.isEmpty() || !check(numeros, operacion.get(operacion.size()-1))){
+      if(operacion.isEmpty() || !check(numeros, operacion.get(operacion.size()-1))){
         Dibuja.dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
         operacion.add("(");
         operacionR.add("(");
@@ -265,7 +265,6 @@ public class FXMLDocumentController implements Initializable {
   
   @FXML
   private void accion_dividir(ActionEvent event) {
-    operacion.add("/");
     operacionR.add("/"); 
  
     division.division(gc, sizeFactor,myColorOperators);
@@ -492,12 +491,27 @@ public class FXMLDocumentController implements Initializable {
     @FXML
   void textToDraw(ActionEvent event) {
     String newOp = inputText.getText();
+    String trigonometricas = "";
+    int j =0;
     operacion.clear();
     myText.setText("");
     for (int i = 0; i < newOp.length(); i++) {
-      operacion.add(String.valueOf(newOp.charAt(i)));
+      if ('a' <= newOp.charAt(i) && newOp.charAt(i) <= 'z'){
+        while (j<3 && 'a' <= newOp.charAt(i) && newOp.charAt(i) <= 'z'){
+          trigonometricas = trigonometricas + newOp.charAt(i);
+          i++;
+          j++;
+        }
+        operacion.add(trigonometricas);
+        trigonometricas = "";
+        j=0;
+        operacion.add(String.valueOf(newOp.charAt(i)));
+      }else {
+        operacion.add(String.valueOf(newOp.charAt(i)));
+      }
     }
     gc.clearRect(0, 0, 1000, 1000);
+      System.out.println(operacion);
     hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
     updateText();
     cordenadas.limpiar();
