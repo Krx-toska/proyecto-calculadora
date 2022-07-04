@@ -265,9 +265,7 @@ public class FXMLDocumentController implements Initializable {
   
   @FXML
   private void accion_dividir(ActionEvent event) {
-    operacion.add("/");
-    operacionR.add("/"); 
-    
+
     division.division(gc,myColorOperators);
     
     updateTextlevel();
