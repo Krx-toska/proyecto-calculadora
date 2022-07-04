@@ -16,6 +16,7 @@ import static calculadora.Dibuja.auxmxDD;
 import static calculadora.FXMLDocumentController.operacion;
 import static calculadora.FXMLDocumentController.contP;
 import static calculadora.Dibuja.contG;
+import static calculadora.FXMLDocumentController.sizeFactor;
 import javafx.scene.paint.Color;
 
 
@@ -39,6 +40,7 @@ public class Division {
     static double auxmxD = 1000;
     static double contMX = 0;
     static boolean DD = false;
+    
     
     static ArrayList listaBajar = new ArrayList();
     
@@ -64,7 +66,7 @@ public class Division {
     }
     
     
-    public void division(GraphicsContext gc, double sizeFactor,Color myColorOperators){
+    public void division(GraphicsContext gc,Color myColorOperators){
     
     gc.setStroke(myColorOperators);    
         
@@ -192,7 +194,7 @@ public class Division {
             
 
             else if(nivelesD.get(nivelesD.size()-1) == nivelesD.get(nivelesD.size()-2)){
-            
+            operacion.add("/");
             int aux = (int) nivelesD.get(nivelesD.size()-1);
             nivelesD.remove(nivelesD.size()-1);
             
@@ -212,13 +214,13 @@ public class Division {
             }
             
             else if(niveles.get(niveles.size()-1) == niveles.get(niveles.size()-2)){
-                
+            operacion.add("/");   
             
             
             int aux = (int) niveles.get(niveles.size()-1);
             niveles.remove(niveles.size()-1);
             
-            bajar = bajar +68-8*aux;
+            bajar = (bajar +68-8*aux)*sizeFactor;
             if(niveles.size()==1){bajar=bajar+8;}
             
             
@@ -267,3 +269,4 @@ public class Division {
     
     }
 }
+
