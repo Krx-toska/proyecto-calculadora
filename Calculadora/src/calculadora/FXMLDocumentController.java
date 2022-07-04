@@ -300,6 +300,7 @@ public class FXMLDocumentController implements Initializable {
     Dibuja.dibuja_factorial(gc, myColorOperators, sizeFactor);
     operacion.add("!");
     operacionR.add("!");
+    updateText();
   }
 
   @FXML
@@ -307,6 +308,7 @@ public class FXMLDocumentController implements Initializable {
     Dibuja.dibuja_seno(gc, myColorOperators, sizeFactor);
     operacion.add("sin");
     operacionR.add("sin");
+    updateText();
   }
 
   @FXML
@@ -314,6 +316,7 @@ public class FXMLDocumentController implements Initializable {
     Dibuja.dibuja_coseno(gc, myColorOperators, sizeFactor);
     operacion.add("cos");
     operacionR.add("cos");
+    updateText();
   }
 
   @FXML
@@ -321,6 +324,7 @@ public class FXMLDocumentController implements Initializable {
     Dibuja.dibuja_tangente(gc, myColorOperators, sizeFactor);
     operacion.add("tan");
     operacionR.add("tan");
+    updateText();
   }
 
   @FXML
@@ -548,6 +552,8 @@ public class FXMLDocumentController implements Initializable {
     String expresion = "";
     String resultado = "";
     String resi = "";
+    String temp2;
+    int temp = 0;
     for (int i = 0; i < operacionR.size(); i++) {
       if (operacionR.get(i) == "°"){}
       else if(operacionR.get(i) == "bajar"){}
@@ -616,7 +622,6 @@ public class FXMLDocumentController implements Initializable {
       }
       long factorial(double number) {
         long result = 1;
-
         for (int factor = 2; factor <= number; factor++) {
           result *= factor;
         }
