@@ -20,6 +20,8 @@ import static calculadora.FXMLDocumentController.contP;
  * @author waki
  */
 public class Dibuja {
+   
+    
     static double mx = 0;
     static boolean contG=false;
     static double auxmx = 1000;
@@ -27,6 +29,10 @@ public class Dibuja {
     static double aux = 0;
     static double auxmx2 = 0;
     static ArrayList nivelmx = new ArrayList();
+    
+    
+    
+    
     
     public static void limpiaMx(){
         mx = 0; auxmx = 1000; aux = 0;auxmx2=0;
@@ -176,6 +182,7 @@ public class Dibuja {
 
     public static void dibuja_dos(GraphicsContext gc ,ArrayList<String> operacion, Color myColorNumbers, double sizeFactor, Color myColorOperators){
         gc.setStroke(myColorNumbers);
+        
         
         if(niveles.isEmpty()){
         
@@ -2767,6 +2774,12 @@ public class Dibuja {
         mx = mx + 35*sizeFactor;
 
     }
+     
+     public void PAn(){
+     
+     
+     
+     
+        }
     
-    
-}
+    }

@@ -20,7 +20,7 @@ import javafx.scene.image.ImageView;
 
 import static javafx.scene.paint.Color.BLACK;
 import javafx.scene.text.Text;
-
+import static calculadora.Division.niveles;
 import static calculadora.Dibuja.contG;
 import javafx.scene.control.TextField;
 
@@ -38,9 +38,10 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   private Text myText;
   @FXML
+  private Text myTextLevel;
+  @FXML
   private Slider mySizeOfExpressions;
-    @FXML
-  ImageView myImageView;
+    ImageView myImageView;
   @FXML
   private Text textoColorNumeros, textoColorOperadores;
 
@@ -58,8 +59,9 @@ public class FXMLDocumentController implements Initializable {
   Color myColorNumbers=BLACK, myColorOperators=BLACK;
   int cont = 0, contadorParentesis = 0, cambio = 0;
   boolean estadoCambioDeBase = false;
-  double sizeFactor = 1;
+  static double sizeFactor = 1;
   String textBoxInfo;
+  String textBoxlevel;
   String[] numeros = {"0","1","2","3","4","5","6","7","8","9"};
   String[] operadores = {"+","-","x","/","^","(",")"};
   int contB = 0;
@@ -81,8 +83,6 @@ public class FXMLDocumentController implements Initializable {
     private Button bttn_raiz;
     @FXML
     private Button bttnCalcular;
-    @FXML
-    private Button bttnGrado;
     @FXML
     private Button bbtn_mover;
 
@@ -264,8 +264,10 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   private void accion_dividir(ActionEvent event) {
     operacionR.add("/"); 
- 
-    division.division(gc, sizeFactor,myColorOperators);
+    
+    division.division(gc,myColorOperators);
+    
+    updateTextlevel();
     updateText();
   }
     
@@ -353,7 +355,7 @@ public class FXMLDocumentController implements Initializable {
       bttn_8.setVisible(false);
       bttn_9.setVisible(false);
       estadoCambioDeBase = true;
-      gc.clearRect(0, 0, 1000, 1000);
+      gc.clearRect(0, 0, 5000, 5000);
       hola.redibujar(Binario.toBinary(operacionR), gc, myColorOperators, myColorNumbers, sizeFactor);
       operacionR = Binario.toBinary(operacionR);
     }else{
@@ -366,7 +368,7 @@ public class FXMLDocumentController implements Initializable {
       bttn_8.setVisible(true);
       bttn_9.setVisible(true);
       estadoCambioDeBase = false;
-      gc.clearRect(0, 0, 1000, 1000);
+      gc.clearRect(0, 0, 5000, 5000);
       hola.redibujar(Binario.toDecimal(operacionR), gc, myColorOperators, myColorNumbers, sizeFactor);
       operacionR = Binario.toDecimal(operacionR);
       updateText();
@@ -464,6 +466,27 @@ public class FXMLDocumentController implements Initializable {
     textBoxInfo = String.join("", operacion);
     myText.setText(textBoxInfo);
   }
+  
+  
+  void updateTextlevel() {
+    
+    String numCadena;  
+      
+      
+    if(niveles.isEmpty()){
+    numCadena="no hay";
+    }
+    
+    else{
+    numCadena= niveles.get(niveles.size()-1)+""; 
+    textBoxlevel =String.join("", numCadena);}
+    
+    
+    
+    
+    myTextLevel.setText(numCadena);
+  }
+  
     
   private static boolean check(String[] arr, String toCheckValue){
     boolean test = false;
@@ -480,10 +503,9 @@ public class FXMLDocumentController implements Initializable {
     private void accion_mover(ActionEvent event) {
         
         operacionR.add("bajar");
-        contB++;
+        
         division.bajar();
-        if(contB==1 || contB%3==0){
-        operacion.add("/");}
+        updateTextlevel();
     }
 
     @FXML
@@ -492,14 +514,15 @@ public class FXMLDocumentController implements Initializable {
     operacion.clear();
     myText.setText("");
     for (int i = 0; i < newOp.length(); i++) {
-      operacion.add(String.valueOf(newOp.charAt(i)));
+      operacionR.add(String.valueOf(newOp.charAt(i)));
     }
     gc.clearRect(0, 0, 1000, 1000);
-    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
+    hola.redibujar(operacionR, gc,myColorOperators,myColorNumbers,sizeFactor);
     updateText();
     cordenadas.limpiar();
   }
 
+    @FXML
     public void accion_raiz(ActionEvent actionEvent) {
     Dibuja.dibuja_raiz(gc,operacion,myColorOperators,sizeFactor);
     Dibuja.dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
@@ -531,11 +554,6 @@ public class FXMLDocumentController implements Initializable {
       
 
   
-    @FXML
-    private void accionGrado(ActionEvent event) {
-        
-        
-    }
     
     public static double eval(final String str) {
     return new Object() {

@@ -13,9 +13,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="601.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculadora.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculadora.FXMLDocumentController">
    <children>
-      <ImageView fitHeight="466.0" fitWidth="806.0" layoutX="-76.0" layoutY="349.0" pickOnBounds="true" AnchorPane.bottomAnchor="-214.0">
+      <ScrollPane layoutX="47.0" layoutY="10.0" AnchorPane.bottomAnchor="281.0" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <content>
+            <Canvas fx:id="texthere" height="817.0" onDragDetected="#panel" width="1986.0" />
+         </content>
+      </ScrollPane>
+      <ImageView fitHeight="466.0" fitWidth="930.0" layoutX="-71.0" layoutY="348.0" pickOnBounds="true" AnchorPane.bottomAnchor="-219.0">
          <image>
             <Image url="@helloKitty.jpg" />
          </image>
@@ -85,7 +90,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="bbtn_dividir" layoutX="262.0" layoutY="352.0" mnemonicParsing="false" onAction="#accion_dividir" prefHeight="46.0" prefWidth="65.0" text="/">
+      <Button fx:id="bbtn_dividir" layoutX="262.0" layoutY="352.0" mnemonicParsing="false" onAction="#accion_dividir" prefHeight="46.0" prefWidth="65.0" text="/" AnchorPane.bottomAnchor="203.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -100,12 +105,12 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="bbtn_clear" layoutX="343.0" layoutY="346.0" mnemonicParsing="false" onAction="#accion_limpiar" prefHeight="46.0" prefWidth="65.0" text="C">
+      <Button fx:id="bbtn_clear" layoutX="337.0" layoutY="346.0" mnemonicParsing="false" onAction="#accion_limpiar" prefHeight="46.0" prefWidth="65.0" text="C" AnchorPane.bottomAnchor="203.0">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="bbtn_cor" layoutX="337.0" layoutY="394.0" mnemonicParsing="false" onAction="#accion_cordenadas" prefHeight="46.0" prefWidth="65.0" text="cor">
+      <Button fx:id="bbtn_cor" layoutX="337.0" layoutY="394.0" mnemonicParsing="false" onAction="#accion_cordenadas" prefHeight="46.0" prefWidth="65.0" text="cor" AnchorPane.bottomAnchor="154.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -113,7 +118,7 @@
       <ColorPicker fx:id="myColorPickerNumbers" layoutX="427.0" layoutY="369.0" onAction="#changeColorNumbers" AnchorPane.bottomAnchor="207.0" />
       <ColorPicker fx:id="myColorPickerOperators" layoutX="427.0" layoutY="411.0" onAction="#changeColorOperators" AnchorPane.bottomAnchor="165.0" />
       <Slider fx:id="mySizeOfExpressions" blockIncrement="0.2" layoutX="13.0" layoutY="20.0" majorTickUnit="1.0" max="2.0" onMouseReleased="#updateSize" orientation="VERTICAL" prefHeight="308.0" prefWidth="30.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" AnchorPane.bottomAnchor="273.0" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="20.0" />
-      <Button fx:id="bttn_cambio" layoutX="332.0" layoutY="445.0" mnemonicParsing="false" onAction="#accion_cambio" prefHeight="46.0" prefWidth="86.0" text="Cambio" textOverrun="CLIP">
+      <Button fx:id="bttn_cambio" layoutX="332.0" layoutY="445.0" mnemonicParsing="false" onAction="#accion_cambio" prefHeight="46.0" prefWidth="86.0" text="Cambio" textOverrun="CLIP" AnchorPane.bottomAnchor="104.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -147,7 +152,7 @@
       <Text fx:id="textoColorNumeros" layoutX="438.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colores Numeros" AnchorPane.bottomAnchor="232.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="16.0" layoutX="427.0" layoutY="395.0" stroke="BLACK" strokeType="INSIDE" width="124.0" AnchorPane.bottomAnchor="190.0" />
       <Text fx:id="textoColorOperadores" layoutX="431.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colores Operadores" AnchorPane.bottomAnchor="190.0" />
-      <Button fx:id="bttn_paraBase" layoutX="332.0" layoutY="500.0" mnemonicParsing="false" onAction="#accion_cambioDeBase" prefHeight="46.0" prefWidth="86.0" text="Base">
+      <Button fx:id="bttn_paraBase" layoutX="332.0" layoutY="500.0" mnemonicParsing="false" onAction="#accion_cambioDeBase" prefHeight="46.0" prefWidth="86.0" text="Base" AnchorPane.bottomAnchor="55.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -169,15 +174,13 @@
             <Font size="21.0" />
          </font>
       </Button>
-      <ScrollPane layoutX="47.0" layoutY="10.0" AnchorPane.bottomAnchor="281.0" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-         <content>
-            <Canvas fx:id="texthere" height="817.0" onDragDetected="#panel" width="1986.0" />
-         </content>
-      </ScrollPane>
-      <Text fx:id="myText" fill="#bf4343" fontSmoothingType="LCD" layoutX="47.0" layoutY="343.0" stroke="#3c0de8" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" wrappingWidth="673.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="25.0" layoutX="659.0" layoutY="363.0" stroke="BLACK" strokeType="INSIDE" width="191.0" AnchorPane.bottomAnchor="207.0" />
+      <Text layoutX="663.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nivele de division :" wrappingWidth="110.0" AnchorPane.bottomAnchor="211.0" />
+      <Text fx:id="myText" fill="#bf4343" fontSmoothingType="LCD" layoutX="33.0" layoutY="343.0" stroke="#3c0de8" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" wrappingWidth="673.0" AnchorPane.bottomAnchor="254.486328125">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
+      <Text fx:id="myTextLevel" fill="#1f3dd3" layoutX="773.0" layoutY="380.0" stroke="#732ec3" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="65.0" AnchorPane.bottomAnchor="211.98828125" />
    </children>
 </AnchorPane>

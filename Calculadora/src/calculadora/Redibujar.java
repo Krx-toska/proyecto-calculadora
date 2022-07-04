@@ -31,7 +31,7 @@ public class Redibujar {
             cont++;
  
             if ("/".equals(operacion.get(i)) ){
-                d.division(gc, sizeFactor,myColorOperators);   
+                d.division(gc,myColorOperators);   
             }
             if ("bajar".equals(operacion.get(i)) ){
                 d.bajar();
@@ -67,8 +67,7 @@ public class Redibujar {
             if (")".equals(operacion.get(i)) ){
                 Dibuja.dibuja_parentesisD(gc, operacion,myColorOperators,sizeFactor);}
             if ("^".equals(operacion.get(i)) ){
-                contP=true;
-            }
+                contP=true;}
             if ("sin".equals(operacion.get(i)) ){
                 Dibuja.dibuja_seno(gc, myColorOperators,sizeFactor);}
             if ("cos".equals(operacion.get(i)) ){
