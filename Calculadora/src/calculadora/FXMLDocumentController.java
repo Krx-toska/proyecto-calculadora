@@ -267,8 +267,6 @@ public class FXMLDocumentController implements Initializable {
   
   @FXML
   private void accion_dividir(ActionEvent event) {
-    operacion.add("/");
-    operacionR.add("/");
 
     division.division(gc,myColorOperators);
 
@@ -468,7 +466,9 @@ public class FXMLDocumentController implements Initializable {
   }
 
   void updateText() {
-    textBoxInfo = String.join("", operacion);
+    textBoxInfo = String.join("", operacionR);
+    textBoxInfo = textBoxInfo.replaceAll("bajar", "");
+    textBoxInfo = textBoxInfo.replaceAll("//", "/");
     myText.setText(textBoxInfo);
   }
 
@@ -506,10 +506,11 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void accion_mover(ActionEvent event) {
-        
+        operacionR.add("/");
         operacionR.add("bajar");
 
         division.bajar();
+        updateText();
         updateTextlevel();
     }
 
@@ -518,7 +519,7 @@ public class FXMLDocumentController implements Initializable {
     String newOp = inputText.getText();
     String trigonometricas = "";
     int j =0;
-    operacion.clear();
+    operacionR.clear();
     myText.setText("");
     for (int i = 0; i < newOp.length(); i++) {
       if ('a' <= newOp.charAt(i) && newOp.charAt(i) <= 'z'){
@@ -527,12 +528,12 @@ public class FXMLDocumentController implements Initializable {
           i++;
           j++;
         }
-        operacion.add(trigonometricas);
+        operacionR.add(trigonometricas);
         trigonometricas = "";
         j=0;
-        operacion.add(String.valueOf(newOp.charAt(i)));
+        operacionR.add(String.valueOf(newOp.charAt(i)));
       }else {
-        operacion.add(String.valueOf(newOp.charAt(i)));
+        operacionR.add(String.valueOf(newOp.charAt(i)));
       }
     }
     gc.clearRect(0, 0, 1000, 1000);
@@ -555,19 +556,22 @@ public class FXMLDocumentController implements Initializable {
     String expresion = "";
     String resultado = "";
     String resi = "";
-    for (int i = 0; i < operacion.size(); i++) {
-      if (operacion.get(i) == "°"){}
+    for (int i = 0; i < operacionR.size(); i++) {
+      if (operacionR.get(i) == "°"){}
+      else if(operacionR.get(i) == "bajar"){}
       else {
-        expresion = expresion + operacion.get(i);
+        expresion = expresion + operacionR.get(i);
       }
     }
+    expresion = expresion.replaceAll("//", "/");
     resultado = String.valueOf(eval(expresion));
-    operacion.clear();
+    operacionR.clear();
     gc.clearRect(0,0,1000,1000);
     for (int i = 0; i < resultado.length(); i++) {
-      operacion.add(String.valueOf(resultado.charAt(i)));
+
+      operacionR.add(String.valueOf(resultado.charAt(i)));
     };
-    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
+    hola.redibujar(operacionR, gc,myColorOperators,myColorNumbers,sizeFactor);
     updateText();
   }
       
