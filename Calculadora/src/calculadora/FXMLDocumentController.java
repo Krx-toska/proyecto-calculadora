@@ -230,12 +230,12 @@ public class FXMLDocumentController implements Initializable {
     return;
     }  
     else{
-    if(!check(numeros, operacion.get(operacion.size()-1))){
-      Dibuja.dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
-      operacion.add("(");
-      operacionR.add("(");
-      contadorParentesis++;
-    }
+      if(operacionR.isEmpty() || !check(numeros, operacion.get(operacion.size()-1))){
+        Dibuja.dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
+        operacion.add("(");
+        operacionR.add("(");
+        contadorParentesis++;
+      }
     updateText();}
   }
 
@@ -256,13 +256,16 @@ public class FXMLDocumentController implements Initializable {
     gc.clearRect(0, 0, 1000, 1000);
     Dibuja.limpiaMx();
     operacion.clear();
-    division.limpiar(); operacionR.clear();
-    updateText(); contB=0;
+    division.limpiar();
+    operacionR.clear();
+    updateText();
+    contB=0;
     
   }
   
   @FXML
   private void accion_dividir(ActionEvent event) {
+    operacion.add("/");
     operacionR.add("/"); 
     
     division.division(gc,myColorOperators);
