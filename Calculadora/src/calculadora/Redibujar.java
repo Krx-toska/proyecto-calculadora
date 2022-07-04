@@ -28,13 +28,10 @@ public class Redibujar {
         for( int i=0 ;i<operacion.size();i++){
             auxlista.add(operacion.get(cont));
             cont++;
- 
             if ("/".equals(operacion.get(i)) ){
-                d.division(gc,myColorOperators);   
-            }
+                d.division(gc,myColorOperators);}
             if ("bajar".equals(operacion.get(i)) ){
-                d.bajar();
-            }
+                d.bajar();}
             if ("1".equals(operacion.get(i)) ){
                 Dibuja.dibuja_uno(gc, auxlista,myColorNumbers,sizeFactor,myColorOperators);}
             if ("2".equals(operacion.get(i)) ){
@@ -76,8 +73,9 @@ public class Redibujar {
             if ("!".equals(operacion.get(i)) ){
                 Dibuja.dibuja_factorial(gc, myColorOperators, sizeFactor);}
             if (".".equals(operacion.get(i)) ){
-                Dibuja.dibujaPunto(gc, operacion, myColorNumbers, sizeFactor);
-            }
+                Dibuja.dibujaPunto(gc, operacion, myColorNumbers, sizeFactor);}
+            if ("√".equals(operacion.get(i)) ){
+                Dibuja.dibuja_raiz(gc, operacion, myColorNumbers, sizeFactor);}
         }
     }
 }

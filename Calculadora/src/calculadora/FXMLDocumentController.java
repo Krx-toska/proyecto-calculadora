@@ -474,21 +474,13 @@ public class FXMLDocumentController implements Initializable {
 
 
   void updateTextlevel() {
-
     String numCadena;
-
-
     if(niveles.isEmpty()){
     numCadena="no hay";
     }
-
     else{
     numCadena= niveles.get(niveles.size()-1)+"";
     textBoxlevel =String.join("", numCadena);}
-
-
-
-
     myTextLevel.setText(numCadena);
   }
 
@@ -543,15 +535,15 @@ public class FXMLDocumentController implements Initializable {
   }
 
     @FXML
-    public void accion_raiz(ActionEvent actionEvent) {
-    Dibuja.dibuja_raiz(gc,operacion,myColorOperators,sizeFactor);
-    Dibuja.dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
-    contadorParentesis++;
-    operacion.add("√");
-    operacion.add("(");
-    }
+  public void accion_raiz(ActionEvent actionEvent) {
+  Dibuja.dibuja_raiz(gc,operacion,myColorOperators,sizeFactor);
+  Dibuja.dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
+  contadorParentesis++;
+  operacionR.add("√");
+  operacionR.add("(");
+  }
 
-      @FXML
+    @FXML
   void accionCalcular(ActionEvent event) {
     String expresion = "";
     String resultado = "";
@@ -574,9 +566,7 @@ public class FXMLDocumentController implements Initializable {
     hola.redibujar(operacionR, gc,myColorOperators,myColorNumbers,sizeFactor);
     updateText();
   }
-      
 
-  
     @FXML
     private void accionGrado(ActionEvent event) {
         
