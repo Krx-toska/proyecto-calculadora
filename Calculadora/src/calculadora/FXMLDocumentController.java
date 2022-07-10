@@ -1026,7 +1026,7 @@ public class FXMLDocumentController implements Initializable {
     String resultado = "";
     String resi = "";
     for (int i = 0; i < operacion.size(); i++) {
-      if (operacion.get(i) == "°"){}
+      if ("°".equals(operacion.get(i))){}
       else {
         expresion = expresion + operacion.get(i);
       }
