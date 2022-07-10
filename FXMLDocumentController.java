@@ -20,8 +20,11 @@ import javafx.scene.image.ImageView;
 
 import static javafx.scene.paint.Color.BLACK;
 import javafx.scene.text.Text;
-
+import static calculadora.Division.niveles;
 import static calculadora.Dibuja.contG;
+import javafx.scene.control.TextField;
+import static calculadora.Dibuja.alturaMAX;
+import static calculadora.Dibuja.alturaMIN;
 
 /**
  *
@@ -37,8 +40,10 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   private Text myText;
   @FXML
+  private Text myTextLevel;
+  @FXML
   private Slider mySizeOfExpressions;
-  ImageView myImageView;
+    ImageView myImageView;
   @FXML
   private Text textoColorNumeros, textoColorOperadores;
 
@@ -46,18 +51,20 @@ public class FXMLDocumentController implements Initializable {
 
   
   static ArrayList<String> operacion = new ArrayList<>();
-  static ArrayList<String> operacionR = new ArrayList<>();
+
   List<String> expresionEnBinario = new ArrayList<String>();
   Cordenadas cordenadas = new Cordenadas();
   Redibujar hola = new Redibujar();
   Division division = new Division();
+  int contD =0;
   
   static GraphicsContext gc, gcaux;
   Color myColorNumbers=BLACK, myColorOperators=BLACK;
   int cont = 0, contadorParentesis = 0, cambio = 0;
   boolean estadoCambioDeBase = false;
-  double sizeFactor = 1;
+  static double sizeFactor = 1;
   String textBoxInfo;
+  String textBoxlevel;
   String[] numeros = {"0","1","2","3","4","5","6","7","8","9"};
   String[] operadores = {"+","-","x","/","^","(",")"};
   int contB = 0;
@@ -72,7 +79,15 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button bbtn_cor;
     @FXML
-    private Button bttn_mover;
+    private TextField inputText;
+    @FXML
+    private Button bttnConvertir;
+    @FXML
+    private Button bttn_raiz;
+    @FXML
+    private Button bttnCalcular;
+    @FXML
+    private Button bbtn_mover;
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
@@ -85,22 +100,39 @@ public class FXMLDocumentController implements Initializable {
   public void changeColorNumbers(){
     myColorNumbers = myColorPickerNumbers.getValue();
     gc.clearRect(0, 0, 1000, 1000);
-    hola.redibujar(operacionR, gc,myColorOperators,myColorNumbers,sizeFactor);
+    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
   }
 
   @FXML
   public void changeColorOperators(){
     myColorOperators = myColorPickerOperators.getValue();
     gc.clearRect(0, 0, 1000, 1000);
-    hola.redibujar(operacionR, gc,myColorOperators,myColorNumbers,sizeFactor);
+    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
   }
     
   @FXML
   public void accion0(ActionEvent event) {//
     if(!check(operadores, operacion.get(operacion.size()-1))){
       Dibuja.dibuja_cero(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+      
+      if(contG==true){
+    if(!"°".equals(operacion.get(operacion.size()-1))){
+    
+    operacion.add("0");
+    operacion.add("°");
+    updateText();
+    return;
+    }
+    else{
+    operacion.remove(operacion.size()-1);
+    operacion.add("0");
+    operacion.add("°");
+    updateText();
+    return;
+    }}
+      
       operacion.add("0");
-      operacionR.add("0");
+     
     }
     updateText();
   }  
@@ -108,76 +140,228 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   public void accion1(ActionEvent event) {//listo
     Dibuja.dibuja_uno(gc ,operacion,myColorNumbers,sizeFactor,myColorOperators);
+    if(contG==true){
+    if(!"°".equals(operacion.get(operacion.size()-1))){
+    
     operacion.add("1");
-    operacionR.add("1");
+    operacion.add("°");
+    updateText();
+    return;
+    }
+    else{
+    operacion.remove(operacion.size()-1);
+    operacion.add("1");
+    operacion.add("°");
+    updateText();
+    return;
+    }}
+  
+    operacion.add("1");
+ 
+    
+    
+
     updateText();
   }
     
   @FXML
   public void accion2(ActionEvent event) {
-      
-    Rdiviciones.add(false);
-    Rbajar.add(false);  
-      
     Dibuja.dibuja_dos(gc ,operacion,myColorNumbers,sizeFactor,myColorOperators);
+    if(contG==true){
+    if(!"°".equals(operacion.get(operacion.size()-1))){
+    
     operacion.add("2");
-    operacionR.add("2");
+    operacion.add("°");
+    updateText();
+    return;
+    }
+    else{
+    operacion.remove(operacion.size()-1);
+    operacion.add("2");
+     operacion.add("°");
+    updateText();
+    return;
+    }} 
+      
+    
+    operacion.add("2");
+   
     updateText();
   }
 
   @FXML
   public void accion3(ActionEvent event) {
     Dibuja.dibuja_tres(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+    if(contG==true){
+    if(!"°".equals(operacion.get(operacion.size()-1))){
+    
     operacion.add("3");
-    operacionR.add("3");
+    operacion.add("°");
+    updateText();
+    return;
+    }
+    else{
+    operacion.remove(operacion.size()-1);
+    operacion.add("3");
+    operacion.add("°");
+    updateText();
+    return;
+    }}  
+       
+    operacion.add("3");
+ 
     updateText();
   }
   
   @FXML
   public void accion4(ActionEvent event) {
     Dibuja.dibuja_cuatro(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+    
+    if(contG==true){
+    if(!"°".equals(operacion.get(operacion.size()-1))){
+    
     operacion.add("4");
-    operacionR.add("4");
+    operacion.add("°");
+    updateText();
+    return;
+    }
+    else{
+    operacion.remove(operacion.size()-1);
+    operacion.add("4");
+    operacion.add("°");
+    updateText();
+    return;
+    }}
+    
+    
+    operacion.add("4");
+  
     updateText();
   }
   
   @FXML
   public void accion5(ActionEvent event) {
     Dibuja.dibuja_cinco(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+    
+    if(contG==true){
+    if(!"°".equals(operacion.get(operacion.size()-1))){
+    
     operacion.add("5");
-    operacionR.add("5");
+    operacion.add("°");
+    updateText();
+    return;
+    }
+    else{
+    operacion.remove(operacion.size()-1);
+    operacion.add("5");
+    operacion.add("°");
+    updateText();
+    return;
+    }}
+    
+    
+    operacion.add("5");
+
     updateText();
   }
     
   @FXML
   public void accion6(ActionEvent event) {
     Dibuja.dibuja_seis(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+    
+    if(contG==true){
+    if(!"°".equals(operacion.get(operacion.size()-1))){
+    
     operacion.add("6");
-    operacionR.add("6");
+    operacion.add("°");
+    updateText();
+    return;
+    }
+    else{
+    operacion.remove(operacion.size()-1);
+    operacion.add("6");
+    operacion.add("°");
+    updateText();
+    return;
+    }}
+    
+    operacion.add("6");
+
     updateText();
   }
       
   @FXML
   public void accion7(ActionEvent event) { 
     Dibuja.dibuja_siete(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+    
+    if(contG==true){
+    if(!"°".equals(operacion.get(operacion.size()-1))){
+    
     operacion.add("7");
-    operacionR.add("7");
+    operacion.add("°");
+    updateText();
+    return;
+    }
+    else{
+    operacion.remove(operacion.size()-1);
+    operacion.add("7");
+    operacion.add("°");
+    updateText();
+    return;
+    }}
+    
+    operacion.add("7");
+
     updateText();
   }
 
   @FXML
   public void accion8(ActionEvent event) {
     Dibuja.dibuja_ocho(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+    
+    if(contG==true){
+    if(!"°".equals(operacion.get(operacion.size()-1))){
+    
+    operacion.add("8");
+    operacion.add("°");
+    updateText();
+    return;
+    }
+    else{
+    operacion.remove(operacion.size()-1);
+    operacion.add("8");
+    operacion.add("°");
+    updateText();
+    return;
+    }}
+    
     operacion.add("8"); 
-    operacionR.add("8");
+
     updateText();
   }
     
   @FXML
   public void accion9(ActionEvent event) {
     Dibuja.dibuja_nueve(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+    
+    if(contG==true){
+    if(!"°".equals(operacion.get(operacion.size()-1))){
+    
+    operacion.add("9");
+    operacion.add("°");
+    updateText();
+    return;
+    }
+    else{
+    operacion.remove(operacion.size()-1);
+    operacion.add("9");
+    operacion.add("°");
+    updateText();
+    return;
+    }}
+    
     operacion.add("9"); 
-    operacionR.add("9");
+  
     updateText();
   }  
 
@@ -186,7 +370,7 @@ public class FXMLDocumentController implements Initializable {
     if(check(numeros, operacion.get(operacion.size()-1))){
       Dibuja.dibuja_mas(gc,operacion,myColorOperators,sizeFactor);
       operacion.add("+");
-      operacionR.add("+");
+   
     }
     updateText();
   }
@@ -196,7 +380,7 @@ public class FXMLDocumentController implements Initializable {
     if(!"-".equals(operacion.get(operacion.size()-1))){
       Dibuja.dibuja_menos(gc,operacion, myColorOperators,sizeFactor);
       operacion.add("-");
-      operacionR.add("-");
+
     }
     updateText();
   }
@@ -206,7 +390,7 @@ public class FXMLDocumentController implements Initializable {
     if(check(numeros, operacion.get(operacion.size()-1))){
       Dibuja.dibuja_x(gc,operacion, myColorOperators,sizeFactor);
       operacion.add("x");
-      operacionR.add("x");
+ 
     }
     updateText();
   }
@@ -218,10 +402,10 @@ public class FXMLDocumentController implements Initializable {
     return;
     }  
     else{
-    if(!check(numeros, operacion.get(operacion.size()-1))){
+    if(operacion.isEmpty() ||!check(numeros, operacion.get(operacion.size()-1))){
       Dibuja.dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
       operacion.add("(");
-      operacionR.add("(");
+     
       contadorParentesis++;
     }
     updateText();}
@@ -232,8 +416,12 @@ public class FXMLDocumentController implements Initializable {
     if(contadorParentesis!=0 && !check(operadores, operacion.get(operacion.size()-1))){
       Dibuja.dibuja_parentesisD(gc,operacion, myColorOperators,sizeFactor);
       operacion.add(")");
-      operacionR.add(")");
+    
       contadorParentesis--;
+      
+      if(alturaMAX.size()!=1)
+      alturaMAX.remove(alturaMAX.size()-1);
+      alturaMIN.remove(alturaMIN.size()-1);
     }
     updateText();
   }
@@ -244,16 +432,23 @@ public class FXMLDocumentController implements Initializable {
     gc.clearRect(0, 0, 1000, 1000);
     Dibuja.limpiaMx();
     operacion.clear();
-    division.limpiar(); operacionR.clear();
+    myTextLevel.setText("");
+    division.limpiar();
     updateText(); contB=0;
+    alturaMIN.clear();alturaMIN.add(185);
+    alturaMAX.clear();alturaMAX.add(115);
+    
     
   }
   
   @FXML
   private void accion_dividir(ActionEvent event) {
-    operacionR.add("/"); 
- 
-    division.division(gc, sizeFactor,myColorOperators);
+      
+   
+     
+    division.division(gc,myColorOperators);
+
+    updateTextlevel();
     updateText();
   }
     
@@ -266,7 +461,7 @@ public class FXMLDocumentController implements Initializable {
     else{
     if(contP==false){
     operacion.add("^");
-    operacionR.add("^");
+   
     contP=true;
     }
     
@@ -282,28 +477,33 @@ public class FXMLDocumentController implements Initializable {
   public void accion_factorial(ActionEvent event){
     Dibuja.dibuja_factorial(gc, myColorOperators, sizeFactor);
     operacion.add("!");
-    operacionR.add("!");
+   
+    updateText();
   }
 
   @FXML
   public void accion_seno(ActionEvent event){
     Dibuja.dibuja_seno(gc, myColorOperators, sizeFactor);
     operacion.add("sin");
-    operacionR.add("sin");
+  
+    updateText();
   }
 
   @FXML
   public void accion_coseno(ActionEvent event){
     Dibuja.dibuja_coseno(gc, myColorOperators, sizeFactor);
     operacion.add("cos");
-    operacionR.add("cos");
+  
+    updateText();
   }
 
   @FXML
   public void accion_tangente(ActionEvent event){
     Dibuja.dibuja_tangente(gc, myColorOperators, sizeFactor);
     operacion.add("tan");
-    operacionR.add("tan");
+ 
+    updateText();
+    
   }
 
   @FXML
@@ -314,6 +514,7 @@ public class FXMLDocumentController implements Initializable {
       bttn_sin.setVisible(false);
       bttn_cos.setVisible(false);
       bttn_tan.setVisible(false);
+      bttn_raiz.setVisible(false);
       cambio = 1;
     }else{
       bttn_potencia.setVisible(true);
@@ -321,12 +522,15 @@ public class FXMLDocumentController implements Initializable {
       bttn_sin.setVisible(true);
       bttn_cos.setVisible(true);
       bttn_tan.setVisible(true); 
+      bttn_raiz.setVisible(true);
       cambio = 0;
     }
   }
 
   @FXML
   void accion_cambioDeBase(ActionEvent event) {
+      
+    System.out.println("lista de operacionR: "+operacion);
     if(estadoCambioDeBase == false){
       bttn_2.setVisible(false);
       bttn_3.setVisible(false);
@@ -337,7 +541,7 @@ public class FXMLDocumentController implements Initializable {
       bttn_8.setVisible(false);
       bttn_9.setVisible(false);
       estadoCambioDeBase = true;
-      gc.clearRect(0, 0, 1000, 1000);
+      gc.clearRect(0, 0, 5000, 5000);
       hola.redibujar(Binario.toBinary(operacion), gc, myColorOperators, myColorNumbers, sizeFactor);
       operacion = Binario.toBinary(operacion);
     }else{
@@ -350,7 +554,7 @@ public class FXMLDocumentController implements Initializable {
       bttn_8.setVisible(true);
       bttn_9.setVisible(true);
       estadoCambioDeBase = false;
-      gc.clearRect(0, 0, 1000, 1000);
+      gc.clearRect(0, 0, 5000, 5000);
       hola.redibujar(Binario.toDecimal(operacion), gc, myColorOperators, myColorNumbers, sizeFactor);
       operacion = Binario.toDecimal(operacion);
       updateText();
@@ -425,7 +629,7 @@ public class FXMLDocumentController implements Initializable {
       }   
     }else{
       gc.clearRect(0, 0, 1000, 1000);
-      hola.redibujar(operacionR, gc,myColorOperators,myColorNumbers,sizeFactor);
+      hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
       cont = 0;
     }
     gc.setLineWidth(1);
@@ -441,16 +645,62 @@ public class FXMLDocumentController implements Initializable {
   private void updateSize(MouseEvent event) {
     sizeFactor = mySizeOfExpressions.getValue();    
     gc.clearRect(0, 0, 1000, 1000);
-    hola.redibujar(operacionR, gc,myColorOperators,myColorNumbers,sizeFactor);
+    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
   }
 
   void updateText() {
     textBoxInfo = String.join("", operacion);
     myText.setText(textBoxInfo);
   }
+  
+  
+  void updateTextlevel() {
+    
+    String numCadena;  
+      
+      
+    if(niveles.isEmpty()){
+    numCadena="no hay";
+    myTextLevel.setText(numCadena);
+    }
+    
+    else{
+    if(niveles.size()==1){
+    numCadena= niveles.get(niveles.size()-1)+" Denominador"; 
+    textBoxlevel =String.join("", numCadena);
+    myTextLevel.setText(numCadena);
+    }    
+        
+    else if(niveles.get(niveles.size()-1) == niveles.get(niveles.size()-2)){
+    numCadena= niveles.get(niveles.size()-1)+" Numerador"; 
+    textBoxlevel =String.join("", numCadena);
+    myTextLevel.setText(numCadena);
+    }
+    else if(niveles.get(niveles.size()-1) != niveles.get(niveles.size()-2)){
+    numCadena= niveles.get(niveles.size()-1)+" Denominador"; 
+    textBoxlevel =String.join("", numCadena);
+    myTextLevel.setText(numCadena);
+    }
+
+    }
+    
+    
+    
+    
+   
+  }
+  
     
   private static boolean check(String[] arr, String toCheckValue){
+      
+      
     boolean test = false;
+    
+    if(toCheckValue == ")"){
+    
+    return test = true;
+    }
+    
     for (String element : arr) {
       if (Objects.equals(element, toCheckValue)) {
         test = true;
@@ -463,10 +713,169 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void accion_mover(ActionEvent event) {
         
-        operacionR.add("bajar");
-        contB++;
+        if(niveles.size()>=2){
+        
+        if(niveles.get(niveles.size()-1) == niveles.get(niveles.size()-2)){
+        
+          operacion.add("/");
+        
+        }}
+        
+        
         division.bajar();
-        if(contB==1 || contB%3==0){
-        operacion.add("/");}
+        
+        
+        
+        updateTextlevel();
     }
+
+    @FXML
+  void textToDraw(ActionEvent event) {
+    String newOp = inputText.getText();
+    operacion.clear();
+    myText.setText("");
+    for (int i = 0; i < newOp.length(); i++) {
+      operacion.add(String.valueOf(newOp.charAt(i)));
+    }
+    gc.clearRect(0, 0, 5000, 5000);
+    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
+    updateText();
+    cordenadas.limpiar();
+  }
+    @FXML
+    public void accion_raiz(ActionEvent actionEvent) {
+    Dibuja.dibuja_raiz(gc,operacion,myColorOperators,sizeFactor);
+    Dibuja.dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
+    contadorParentesis++;
+    operacion.add("√");
+    operacion.add("(");
+    }
+
+      @FXML
+  void accionCalcular(ActionEvent event) {
+    String expresion = "";
+    String resultado = "";
+    String resi = "";
+    for (int i = 0; i < operacion.size(); i++) {
+      if (operacion.get(i) == "°"){}
+      else {
+        expresion = expresion + operacion.get(i);
+      }
+    }
+    resultado = String.valueOf(eval(expresion));
+    operacion.clear();
+    gc.clearRect(0,0,5000,5000);
+    for (int i = 0; i < resultado.length(); i++) {
+      operacion.add(String.valueOf(resultado.charAt(i)));
+    }
+    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
+    updateText();
+  }
+      
+
+  
+    
+    public static double eval(final String str) {
+    return new Object() {
+      int pos = -1, ch;
+
+      void nextChar() {
+        ch = (++pos < str.length()) ? str.charAt(pos) : -1;
+      }
+
+      boolean eat(int charToEat) {
+        while (ch == ' ') nextChar();
+        if (ch == charToEat) {
+          nextChar();
+          return true;
+        }
+        return false;
+      }
+
+      double parse() {
+        nextChar();
+        double x = parseExpression();
+        if (pos < str.length()) throw new RuntimeException("Unexpected: " + (char)ch);
+        return x;
+      }
+
+      double parseExpression() {
+        double x = parseTerm();
+        for (;;) {
+          if      (eat('+')) x += parseTerm(); // addition
+          else if (eat('-')) x -= parseTerm(); // subtraction
+          else return x;
+        }
+      }
+
+      double parseTerm() {
+        double x = parseFactor();
+        for (;;) {
+          if      (eat('x')) x *= parseFactor(); // multiplication
+          else if (eat('/')) x /= parseFactor(); // division
+          else return x;
+        }
+      }
+      long factorial(double number) {
+        long result = 1;
+
+        for (int factor = 2; factor <= number; factor++) {
+          result *= factor;
+        }
+
+        return result;
+      }
+
+      double parseFactor() {
+        if (eat('+')) return +parseFactor(); // unary plus
+        if (eat('-')) return -parseFactor(); // unary minus
+
+        double x;
+        int startPos = this.pos;
+        if (eat('(')) { // parentheses
+          x = parseExpression();
+          if (!eat(')')) throw new RuntimeException("Missing ')'");
+        } else if ((ch >= '0' && ch <= '9') || ch == '.') { // numbers
+          while ((ch >= '0' && ch <= '9') || ch == '.') nextChar();
+          x = Double.parseDouble(str.substring(startPos, this.pos));
+        } else if ((ch >= 'a' && ch <= 'z') || ch == '√' || ch == '!') { // functions
+          while ((ch >= 'a' && ch <= 'z') || ch == '√' || ch == '!') nextChar();
+          String func = str.substring(startPos, this.pos);
+          if (eat('(')) {
+            x = parseExpression();
+            if (!eat(')')) throw new RuntimeException("Missing ')' after argument to " + func);
+          } else {
+            x = parseFactor();
+          }
+          System.out.println(func);
+          switch (func) {
+            case "√":
+              x = Math.sqrt(x);
+              break;
+            case "sin":
+              x = Math.sin(Math.toRadians(x));
+              break;
+            case "cos":
+              x = Math.cos(Math.toRadians(x));
+              break;
+            case "tan":
+              x = Math.tan(Math.toRadians(x));
+              break;
+            case "!":
+              x = factorial(x);
+              break;
+            default:
+              throw new RuntimeException("Unknown function: " + func);
+          }
+        } else {
+          throw new RuntimeException("Unexpected: " + (char)ch);
+        }
+
+        if (eat('^')) x = Math.pow(x, parseFactor()); // exponentiation
+
+        return x;
+      }
+    }.parse();
+  }
+    
 }
