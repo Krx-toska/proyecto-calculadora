@@ -1853,7 +1853,7 @@ public class Dibuja {
 
 
                         double x2 = 175*sizeFactor*tamano+bajar;
-                        System.out.println(x2);
+                       // System.out.println(x2);
 
 
                         reubicarmxMayor();
@@ -2179,8 +2179,8 @@ public class Dibuja {
 
         if(niveles.isEmpty()){
 
-            System.out.println(alturaMAX);
-            System.out.println(alturaMIN);
+            //System.out.println(alturaMAX);
+            //System.out.println(alturaMIN);
 
             int max = alturaMAX.get(alturaMAX.size()-1);
 

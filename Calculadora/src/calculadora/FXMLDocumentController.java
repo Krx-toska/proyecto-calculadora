@@ -738,7 +738,394 @@ public class FXMLDocumentController implements Initializable {
       operacion.add(String.valueOf(newOp.charAt(i)));
     }
     gc.clearRect(0, 0, 5000, 5000);
-    hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
+    int j = 1;
+    int contadorParentesis = 0;
+    for(int i=0;i<operacion.size(); i++) {
+      if ("/".equals(operacion.get(i))){
+        operacion.add(i+1 ,"bajar");
+      }
+    }
+    for(int i=0;i<operacion.size(); i++) {
+      if ("/".equals(operacion.get(i))) {
+        contadorParentesis++;
+        for (int k = 2; k < operacion.size(); k++) {
+          if (contadorParentesis == 0){
+
+            operacion.remove(i);
+            if(i-k < 0){
+              operacion.add(0, "/");
+            }else {
+              operacion.add(i - k + 2, "/");
+            }
+            k = operacion.size();
+          }else if ("(".equals(operacion.get(i-k))) {
+            contadorParentesis--;
+          }else if (")".equals(operacion.get(i-k))){
+            contadorParentesis++;
+          }
+
+
+        }
+      }
+    }
+    for(int i=0;i<operacion.size(); i++) {
+      if (check(numeros, operacion.get(i))){
+        System.out.println("aaa");
+        if (")".equals(operacion.get(i+1))){
+          System.out.println("bbb");
+          operacion.add(i+1, "bajar");
+        }
+      }
+    }
+//((2(2/5))/(-(7/2)^2))/(5+(6-3))
+
+    int operacionSize = operacion.size();
+    for (int i = 0; i < operacionSize ;i++){
+      if ("1".equals(operacion.get(i)) ){
+        Dibuja.dibuja_uno(gc ,operacion,myColorNumbers,sizeFactor,myColorOperators);
+        if(contG==true){
+          if(!"°".equals(operacion.get(operacion.size()-1))){
+
+            operacion.add("1");
+            operacion.add("°");
+            updateText();
+            return;
+          }
+          else{
+            operacion.remove(operacion.size()-1);
+            operacion.add("1");
+            operacion.add("°");
+            updateText();
+            return;
+          }}
+
+        operacion.add("1");
+        updateText();}
+      if ("2".equals(operacion.get(i)) ){
+        Dibuja.dibuja_dos(gc ,operacion,myColorNumbers,sizeFactor,myColorOperators);
+        if(contG==true){
+          if(!"°".equals(operacion.get(operacion.size()-1))){
+
+            operacion.add("2");
+            operacion.add("°");
+            updateText();
+            return;
+          }
+          else{
+            operacion.remove(operacion.size()-1);
+            operacion.add("2");
+            operacion.add("°");
+            updateText();
+            return;
+          }}
+
+
+        operacion.add("2");
+
+        updateText();}
+      if ("3".equals(operacion.get(i)) ){
+        Dibuja.dibuja_tres(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+        if(contG==true){
+          if(!"°".equals(operacion.get(operacion.size()-1))){
+
+            operacion.add("3");
+            operacion.add("°");
+            updateText();
+            return;
+          }
+          else{
+            operacion.remove(operacion.size()-1);
+            operacion.add("3");
+            operacion.add("°");
+            updateText();
+            return;
+          }}
+
+        operacion.add("3");
+
+        updateText();
+      }
+      if ("4".equals(operacion.get(i)) ){
+        Dibuja.dibuja_cuatro(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+
+        if(contG==true){
+          if(!"°".equals(operacion.get(operacion.size()-1))){
+
+            operacion.add("4");
+            operacion.add("°");
+            updateText();
+            return;
+          }
+          else{
+            operacion.remove(operacion.size()-1);
+            operacion.add("4");
+            operacion.add("°");
+            updateText();
+            return;
+          }}
+
+
+        operacion.add("4");
+
+        updateText();
+      }
+      if ("5".equals(operacion.get(i)) ){
+        Dibuja.dibuja_cinco(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+
+        if(contG==true){
+          if(!"°".equals(operacion.get(operacion.size()-1))){
+
+            operacion.add("5");
+            operacion.add("°");
+            updateText();
+            return;
+          }
+          else{
+            operacion.remove(operacion.size()-1);
+            operacion.add("5");
+            operacion.add("°");
+            updateText();
+            return;
+          }}
+
+
+        operacion.add("5");
+
+        updateText();
+      }
+      if ("6".equals(operacion.get(i)) ){
+        Dibuja.dibuja_seis(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+
+        if(contG==true){
+          if(!"°".equals(operacion.get(operacion.size()-1))){
+
+            operacion.add("6");
+            operacion.add("°");
+            updateText();
+            return;
+          }
+          else{
+            operacion.remove(operacion.size()-1);
+            operacion.add("6");
+            operacion.add("°");
+            updateText();
+            return;
+          }}
+
+        operacion.add("6");
+
+        updateText();
+      }
+      if ("7".equals(operacion.get(i)) ){
+        Dibuja.dibuja_siete(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+
+        if(contG==true){
+          if(!"°".equals(operacion.get(operacion.size()-1))){
+
+            operacion.add("7");
+            operacion.add("°");
+            updateText();
+            return;
+          }
+          else{
+            operacion.remove(operacion.size()-1);
+            operacion.add("7");
+            operacion.add("°");
+            updateText();
+            return;
+          }}
+
+        operacion.add("7");
+
+        updateText();
+      }
+      if ("8".equals(operacion.get(i)) ){
+        Dibuja.dibuja_ocho(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+
+        if(contG==true){
+          if(!"°".equals(operacion.get(operacion.size()-1))){
+
+            operacion.add("8");
+            operacion.add("°");
+            updateText();
+            return;
+          }
+          else{
+            operacion.remove(operacion.size()-1);
+            operacion.add("8");
+            operacion.add("°");
+            updateText();
+            return;
+          }}
+
+        operacion.add("8");
+
+        updateText();
+      }
+      if ("9".equals(operacion.get(i)) ){
+        Dibuja.dibuja_nueve(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+
+        if(contG==true){
+          if(!"°".equals(operacion.get(operacion.size()-1))){
+
+            operacion.add("9");
+            operacion.add("°");
+            updateText();
+            return;
+          }
+          else{
+            operacion.remove(operacion.size()-1);
+            operacion.add("9");
+            operacion.add("°");
+            updateText();
+            return;
+          }}
+
+        operacion.add("9");
+
+        updateText();
+      }
+      if ("0".equals(operacion.get(i)) ){
+        if(!check(operadores, operacion.get(operacion.size()-1))){
+          Dibuja.dibuja_cero(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
+
+          if(contG==true){
+            if(!"°".equals(operacion.get(operacion.size()-1))){
+
+              operacion.add("0");
+              operacion.add("°");
+              updateText();
+              return;
+            }
+            else{
+              operacion.remove(operacion.size()-1);
+              operacion.add("0");
+              operacion.add("°");
+              updateText();
+              return;
+            }}
+
+          operacion.add("0");
+
+        }
+        updateText();
+      }
+      if ("+".equals(operacion.get(i)) ){
+        if(check(numeros, operacion.get(operacion.size()-1))){
+          Dibuja.dibuja_mas(gc,operacion,myColorOperators,sizeFactor);
+          operacion.add("+");
+
+        }
+        updateText();
+      }
+      if ("-".equals(operacion.get(i)) ){
+        if(!"-".equals(operacion.get(operacion.size()-1))){
+          Dibuja.dibuja_menos(gc,operacion, myColorOperators,sizeFactor);
+          operacion.add("-");
+
+        }
+        updateText();
+      }
+      if ("x".equals(operacion.get(i)) ){
+        if(check(numeros, operacion.get(operacion.size()-1))){
+          Dibuja.dibuja_x(gc,operacion, myColorOperators,sizeFactor);
+          operacion.add("x");
+
+        }
+        updateText();
+      }
+      if ("(".equals(operacion.get(i)) ){
+        if(contG==true){
+          return;
+        }
+        else{
+          if(operacion.isEmpty() ||!check(numeros, operacion.get(operacion.size()-1))){
+            Dibuja.dibuja_parentesisI(gc,operacion, myColorOperators,sizeFactor);
+            operacion.add("(");
+
+            contadorParentesis++;
+          }
+          updateText();}
+      }
+      if (")".equals(operacion.get(i)) ){
+        if(contadorParentesis!=0){
+          Dibuja.dibuja_parentesisD(gc,operacion, myColorOperators,sizeFactor);
+          operacion.add(")");
+
+          contadorParentesis--;
+
+          //if(alturaMAX.size()!=1)
+          //  alturaMAX.remove(alturaMAX.size()-1);
+          //alturaMIN.remove(alturaMIN.size()-1);
+        }
+        updateText();
+      }
+      if ("^".equals(operacion.get(i)) ){
+        if(operacion.isEmpty()  || operacion.get(operacion.size()-1)=="^" || contG==true){
+
+          return;
+        }
+        else{
+          if(contP==false){
+            operacion.add("^");
+
+            contP=true;
+          }
+
+          else{
+
+            contP=false;
+          }
+
+          updateText();
+        }}
+      if ("sin".equals(operacion.get(i)) ){
+        Dibuja.dibuja_seno(gc, myColorOperators, sizeFactor);
+        operacion.add("sin");
+
+        updateText();
+      }
+      if ("cos".equals(operacion.get(i)) ){
+        Dibuja.dibuja_coseno(gc, myColorOperators, sizeFactor);
+        operacion.add("cos");
+
+        updateText();
+      }
+      if ("tan".equals(operacion.get(i)) ){
+        Dibuja.dibuja_tangente(gc, myColorOperators, sizeFactor);
+        operacion.add("tan");
+
+        updateText();
+
+      }
+      if ("!".equals(operacion.get(i)) ){
+        Dibuja.dibuja_factorial(gc, myColorOperators, sizeFactor);
+        operacion.add("!");
+
+        updateText();
+      }
+      if ("/".equals(operacion.get(i)) ){
+        division.division(gc,myColorOperators);
+
+        updateTextlevel();
+        updateText();}
+      if("bajar".equals(operacion.get(i))){
+        if(niveles.size()>=2){
+
+          if(niveles.get(niveles.size()-1) == niveles.get(niveles.size()-2)){
+
+            operacion.add("/");
+
+          }}
+
+
+        division.bajar();
+
+      operacion.add("cualquierwea");
+
+        updateTextlevel();
+      }
+    }
     updateText();
     cordenadas.limpiar();
   }

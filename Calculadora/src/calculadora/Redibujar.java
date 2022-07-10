@@ -28,8 +28,6 @@ public class Redibujar {
         int cont = 0;
 
 
-
-
         int contD=0;
 
 

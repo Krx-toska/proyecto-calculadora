@@ -80,7 +80,7 @@ public class Division {
             niveles.add(1);
             niveles.add(1);
 
-            System.out.println(niveles);
+         //   System.out.println(niveles);
 
             gc.strokeLine(mx+0*sizeFactor,180*sizeFactor,mx+60*sizeFactor,180*sizeFactor);
             reubicar();
@@ -96,7 +96,7 @@ public class Division {
                 DD = true;
                 niveles.add(contN);
                 niveles.add(contN);
-                System.out.println(niveles);
+              //  System.out.println(niveles);
                 int aux = (int) niveles.get(niveles.size()-3);
 
 
@@ -169,7 +169,7 @@ public class Division {
                 tamano=tamano*0.75;
 
             }
-            System.out.println(niveles);
+           // System.out.println(niveles);
         }
 
 
@@ -235,7 +235,7 @@ public class Division {
                     DD=false;
                     int aux = (int) niveles.get(niveles.size()-1);
                     mx =(double) nivelmxMayor.get(nivelmxMayor.size()-1)+50;
-                    System.out.println(mx);
+                   // System.out.println(mx);
                     bajar = (double)  listaBajar.get(listaBajar.size()-1);
                     listaBajar.remove(listaBajar.size()-1);
                     niveles.remove(niveles.size()-1);
@@ -264,7 +264,7 @@ public class Division {
         if (auxmx>mx){
             auxmx=mx;
             nivelmx.add(auxmx);
-            System.out.println(nivelmx);
+          //  System.out.println(nivelmx);
         }
         else{}
 
