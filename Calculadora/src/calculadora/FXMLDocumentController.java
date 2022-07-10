@@ -57,7 +57,7 @@ public class FXMLDocumentController implements Initializable {
   Redibujar hola = new Redibujar();
   Division division = new Division();
   int contD =0;
-
+  String aux="";
   static GraphicsContext gc, gcaux;
   Color myColorNumbers=BLACK, myColorOperators=BLACK;
   int cont = 0, contadorParentesis = 0, cambio = 0;
@@ -364,6 +364,12 @@ public class FXMLDocumentController implements Initializable {
 
     updateText();
   }
+  
+  public void grados(){
+  
+  Dibuja.dibuja_grados(gc, sizeFactor);
+  operacion.add("°");
+  }
 
   @FXML
   public void accion_mas(ActionEvent event) {//listo
@@ -429,7 +435,7 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   private void accion_limpiar(ActionEvent event) {
     contP=false;
-    gc.clearRect(0, 0, 1000, 1000);
+    gc.clearRect(0, 0, 5000, 5000);
     Dibuja.limpiaMx();
     operacion.clear();
     myTextLevel.setText("");
@@ -437,6 +443,7 @@ public class FXMLDocumentController implements Initializable {
     updateText(); contB=0;
     alturaMIN.clear();alturaMIN.add(185);
     alturaMAX.clear();alturaMAX.add(115);
+    aux="";
 
 
   }
@@ -644,7 +651,7 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   private void updateSize(MouseEvent event) {
     sizeFactor = mySizeOfExpressions.getValue();
-    gc.clearRect(0, 0, 1000, 1000);
+    gc.clearRect(0, 0, 5000, 5000);
     hola.redibujar(operacion, gc,myColorOperators,myColorNumbers,sizeFactor);
   }
 
@@ -732,10 +739,38 @@ public class FXMLDocumentController implements Initializable {
   @FXML
   void textToDraw(ActionEvent event) {
     String newOp = inputText.getText();
+    ArrayList auxlista = new ArrayList();
     operacion.clear();
     myText.setText("");
     for (int i = 0; i < newOp.length(); i++) {
+     
+      char aux2;
+      aux2 = newOp.charAt(i);
+      
+      System.out.println("char: "+aux2);
+      
+
+      if(aux2=='c' || aux2=='o' || aux2=='s' || aux2=='s' || aux2=='i' || aux2=='n' || aux2=='t' || aux2=='a'){
+      aux = aux + aux2;
+      System.out.println(aux);
+      }
+      
+      else if(aux.matches("tan") || aux.matches("cos") || aux.matches("sin")){
+      operacion.add(aux);
+      auxlista.add(aux);
+      aux="";
+      i--;
+      }
+      
+      else{
+      
       operacion.add(String.valueOf(newOp.charAt(i)));
+      auxlista.add(String.valueOf(newOp.charAt(i)));
+      }
+      
+      
+      System.out.println("OPERACION: "+operacion);  
+      
     }
     gc.clearRect(0, 0, 5000, 5000);
     int j = 1;
@@ -770,9 +805,9 @@ public class FXMLDocumentController implements Initializable {
     }
     for(int i=0;i<operacion.size(); i++) {
       if (check(numeros, operacion.get(i))){
-        System.out.println("aaa");
+    
         if (")".equals(operacion.get(i+1))){
-          System.out.println("bbb");
+       
           operacion.add(i+1, "bajar");
         }
       }
@@ -783,87 +818,24 @@ public class FXMLDocumentController implements Initializable {
     for (int i = 0; i < operacionSize ;i++){
       if ("1".equals(operacion.get(i)) ){
         Dibuja.dibuja_uno(gc ,operacion,myColorNumbers,sizeFactor,myColorOperators);
-        if(contG==true){
-          if(!"°".equals(operacion.get(operacion.size()-1))){
-
-            operacion.add("1");
-            operacion.add("°");
-            updateText();
-            return;
-          }
-          else{
-            operacion.remove(operacion.size()-1);
-            operacion.add("1");
-            operacion.add("°");
-            updateText();
-            return;
-          }}
 
         operacion.add("1");
         updateText();}
       if ("2".equals(operacion.get(i)) ){
         Dibuja.dibuja_dos(gc ,operacion,myColorNumbers,sizeFactor,myColorOperators);
-        if(contG==true){
-          if(!"°".equals(operacion.get(operacion.size()-1))){
-
-            operacion.add("2");
-            operacion.add("°");
-            updateText();
-            return;
-          }
-          else{
-            operacion.remove(operacion.size()-1);
-            operacion.add("2");
-            operacion.add("°");
-            updateText();
-            return;
-          }}
-
-
+        
         operacion.add("2");
 
         updateText();}
       if ("3".equals(operacion.get(i)) ){
         Dibuja.dibuja_tres(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
-        if(contG==true){
-          if(!"°".equals(operacion.get(operacion.size()-1))){
-
-            operacion.add("3");
-            operacion.add("°");
-            updateText();
-            return;
-          }
-          else{
-            operacion.remove(operacion.size()-1);
-            operacion.add("3");
-            operacion.add("°");
-            updateText();
-            return;
-          }}
-
+        
         operacion.add("3");
 
         updateText();
       }
       if ("4".equals(operacion.get(i)) ){
         Dibuja.dibuja_cuatro(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
-
-        if(contG==true){
-          if(!"°".equals(operacion.get(operacion.size()-1))){
-
-            operacion.add("4");
-            operacion.add("°");
-            updateText();
-            return;
-          }
-          else{
-            operacion.remove(operacion.size()-1);
-            operacion.add("4");
-            operacion.add("°");
-            updateText();
-            return;
-          }}
-
 
         operacion.add("4");
 
@@ -872,45 +844,12 @@ public class FXMLDocumentController implements Initializable {
       if ("5".equals(operacion.get(i)) ){
         Dibuja.dibuja_cinco(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
 
-        if(contG==true){
-          if(!"°".equals(operacion.get(operacion.size()-1))){
-
-            operacion.add("5");
-            operacion.add("°");
-            updateText();
-            return;
-          }
-          else{
-            operacion.remove(operacion.size()-1);
-            operacion.add("5");
-            operacion.add("°");
-            updateText();
-            return;
-          }}
-
-
         operacion.add("5");
 
         updateText();
       }
       if ("6".equals(operacion.get(i)) ){
         Dibuja.dibuja_seis(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
-
-        if(contG==true){
-          if(!"°".equals(operacion.get(operacion.size()-1))){
-
-            operacion.add("6");
-            operacion.add("°");
-            updateText();
-            return;
-          }
-          else{
-            operacion.remove(operacion.size()-1);
-            operacion.add("6");
-            operacion.add("°");
-            updateText();
-            return;
-          }}
 
         operacion.add("6");
 
@@ -919,44 +858,12 @@ public class FXMLDocumentController implements Initializable {
       if ("7".equals(operacion.get(i)) ){
         Dibuja.dibuja_siete(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
 
-        if(contG==true){
-          if(!"°".equals(operacion.get(operacion.size()-1))){
-
-            operacion.add("7");
-            operacion.add("°");
-            updateText();
-            return;
-          }
-          else{
-            operacion.remove(operacion.size()-1);
-            operacion.add("7");
-            operacion.add("°");
-            updateText();
-            return;
-          }}
-
         operacion.add("7");
 
         updateText();
       }
       if ("8".equals(operacion.get(i)) ){
         Dibuja.dibuja_ocho(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
-
-        if(contG==true){
-          if(!"°".equals(operacion.get(operacion.size()-1))){
-
-            operacion.add("8");
-            operacion.add("°");
-            updateText();
-            return;
-          }
-          else{
-            operacion.remove(operacion.size()-1);
-            operacion.add("8");
-            operacion.add("°");
-            updateText();
-            return;
-          }}
 
         operacion.add("8");
 
@@ -965,22 +872,6 @@ public class FXMLDocumentController implements Initializable {
       if ("9".equals(operacion.get(i)) ){
         Dibuja.dibuja_nueve(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
 
-        if(contG==true){
-          if(!"°".equals(operacion.get(operacion.size()-1))){
-
-            operacion.add("9");
-            operacion.add("°");
-            updateText();
-            return;
-          }
-          else{
-            operacion.remove(operacion.size()-1);
-            operacion.add("9");
-            operacion.add("°");
-            updateText();
-            return;
-          }}
-
         operacion.add("9");
 
         updateText();
@@ -988,22 +879,6 @@ public class FXMLDocumentController implements Initializable {
       if ("0".equals(operacion.get(i)) ){
         if(!check(operadores, operacion.get(operacion.size()-1))){
           Dibuja.dibuja_cero(gc,operacion,myColorNumbers,sizeFactor,myColorOperators);
-
-          if(contG==true){
-            if(!"°".equals(operacion.get(operacion.size()-1))){
-
-              operacion.add("0");
-              operacion.add("°");
-              updateText();
-              return;
-            }
-            else{
-              operacion.remove(operacion.size()-1);
-              operacion.add("0");
-              operacion.add("°");
-              updateText();
-              return;
-            }}
 
           operacion.add("0");
 
@@ -1055,7 +930,7 @@ public class FXMLDocumentController implements Initializable {
           contadorParentesis--;
 
           //if(alturaMAX.size()!=1)
-          //  alturaMAX.remove(alturaMAX.size()-1);
+          //alturaMAX.remove(alturaMAX.size()-1);
           //alturaMIN.remove(alturaMIN.size()-1);
         }
         updateText();
@@ -1121,11 +996,18 @@ public class FXMLDocumentController implements Initializable {
 
         division.bajar();
 
-      operacion.add("cualquierwea");
+      operacion.add("cualquiercosa");
 
         updateTextlevel();
       }
+      if("°".equals(operacion.get(i))){
+          operacion.add("°");
+      
+      }
+      
     }
+    
+    operacion = auxlista;
     updateText();
     cordenadas.limpiar();
   }
