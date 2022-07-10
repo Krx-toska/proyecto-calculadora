@@ -413,15 +413,15 @@ public class FXMLDocumentController implements Initializable {
 
   @FXML
   public void accion_parentesisDerecho(ActionEvent event) {
-    if(contadorParentesis!=0 && !check(operadores, operacion.get(operacion.size()-1))){
+    if(contadorParentesis!=0){
       Dibuja.dibuja_parentesisD(gc,operacion, myColorOperators,sizeFactor);
       operacion.add(")");
 
       contadorParentesis--;
 
-      if(alturaMAX.size()!=1)
-        alturaMAX.remove(alturaMAX.size()-1);
-      alturaMIN.remove(alturaMIN.size()-1);
+      //if(alturaMAX.size()!=1)
+      //  alturaMAX.remove(alturaMAX.size()-1);
+      //alturaMIN.remove(alturaMIN.size()-1);
     }
     updateText();
   }
