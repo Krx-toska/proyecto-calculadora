@@ -143,7 +143,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="bttn_potencia" layoutX="583.0" layoutY="531.0" mnemonicParsing="false" onAction="#accion_potencia" prefHeight="46.0" prefWidth="65.0" text="^" AnchorPane.bottomAnchor="24.0">
+      <Button fx:id="bttn_potencia" layoutX="583.0" layoutY="529.0" mnemonicParsing="false" onAction="#accion_potencia" prefHeight="46.0" prefWidth="65.0" text="^" AnchorPane.bottomAnchor="20.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -159,7 +159,7 @@
       </Button>
       <TextField fx:id="inputText" layoutX="43.0" layoutY="554.0" prefHeight="33.0" prefWidth="383.0" promptText="Ingrese formula" AnchorPane.bottomAnchor="14.0" />
       <Button fx:id="bttnConvertir" layoutX="431.0" layoutY="558.0" mnemonicParsing="false" onAction="#textToDraw" prefHeight="25.0" prefWidth="65.0" text="Convertir" AnchorPane.bottomAnchor="18.0" />
-      <Button fx:id="bttn_raiz" layoutX="648.0" layoutY="531.0" mnemonicParsing="false" onAction="#accion_raiz" prefHeight="46.0" prefWidth="65.0" text="Raiz" AnchorPane.bottomAnchor="24.0">
+      <Button fx:id="bttn_raiz" layoutX="653.0" layoutY="529.0" mnemonicParsing="false" onAction="#accion_raiz" prefHeight="46.0" prefWidth="65.0" text="Raiz" AnchorPane.bottomAnchor="20.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -182,5 +182,10 @@
          </font>
       </Text>
       <Text fx:id="myTextLevel" fill="#1f3dd3" layoutX="758.0" layoutY="380.0" stroke="#732ec3" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="86.0" AnchorPane.bottomAnchor="212.0" />
+      <Button fx:id="bttn_prefija" layoutX="583.0" layoutY="471.0" mnemonicParsing="false" onAction="#accionPrefija" prefHeight="46.0" prefWidth="65.0" text="Prefija">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
