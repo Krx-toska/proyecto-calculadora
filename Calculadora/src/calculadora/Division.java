@@ -18,6 +18,9 @@ import static calculadora.FXMLDocumentController.contP;
 import static calculadora.Dibuja.contG;
 import static calculadora.FXMLDocumentController.sizeFactor;
 import javafx.scene.paint.Color;
+import static calculadora.Dibuja.nivelmxMayor;
+import static calculadora.Dibuja.alturaMAX;
+import static calculadora.Dibuja.alturaMIN;
 
 
 /**
@@ -25,9 +28,9 @@ import javafx.scene.paint.Color;
  * @author waki
  */
 public class Division {
-    
-    
-    
+
+
+
     static ArrayList niveles = new ArrayList();
     static ArrayList nivelesD = new ArrayList();
     int contN = 1;
@@ -40,233 +43,232 @@ public class Division {
     static double auxmxD = 1000;
     static double contMX = 0;
     static boolean DD = false;
-    
-    
-    static ArrayList listaBajar = new ArrayList();
-    
-    public void limpiar(){
-    bajar = 0; bajarD =0;
-    niveles.clear(); contN=1;nivelesD.clear();
-    auxtamano = 0; auxtamanoD = 0;
-    tamano = 1; tamanoD = 1;
-    listaBajar.clear();
-    DD=false;
-    }
-    
-    public void limpiarniveles(){
-    niveles.clear();
-    }
-    
-    public void limpiarDD(){
-    bajarD =0; auxmxD=1000;
-    tamanoD = 1;
-    auxtamanoD = 0;
-    nivelesD.clear();
-    
-    }
-    
-    
-    public void division(GraphicsContext gc,Color myColorOperators){
-    
-    gc.setStroke(myColorOperators);    
-        
-    mx=mx+5*sizeFactor;
-        
-    if (niveles.isEmpty()){
-        System.out.println("funciona");
-        
-        niveles.add(1);
-        niveles.add(1);
-        
-        System.out.println(niveles);
-        
-        gc.strokeLine(mx+0*sizeFactor,180*sizeFactor,mx+60*sizeFactor,180*sizeFactor);
-        reubicar();
-        auxmx =1000;
-                
-        contN++;
-    }
-    
-    else if(!niveles.isEmpty()){
-    
-    if(niveles.size()==1){
-    contN++;
-    DD = true;
-    niveles.add(contN);
-    niveles.add(contN);
-    System.out.println(niveles);
-    int aux = (int) niveles.get(niveles.size()-3);
-    
 
-    bajar= bajar+26*aux;
-    listaBajar.add(bajar);
-    
-    int x =(int) bajar+10;
-    reubicar();
-    
-    auxmx=1000;
-    
-    gc.strokeLine(mx+0+5 *aux,180+50,mx+60-5*aux,180+50);
-    
-    tamano=tamano*0.75;
+
+    static ArrayList listaBajar = new ArrayList();
+
+    public void limpiar(){
+        bajar = 0; bajarD =0;
+        niveles.clear(); contN=1;nivelesD.clear();
+        auxtamano = 0; auxtamanoD = 0;
+        tamano = 1; tamanoD = 1;
+        listaBajar.clear();
+        DD=false;
     }
-    
-    else if(niveles.get(niveles.size()-1)!= niveles.get(niveles.size()-2)){
-    int sube = 0;
-    int auxBajar = 0;
-        
-    if((int)niveles.get(niveles.size()-1) == 3){
-    
-    auxBajar = 75;
-    sube = 44;
+
+    public void limpiarDD(){
+        bajarD =0; auxmxD=1000;
+        tamanoD = 1;
+        auxtamanoD = 0;
+        nivelesD.clear();
+
     }
-    
-    else if((int)niveles.get(niveles.size()-1)== 2){
-    
-    auxBajar = 25;
-    sube = 94;
+
+
+    public void division(GraphicsContext gc,Color myColorOperators){
+
+        gc.setStroke(myColorOperators);
+
+        alturaMAX.add(115);
+        alturaMIN.add(253);
+
+        mx=mx+5*sizeFactor;
+
+        if (niveles.isEmpty()){
+            System.out.println("funciona");
+
+            niveles.add(1);
+            niveles.add(1);
+
+            System.out.println(niveles);
+
+            gc.strokeLine(mx+0*sizeFactor,180*sizeFactor,mx+60*sizeFactor,180*sizeFactor);
+            reubicar();
+            auxmx =1000;
+
+            contN++;
+        }
+
+        else if(!niveles.isEmpty()){
+
+            if(niveles.size()==1){
+                contN++;
+                DD = true;
+                niveles.add(contN);
+                niveles.add(contN);
+                System.out.println(niveles);
+                int aux = (int) niveles.get(niveles.size()-3);
+
+
+                bajar= bajar+26*aux;
+                listaBajar.add(bajar);
+
+                int x =(int) bajar+10;
+                reubicar();
+
+                auxmx=1000;
+
+                gc.strokeLine(mx+0+5 *aux,180+50,mx+60-5*aux,180+50);
+
+                tamano=tamano*0.75;
+            }
+
+            else if(niveles.get(niveles.size()-1)!= niveles.get(niveles.size()-2)){
+                int sube = 0;
+                int auxBajar = 0;
+
+                if((int)niveles.get(niveles.size()-1) == 3){
+
+                    auxBajar = 75;
+                    sube = 44;
+                }
+
+                else if((int)niveles.get(niveles.size()-1)== 2){
+
+                    auxBajar = 25;
+                    sube = 94;
+                }
+
+                nivelesD.add(5);
+                nivelesD.add(5);
+                bajarD = bajarD + sube;
+
+                gc.strokeLine(mx+0+15 ,180-auxBajar,mx+60-15,180-auxBajar);
+                tamanoD=tamanoD*0.75;
+                tamanoD=tamanoD*0.75;
+                tamanoD=tamanoD*0.75;
+                tamanoD=tamanoD*0.75;
+                mx =mx+10;
+                if(auxmxD>mx){auxmxD=mx;}
+
+
+
+            }
+
+
+
+
+            else{
+                aux=1000;
+
+                niveles.add(contN);
+                niveles.add(contN);
+
+                int aux = (int) niveles.get(niveles.size()-3);
+
+                listaBajar.add(bajar);
+
+                bajar= bajar-8*aux;
+
+                gc.strokeLine(mx+0+5*aux,180-50*aux,mx+60-12*aux,180-50*aux);
+                reubicar();
+                auxmx=1000;
+                contN++;
+                auxtamano = tamano;
+
+                tamano=tamano*0.75;
+
+            }
+            System.out.println(niveles);
+        }
+
+
+
     }
-    
-    nivelesD.add(5);
-    nivelesD.add(5);
-    bajarD = bajarD + sube;
- 
-    gc.strokeLine(mx+0+15 ,180-auxBajar,mx+60-15,180-auxBajar);
-    tamanoD=tamanoD*0.75;
-    tamanoD=tamanoD*0.75;
-    tamanoD=tamanoD*0.75;
-    tamanoD=tamanoD*0.75;
-    mx =mx+10;
-    if(auxmxD>mx){auxmxD=mx;}
-    
-    
-    
-    }
-    
-    
-        
-    
-    else{
-    aux=1000; 
-       
-    niveles.add(contN);
-    niveles.add(contN);
-    
-    int aux = (int) niveles.get(niveles.size()-3);
-    
-    listaBajar.add(bajar);
-    
-    bajar= bajar-8*aux;
-    
-    
-   
-    
-    gc.strokeLine(mx+0+5*aux,180-50*aux,mx+60-12*aux,180-50*aux);
-    reubicar();
-    auxmx=1000;
-    contN++;
-    auxtamano = tamano;
-    
-    tamano=tamano*0.75;
-    
-    }
-    System.out.println(niveles);
-    }
-        
-        
-    
-    }
-    
+
     public void bajar(){
-        
+
         contG=false;
         contP=false;
-        
+
         if(!nivelesD.isEmpty()){
-            
-            
+
+
             if(nivelesD.size()==1){
-            nivelesD.remove(nivelesD.size()-1);
-            mx=mx+15;
-            auxmxDD=1000;
-            limpiarDD();
+                nivelesD.remove(nivelesD.size()-1);
+                mx=mx+15;
+                auxmxDD=1000;
+                limpiarDD();
             }
-            
+
 
             else if(nivelesD.get(nivelesD.size()-1) == nivelesD.get(nivelesD.size()-2)){
-            operacion.add("/");
-            int aux = (int) nivelesD.get(nivelesD.size()-1);
-            nivelesD.remove(nivelesD.size()-1);
-            
-            bajarD = bajarD +68-8*aux;
-            mx = auxmxDD;
+
+                int aux = (int) nivelesD.get(nivelesD.size()-1);
+                nivelesD.remove(nivelesD.size()-1);
+
+                bajarD = bajarD +68-8*aux;
+                mx = auxmxDD;
             }
-            
-            
-            
+
+
+
         }
         else{
-        if(!niveles.isEmpty()){
-            if(niveles.size()==1){
-            niveles.remove(niveles.size()-1);
-            
-            bajar();
+            if(!niveles.isEmpty()){
+                if(niveles.size()==1){
+                    niveles.remove(niveles.size()-1);
+
+                    bajar();
+                }
+
+                else if(niveles.get(niveles.size()-1) == niveles.get(niveles.size()-2)){
+
+
+
+
+                    int aux = (int) niveles.get(niveles.size()-1);
+                    niveles.remove(niveles.size()-1);
+
+                    bajar = (bajar +68-8*aux)*sizeFactor;
+                    if(niveles.size()==1){bajar=bajar+8;}
+
+
+                    mx=(double) nivelmx.get(nivelmx.size()-1) ;
+                    nivelmx.remove(nivelmx.size()-1);
+
+                    contN--;
+
+                }
+
+                else{
+                    DD=false;
+                    int aux = (int) niveles.get(niveles.size()-1);
+                    mx =(double) nivelmxMayor.get(nivelmxMayor.size()-1)+50;
+                    System.out.println(mx);
+                    bajar = (double)  listaBajar.get(listaBajar.size()-1);
+                    listaBajar.remove(listaBajar.size()-1);
+                    niveles.remove(niveles.size()-1);
+
+                    tamano = tamano + (auxtamano*0.25);
+
+                }
+
             }
-            
-            else if(niveles.get(niveles.size()-1) == niveles.get(niveles.size()-2)){
-            operacion.add("/");   
-            
-            
-            int aux = (int) niveles.get(niveles.size()-1);
-            niveles.remove(niveles.size()-1);
-            
-            bajar = (bajar +68-8*aux)*sizeFactor;
-            if(niveles.size()==1){bajar=bajar+8;}
-            
-            
-            mx=(double) nivelmx.get(nivelmx.size()-1) ;
-            nivelmx.remove(nivelmx.size()-1);
-            
-            contN--;
-            
-            }
-            
+
+            // Al salir de la division y borrar todos los niveles esto hara que vuelve a colocar numeros a la altura que tiene sin que este dentro de una division
+
             else{
-            DD=false;
-            int aux = (int) niveles.get(niveles.size()-1);   
-            mx = mx+20;
-            bajar = (double)  listaBajar.get(listaBajar.size()-1);
-            listaBajar.remove(listaBajar.size()-1);
-            niveles.remove(niveles.size()-1);
-            System.out.println("niveles "+ niveles);
-            tamano = tamano + (auxtamano*0.25);
-            
+
+                mx= auxmx2;
+                bajar=0;
+                mx=mx+55;
+                limpiar();
+                nivelmx.clear();
+
             }
-          
-        }
-        
-        // Al salir de la division y borrar todos los niveles esto hara que vuelve a colocar numeros a la altura que tiene sin que este dentro de una division
-        
-        else{ 
-            
-              mx= auxmx2;
-              bajar=0;
-              mx=mx+55;
-              limpiar();
-              nivelmx.clear();
-              
-        }
-       }}
+        }}
 
     public static void reubicar(){
-    
-    if (auxmx>mx){
-    auxmx=mx;
-    nivelmx.add(auxmx);
-    System.out.println(nivelmx);
-    }
-    else{}
-    
-    }
-}
 
+        if (auxmx>mx){
+            auxmx=mx;
+            nivelmx.add(auxmx);
+            System.out.println(nivelmx);
+        }
+        else{}
+
+    }
+
+
+}
