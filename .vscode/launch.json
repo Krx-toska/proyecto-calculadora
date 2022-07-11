@@ -16,7 +16,11 @@
             "name": "Launch Calculadora",
             "request": "launch",
             "mainClass": "calculadora.Calculadora",
+<<<<<<< HEAD
+            "projectName": "proyecto-calculadora_d0b7bd7a"
+=======
             "projectName": "calculadora_4d515e09"
+>>>>>>> 33f1a6d5926c0a6f923649b06e90d3e1eeecef8b
         },
         {
             "type": "java",

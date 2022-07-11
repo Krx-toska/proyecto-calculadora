@@ -2860,7 +2860,7 @@ public class Dibuja {
         }
         else{}
     }
-    
+
     public static void DibujaDivisionLineal(GraphicsContext gc, ArrayList<String> operacion, Color myColorOperators, double sizeFactor){
         niveles.clear();
         gc.strokeLine(mx +35*sizeFactor,125*sizeFactor,mx + 10*sizeFactor,175*sizeFactor);
@@ -2869,6 +2869,5 @@ public class Dibuja {
     public static void LimpiarNiveles() {
         niveles.clear();
     }
-
 
 }
