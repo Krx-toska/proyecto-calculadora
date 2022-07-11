@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.GraphicsContext;
@@ -56,6 +57,7 @@ public class FXMLDocumentController implements Initializable {
   Cordenadas cordenadas = new Cordenadas();
   Redibujar hola = new Redibujar();
   Division division = new Division();
+  RedibujarPrefijo holaa = new RedibujarPrefijo();
   int contD =0;
   String aux="";
   static GraphicsContext gc, gcaux;
@@ -88,6 +90,8 @@ public class FXMLDocumentController implements Initializable {
   private Button bttnCalcular;
   @FXML
   private Button bbtn_mover;
+  @FXML
+  private Button bbtnInfija;
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
@@ -1145,6 +1149,29 @@ public class FXMLDocumentController implements Initializable {
         return x;
       }
     }.parse();
+  }
+    public void accionPrefija(ActionEvent event){
+    String expresion = "";
+    String EnPrefijo = "";
+    for (int i = 0; i < operacion.size(); i++) {
+      if (operacion.get(i) == "°"){}
+      else {
+        expresion = expresion + operacion.get(i);
+      }
+    }
+    operacion.clear();
+    EnPrefijo=prefija.infixToPrefix(expresion);
+    System.out.println(EnPrefijo);
+    String newOp = EnPrefijo;
+    operacion.clear();
+    myText.setText("");
+    for (int i = 0; i < newOp.length(); i++) {
+      operacion.add(String.valueOf(newOp.charAt(i)));
+    }
+    gc.clearRect(0, 0, 5000, 5000);
+    holaa.redibujar(operacion, gc, myColorOperators, myColorNumbers, sizeFactor);
+    updateText();
+    
   }
 
 }

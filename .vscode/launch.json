@@ -8,6 +8,13 @@
             "type": "java",
             "name": "Launch Calculadora",
             "request": "launch",
+            "mainClass": "Calculadora",
+            "projectName": "calculadora_4d515e09"
+        },
+        {
+            "type": "java",
+            "name": "Launch Calculadora",
+            "request": "launch",
             "mainClass": "calculadora.Calculadora",
             "projectName": "calculadora_4d515e09"
         },
