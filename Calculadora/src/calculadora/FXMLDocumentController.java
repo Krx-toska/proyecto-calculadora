@@ -745,8 +745,9 @@ public class FXMLDocumentController implements Initializable {
     ArrayList auxlista = new ArrayList();
     operacion.clear();
     myText.setText("");
+    int auxniveles=0;
     for (int i = 0; i < newOp.length(); i++) {
-     
+      
       char aux2;
       aux2 = newOp.charAt(i);
       
@@ -792,8 +793,10 @@ public class FXMLDocumentController implements Initializable {
             operacion.remove(i);
             if(i-k < 0){
               operacion.add(0, "/");
+              auxniveles++;
             }else {
               operacion.add(i - k + 2, "/");
+              auxniveles++;
             }
             k = operacion.size();
           }else if ("(".equals(operacion.get(i-k))) {
@@ -810,13 +813,17 @@ public class FXMLDocumentController implements Initializable {
       if (check(numeros, operacion.get(i))){
     
         if (")".equals(operacion.get(i+1))){
-       
+            
+        if(auxniveles==1){}
+         
+        else{
           operacion.add(i+1, "bajar");
+          auxniveles--;}
         }
       }
     }
-//((2(2/5))/(-(7/2)^2))/(5+(6-3))
-
+//((2x(2/5))/(-(7/2)^2))/(5+(6-3))
+    System.out.println(operacion);
     int operacionSize = operacion.size();
     for (int i = 0; i < operacionSize ;i++){
       if ("1".equals(operacion.get(i)) ){
